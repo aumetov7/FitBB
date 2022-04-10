@@ -8,5 +8,5 @@
 import Foundation
 
 enum ToolbarModal {
-    case profile, exercises, food, history, achievements
+    case profile, exercises, food, history, success
 }

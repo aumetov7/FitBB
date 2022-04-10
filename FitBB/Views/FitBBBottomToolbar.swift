@@ -15,7 +15,7 @@ struct ToolbarButtonView: View {
         .exercises: ("Exercises", "figure.walk"),
         .food: ("Food", "drop.fill"),
         .history: ("History", "clock.arrow.circlepath"),
-        .achievements: ("Achievement", "star.fill")
+        .success: ("Success", "star.fill")
     ]
     
     var body: some View {
@@ -23,14 +23,15 @@ struct ToolbarButtonView: View {
            let imageName = modalButton[modal]?.imageName {
             VStack {
                 Image(systemName: imageName)
-                    .font(.title2)
-                    .frame(height: 30)
-                
+                    .font(.title)
+                    .frame(minWidth: 50, minHeight: 50)
                 Text(text)
-                    .font(.footnote)
+                    .font(.caption2)
+                    .fontWeight(.light)
             }
+            .frame(minWidth: 50)
             .foregroundColor(.black)
-            .padding(.top)
+            .padding(.bottom)
         }
     }
 }
@@ -39,39 +40,49 @@ struct FitBBBottomToolbar: View {
     @Binding var toolbarModal: ToolbarModal?
     
     var body: some View {
-        HStack(spacing: 20) {
-            Button(action: { toolbarModal = .profile }) {
-                ToolbarButtonView(modal: .profile)
+        GeometryReader { geometry in
+            HStack(alignment: .bottom, spacing: geometry.size.width * 0.07) {
+                Button(action: { toolbarModal = .profile }) {
+                    ToolbarButtonView(modal: .profile)
+                }
+                .frame(width: geometry.size.width * 0.15)
+                
+                
+                Button(action: { toolbarModal = .exercises }) {
+                    ToolbarButtonView(modal: .exercises)
+                }
+                .frame(width: geometry.size.width * 0.15)
+                
+                
+                Button(action: { toolbarModal = .food }) {
+                    ToolbarButtonView(modal: .food)
+                }
+                .frame(width: geometry.size.width * 0.15)
+                
+                
+                Button(action: { toolbarModal = .history }) {
+                    ToolbarButtonView(modal: .history)
+                }
+                .frame(width: geometry.size.width * 0.15)
+                
+                
+                Button(action: { toolbarModal = .success }) {
+                    ToolbarButtonView(modal: .success)
+                }
+                .frame(width: geometry.size.width * 0.15)
+                
             }
-            
-            
-            Button(action: { toolbarModal = .exercises }) {
-                ToolbarButtonView(modal: .exercises)
-            }
-            
-            
-            Button(action: { toolbarModal = .food }) {
-                ToolbarButtonView(modal: .food)
-            }
-            
-            
-            Button(action: { toolbarModal = .history }) {
-                ToolbarButtonView(modal: .history)
-            }
-            
-            
-            Button(action: { toolbarModal = .achievements }) {
-                ToolbarButtonView(modal: .achievements)
-            }
-            
+            .frame(width: geometry.size.width)
         }
+        .frame(minHeight: 100)
+        .padding(.bottom)
     }
 }
 
 struct FitBBBottomToolbar_Previews: PreviewProvider {
     static var previews: some View {
         FitBBBottomToolbar(toolbarModal: .constant(.exercises))
-            .previewLayout(.sizeThatFits)
+        //            .previewLayout(.sizeThatFits)
             .padding()
     }
 }

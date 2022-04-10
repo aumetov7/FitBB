@@ -21,8 +21,8 @@ struct ProfileView: View {
         case .history:
             HistoryView(currentModal: $currentModal)
             
-        case .achievements:
-            AchievementsView(currentModal: $currentModal)
+        case .success:
+            SuccessView(currentModal: $currentModal)
             
         default:
             Text("Welcome!")
