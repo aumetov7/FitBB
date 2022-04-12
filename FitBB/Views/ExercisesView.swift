@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct ExercisesView: View {
-    @Binding var currentModal: ToolbarModal?
-    
     var body: some View {
-        Text("Exercises")
-            .modifier(FitBBToolbar(currentModal: $currentModal))
+        TabView {
+            ForEach(0 ..< Exercise.exercises.count, id: \.self) { index in
+                Text("\(Exercise.exercises[index].exerciseName)")
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))   
     }
 }
 
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView(currentModal: .constant(.exercises))
+        ExercisesView()
     }
 }

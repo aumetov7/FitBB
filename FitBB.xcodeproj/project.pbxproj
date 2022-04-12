@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80430E22805ACBC00146B64 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80430E12805ACBC00146B64 /* Exercise.swift */; };
 		D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60B92802EF1D008CE10A /* ProfileView.swift */; };
-		D82E60BD2802F00D008CE10A /* ToolbarModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60BC2802F00D008CE10A /* ToolbarModal.swift */; };
-		D82E60C02802F072008CE10A /* FitBBBottomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60BF2802F072008CE10A /* FitBBBottomToolbar.swift */; };
-		D82E60C22802F9AF008CE10A /* FitBBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C12802F9AF008CE10A /* FitBBToolbar.swift */; };
 		D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C32802FA26008CE10A /* ExercisesView.swift */; };
 		D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C52802FAF1008CE10A /* FoodView.swift */; };
 		D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C72802FAFF008CE10A /* HistoryView.swift */; };
@@ -22,10 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D80430E12805ACBC00146B64 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		D82E60B92802EF1D008CE10A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		D82E60BC2802F00D008CE10A /* ToolbarModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarModal.swift; sourceTree = "<group>"; };
-		D82E60BF2802F072008CE10A /* FitBBBottomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBBBottomToolbar.swift; sourceTree = "<group>"; };
-		D82E60C12802F9AF008CE10A /* FitBBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBBToolbar.swift; sourceTree = "<group>"; };
 		D82E60C32802FA26008CE10A /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 		D82E60C52802FAF1008CE10A /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		D82E60C72802FAFF008CE10A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -57,8 +53,6 @@
 				D82E60C52802FAF1008CE10A /* FoodView.swift */,
 				D82E60C72802FAFF008CE10A /* HistoryView.swift */,
 				D82E60C92802FB0C008CE10A /* SuccessView.swift */,
-				D82E60BF2802F072008CE10A /* FitBBBottomToolbar.swift */,
-				D82E60C12802F9AF008CE10A /* FitBBToolbar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -66,7 +60,7 @@
 		D82E60BE2802F011008CE10A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D82E60BC2802F00D008CE10A /* ToolbarModal.swift */,
+				D80430E12805ACBC00146B64 /* Exercise.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,15 +172,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */,
-				D82E60C02802F072008CE10A /* FitBBBottomToolbar.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
-				D82E60BD2802F00D008CE10A /* ToolbarModal.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
 				D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */,
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
-				D82E60C22802F9AF008CE10A /* FitBBToolbar.swift in Sources */,
+				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
