@@ -117,7 +117,6 @@ struct RegistrationViewFirstPage: View {
                 .fontWeight(.black)
                 .padding(.vertical)
                 .padding(.horizontal, 50)
-//                .background(Color("Color1"))
                 .background(check(emailAddress: regViewModel.userDetails.email,
                                   firstPassword: regViewModel.userDetails.repeatPassword,
                                   secondPassword: regViewModel.userDetails.password) ? Color("Color1") : Color.gray)

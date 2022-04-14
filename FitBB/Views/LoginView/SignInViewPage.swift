@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct SignInViewPage: View {
-    @State private var email = ""
-    @State private var password = ""
+    @ObservedObject var loginViewModel: LoginViewModelImpl
+    
     @Binding var index: Int
     @Binding var showForgetPasswordView: Bool
+    
+    func check(email: String, password: String) -> Bool {
+        if !email.isEmpty && !password.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
     
     var signInText: some View {
         Button(action: { index = 0 }) {
@@ -34,7 +42,7 @@ struct SignInViewPage: View {
                 Image(systemName: "envelope.fill")
                     .foregroundColor(Color("Color1"))
                 
-                TextField("Email Address", text: $email)
+                TextField("Email Address", text: $loginViewModel.credential.email)
             }
             
             Divider().background(Color.white.opacity(0.5))
@@ -46,10 +54,10 @@ struct SignInViewPage: View {
     var passwordTextField: some View {
         VStack {
             HStack(spacing: 15) {
-                Image(systemName: "eye.slash.fill")
+                Image(systemName: "lock")
                     .foregroundColor(Color("Color1"))
                 
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $loginViewModel.credential.password)
             }
             
             Divider().background(Color.white.opacity(0.5))
@@ -72,16 +80,22 @@ struct SignInViewPage: View {
     }
     
     var signInButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            loginViewModel.login()
+        }) {
             Text("Sign In")
                 .foregroundColor(.white)
                 .fontWeight(.black)
                 .padding(.vertical)
                 .padding(.horizontal, 50)
-                .background(Color("Color1"))
+//                .background(Color("Color1"))
+                .background(check(email: loginViewModel.credential.email,
+                                  password: loginViewModel.credential.password) ? Color("Color1") : Color.gray)
                 .clipShape(Capsule())
                 .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
         }
+        .disabled(!check(email: loginViewModel.credential.email,
+                         password: loginViewModel.credential.password))
         .offset(y: 25)
         .opacity(index == 0 ? 1 : 0)
     }
@@ -129,6 +143,6 @@ struct SignInCShape: Shape {
 }
 struct SignInViewPage_Previews: PreviewProvider {
     static var previews: some View {
-        SignInViewPage(index: .constant(0), showForgetPasswordView: .constant(false))
+        SignInViewPage(loginViewModel: LoginViewModelImpl(service: LoginServiceImpl()), index: .constant(0), showForgetPasswordView: .constant(false))
     }
 }

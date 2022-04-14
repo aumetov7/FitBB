@@ -106,7 +106,6 @@ struct RegistrationViewSecondPage: View {
                 .fontWeight(.black)
                 .padding(.vertical)
                 .padding(.horizontal, 50)
-//                .background(Color("Color1"))
                 .background(check(firstName: regViewModel.userDetails.firstName,
                                         gender: regViewModel.userDetails.gender,
                                         goal: regViewModel.userDetails.goal) ? Color("Color1") : Color.gray)

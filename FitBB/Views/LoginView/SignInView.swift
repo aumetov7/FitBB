@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct SignInView: View {
+    @StateObject private var loginViewModel = LoginViewModelImpl(
+        service: LoginServiceImpl()
+    )
+    
     @Binding var index: Int
     @Binding var showForgetPasswordView: Bool
     
     var body: some View {
         ZStack {
             if !showForgetPasswordView {
-                SignInViewPage(index: $index,
+                SignInViewPage(loginViewModel: loginViewModel, index: $index,
                                showForgetPasswordView: $showForgetPasswordView)
             } else {
                 ForgetPasswordView(index: $index,

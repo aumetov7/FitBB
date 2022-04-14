@@ -11,7 +11,7 @@ import Combine
 enum RegistrationState {
     case successfull
     case failed(error: Error)
-    case na
+    case notAvailable
 }
 
 protocol RegistrationViewModel {
@@ -27,7 +27,7 @@ protocol RegistrationViewModel {
 final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     let service: RegistrationService
     
-    var state: RegistrationState = .na
+    var state: RegistrationState = .notAvailable
     
     @Published var userDetails: RegistrationDetails = RegistrationDetails.new
     

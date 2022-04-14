@@ -10,6 +10,9 @@
 		D80430E22805ACBC00146B64 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80430E12805ACBC00146B64 /* Exercise.swift */; };
 		D80430E42805DF0500146B64 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80430E32805DF0500146B64 /* HeaderView.swift */; };
 		D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80430E52805E5E000146B64 /* ExerciseDetailView.swift */; };
+		D82D4DD92808510600C15946 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D4DD82808510600C15946 /* LoginCredentials.swift */; };
+		D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D4DDA2808513B00C15946 /* LoginService.swift */; };
+		D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D4DDC2808525700C15946 /* LoginViewModel.swift */; };
 		D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60B92802EF1D008CE10A /* ProfileView.swift */; };
 		D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C32802FA26008CE10A /* ExercisesView.swift */; };
 		D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E60C52802FAF1008CE10A /* FoodView.swift */; };
@@ -44,6 +47,9 @@
 		D80430E12805ACBC00146B64 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		D80430E32805DF0500146B64 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D80430E52805E5E000146B64 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		D82D4DD82808510600C15946 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
+		D82D4DDA2808513B00C15946 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		D82D4DDC2808525700C15946 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D82E60B92802EF1D008CE10A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D82E60C32802FA26008CE10A /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 		D82E60C52802FAF1008CE10A /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 				D80430E12805ACBC00146B64 /* Exercise.swift */,
 				D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */,
 				D82E69172808458E00AFA077 /* SessionUserDetails.swift */,
+				D82D4DD82808510600C15946 /* LoginCredentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 			children = (
 				D82E690C2808247E00AFA077 /* RegistrationService.swift */,
 				D82E6919280845ED00AFA077 /* SessionService.swift */,
+				D82D4DDA2808513B00C15946 /* LoginService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
+				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -274,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82D4DD92808510600C15946 /* LoginCredentials.swift in Sources */,
 				D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */,
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
@@ -281,6 +291,7 @@
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D85E4CA52806D95D000143E4 /* SignView.swift in Sources */,
+				D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */,
 				D82E690228070D9E00AFA077 /* RegistrationViewSecondPage.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
@@ -295,6 +306,7 @@
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
 				D82E6914280832B100AFA077 /* SignInViewPage.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
+				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);
