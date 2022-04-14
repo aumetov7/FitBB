@@ -11,7 +11,6 @@ struct RegistrationViewSecondPage: View {
     @ObservedObject var regViewModel: RegistrationViewModelImpl
     
     @Binding var index: Int
-    @Binding var contentViewShow: Bool
     @Binding var showRegistrationView: Bool
     
     var genderArray = ["Male", "Female", "Any"]
@@ -101,7 +100,6 @@ struct RegistrationViewSecondPage: View {
     var signUpButton: some View {
         Button(action: {
             regViewModel.register()
-            contentViewShow.toggle()
         }) {
             Text("Sign Up")
                 .foregroundColor(.white)
@@ -156,7 +154,6 @@ struct RegistrationViewSecondPage_Previews: PreviewProvider {
     static var previews: some View {
         RegistrationViewSecondPage(regViewModel: RegistrationViewModelImpl(service: RegistrationServiceImpl()),
                                    index: .constant(1),
-                                   contentViewShow: .constant(false),
                                    showRegistrationView: .constant(false))
     }
 }

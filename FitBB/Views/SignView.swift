@@ -10,7 +10,6 @@ import SwiftUI
 struct SignView: View {
     @State private var index = 0
     @State private var showRegistrationView = false
-    @State private var contentViewShow = false
     @State private var showForgetPasswordView = false
     
     var body: some View {
@@ -27,7 +26,7 @@ struct SignView: View {
                 
                 ZStack {
                     
-                    SignUpView(index: $index, showRegistrationView: $showRegistrationView, contentViewShow: $contentViewShow)
+                    SignUpView(index: $index, showRegistrationView: $showRegistrationView)
                         .zIndex(Double(index))
                     SignInView(index: $index, showForgetPasswordView: $showForgetPasswordView)
                 }

@@ -21,7 +21,6 @@
 		D82E68F62807093D00AFA077 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D82E68F52807093D00AFA077 /* FirebaseCrashlytics */; };
 		D82E68F82807093D00AFA077 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D82E68F72807093D00AFA077 /* FirebaseDatabase */; };
 		D82E68FA2807093D00AFA077 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D82E68F92807093D00AFA077 /* FirebaseStorage */; };
-		D82E68FC280709ED00AFA077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E68FB280709ED00AFA077 /* AppDelegate.swift */; };
 		D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */; };
 		D82E690228070D9E00AFA077 /* RegistrationViewSecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */; };
 		D82E6908280808E800AFA077 /* PagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6907280808E800AFA077 /* PagesView.swift */; };
@@ -52,7 +51,6 @@
 		D82E60C92802FB0C008CE10A /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		D82E68ED2807069F00AFA077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D82E68EF280706A300AFA077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D82E68FB280709ED00AFA077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetails.swift; sourceTree = "<group>"; };
 		D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewSecondPage.swift; sourceTree = "<group>"; };
 		D82E6907280808E800AFA077 /* PagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesView.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				D8DD8C4528016F68004D3C69 /* FitBBApp.swift */,
-				D82E68FB280709ED00AFA077 /* AppDelegate.swift */,
 				D82E60BB2802EFCC008CE10A /* Views */,
 				D82E60BE2802F011008CE10A /* Model */,
 				D82E690E28082BE900AFA077 /* ViewModel */,
@@ -281,7 +278,6 @@
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
-				D82E68FC280709ED00AFA077 /* AppDelegate.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D85E4CA52806D95D000143E4 /* SignView.swift in Sources */,

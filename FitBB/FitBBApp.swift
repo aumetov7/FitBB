@@ -20,10 +20,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 @main
 struct FitBBApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var sessionService = SessionServiceImpl()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            switch sessionService.state {
+            case .loggedIn:
+                ContentView()
+                    .environmentObject(sessionService)
+            case .loggedOut:
+                SignView()
+            }
         }
     }
 }
