@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct ExercisesView: View {
+    @State private var selectedTab = 0
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             ForEach(0 ..< Exercise.exercises.count, id: \.self) { index in
-                Text("\(Exercise.exercises[index].exerciseName)")
+                VStack {
+                    ExerciseDetailView(index: index, selectedTab: $selectedTab)
+                        .tag(index)
+                    Spacer()
+                    Text("Video")
+                    Spacer()
+                    Text("Start button")
+                    Text("Raiting")
+                }
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))   

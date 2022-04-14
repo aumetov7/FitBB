@@ -1,16 +1,14 @@
 //
-//  ContentView.swift
+//  PagesView.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 9/4/22.
+//  Created by Акбар Уметов on 14/4/22.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct PagesView: View {
     var body: some View {
-        
-        /*
         TabView {
             ProfileView()
                 .tabItem {
@@ -43,14 +41,11 @@ struct ContentView: View {
                 }
         }
         .accentColor(.black)
-         */
-        
-        SignView()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct PagesView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PagesView()
     }
 }
