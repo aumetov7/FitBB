@@ -11,6 +11,7 @@ struct SignView: View {
     @State private var index = 0
     @State private var showRegistrationView = false
     @State private var contentViewShow = false
+    @State private var showForgetPasswordView = false
     
     var body: some View {
         ZStack {
@@ -25,21 +26,10 @@ struct SignView: View {
                     .foregroundColor(Color("Color1"))
                 
                 ZStack {
-                    if !contentViewShow {
-                        if !showRegistrationView {
-                            SignUpView(index: $index, showRegistrationView: $showRegistrationView)
-                                .zIndex(Double(index))
-                            
-                            SignInView(index: $index)
-                        } else {
-                            RegistrationView(index: $index, contentViewShow: $contentViewShow)
-                                .zIndex(Double(index))
-                            
-                            SignInView(index: $index)
-                        }
-                    } else {
-                        PagesView()
-                    } 
+                    
+                    SignUpView(index: $index, showRegistrationView: $showRegistrationView, contentViewShow: $contentViewShow)
+                        .zIndex(Double(index))
+                    SignInView(index: $index, showForgetPasswordView: $showForgetPasswordView)
                 }
             }
         }

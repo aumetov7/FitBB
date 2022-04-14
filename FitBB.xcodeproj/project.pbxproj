@@ -23,9 +23,15 @@
 		D82E68FA2807093D00AFA077 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D82E68F92807093D00AFA077 /* FirebaseStorage */; };
 		D82E68FC280709ED00AFA077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E68FB280709ED00AFA077 /* AppDelegate.swift */; };
 		D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */; };
-		D82E690228070D9E00AFA077 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690128070D9E00AFA077 /* RegistrationView.swift */; };
-		D82E6906280718AE00AFA077 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6905280718AE00AFA077 /* PickerView.swift */; };
+		D82E690228070D9E00AFA077 /* RegistrationViewSecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */; };
 		D82E6908280808E800AFA077 /* PagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6907280808E800AFA077 /* PagesView.swift */; };
+		D82E690A2808167800AFA077 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69092808167800AFA077 /* ForgetPasswordView.swift */; };
+		D82E690D2808247E00AFA077 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690C2808247E00AFA077 /* RegistrationService.swift */; };
+		D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */; };
+		D82E69122808302400AFA077 /* RegistrationViewFirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69112808302400AFA077 /* RegistrationViewFirstPage.swift */; };
+		D82E6914280832B100AFA077 /* SignInViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6913280832B100AFA077 /* SignInViewPage.swift */; };
+		D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69172808458E00AFA077 /* SessionUserDetails.swift */; };
+		D82E691A280845ED00AFA077 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6919280845ED00AFA077 /* SessionService.swift */; };
 		D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA22806CC7D000143E4 /* SignInView.swift */; };
 		D85E4CA52806D95D000143E4 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA42806D95D000143E4 /* SignView.swift */; };
 		D85E4CA72806DA0F000143E4 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA62806DA0F000143E4 /* SignUpView.swift */; };
@@ -48,9 +54,15 @@
 		D82E68EF280706A300AFA077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D82E68FB280709ED00AFA077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetails.swift; sourceTree = "<group>"; };
-		D82E690128070D9E00AFA077 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
-		D82E6905280718AE00AFA077 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewSecondPage.swift; sourceTree = "<group>"; };
 		D82E6907280808E800AFA077 /* PagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesView.swift; sourceTree = "<group>"; };
+		D82E69092808167800AFA077 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
+		D82E690C2808247E00AFA077 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		D82E69112808302400AFA077 /* RegistrationViewFirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewFirstPage.swift; sourceTree = "<group>"; };
+		D82E6913280832B100AFA077 /* SignInViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPage.swift; sourceTree = "<group>"; };
+		D82E69172808458E00AFA077 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
+		D82E6919280845ED00AFA077 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D85E4CA22806CC7D000143E4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D85E4CA42806D95D000143E4 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		D85E4CA62806DA0F000143E4 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -84,10 +96,8 @@
 				D82E6907280808E800AFA077 /* PagesView.swift */,
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
 				D85E4CA42806D95D000143E4 /* SignView.swift */,
-				D85E4CA22806CC7D000143E4 /* SignInView.swift */,
-				D85E4CA62806DA0F000143E4 /* SignUpView.swift */,
-				D82E690128070D9E00AFA077 /* RegistrationView.swift */,
-				D82E6905280718AE00AFA077 /* PickerView.swift */,
+				D82E69162808356500AFA077 /* LoginView */,
+				D82E69152808355300AFA077 /* RegistrationView */,
 				D82E60C32802FA26008CE10A /* ExercisesView.swift */,
 				D80430E52805E5E000146B64 /* ExerciseDetailView.swift */,
 				D82E60C52802FAF1008CE10A /* FoodView.swift */,
@@ -103,8 +113,46 @@
 			children = (
 				D80430E12805ACBC00146B64 /* Exercise.swift */,
 				D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */,
+				D82E69172808458E00AFA077 /* SessionUserDetails.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D82E690B2808246C00AFA077 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D82E690C2808247E00AFA077 /* RegistrationService.swift */,
+				D82E6919280845ED00AFA077 /* SessionService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D82E690E28082BE900AFA077 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D82E69152808355300AFA077 /* RegistrationView */ = {
+			isa = PBXGroup;
+			children = (
+				D85E4CA62806DA0F000143E4 /* SignUpView.swift */,
+				D82E69112808302400AFA077 /* RegistrationViewFirstPage.swift */,
+				D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */,
+			);
+			path = RegistrationView;
+			sourceTree = "<group>";
+		};
+		D82E69162808356500AFA077 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				D85E4CA22806CC7D000143E4 /* SignInView.swift */,
+				D82E6913280832B100AFA077 /* SignInViewPage.swift */,
+				D82E69092808167800AFA077 /* ForgetPasswordView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		D8DD8C3928016F68004D3C69 = {
@@ -130,6 +178,8 @@
 				D82E68FB280709ED00AFA077 /* AppDelegate.swift */,
 				D82E60BB2802EFCC008CE10A /* Views */,
 				D82E60BE2802F011008CE10A /* Model */,
+				D82E690E28082BE900AFA077 /* ViewModel */,
+				D82E690B2808246C00AFA077 /* Service */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D82E68EF280706A300AFA077 /* GoogleService-Info.plist */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
@@ -232,17 +282,23 @@
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
 				D82E68FC280709ED00AFA077 /* AppDelegate.swift in Sources */,
+				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D85E4CA52806D95D000143E4 /* SignView.swift in Sources */,
-				D82E690228070D9E00AFA077 /* RegistrationView.swift in Sources */,
+				D82E690228070D9E00AFA077 /* RegistrationViewSecondPage.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
-				D82E6906280718AE00AFA077 /* PickerView.swift in Sources */,
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
 				D82E6908280808E800AFA077 /* PagesView.swift in Sources */,
+				D82E691A280845ED00AFA077 /* SessionService.swift in Sources */,
 				D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */,
 				D85E4CA72806DA0F000143E4 /* SignUpView.swift in Sources */,
 				D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */,
+				D82E69122808302400AFA077 /* RegistrationViewFirstPage.swift in Sources */,
+				D82E690A2808167800AFA077 /* ForgetPasswordView.swift in Sources */,
+				D82E690D2808247E00AFA077 /* RegistrationService.swift in Sources */,
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
+				D82E6914280832B100AFA077 /* SignInViewPage.swift in Sources */,
+				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);
