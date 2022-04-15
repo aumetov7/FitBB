@@ -55,7 +55,6 @@
 		D82E60C72802FAFF008CE10A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		D82E60C92802FB0C008CE10A /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		D82E68ED2807069F00AFA077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D82E68EF280706A300AFA077 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetails.swift; sourceTree = "<group>"; };
 		D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewSecondPage.swift; sourceTree = "<group>"; };
 		D82E6907280808E800AFA077 /* PagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesView.swift; sourceTree = "<group>"; };
@@ -187,7 +186,6 @@
 				D82E690E28082BE900AFA077 /* ViewModel */,
 				D82E690B2808246C00AFA077 /* Service */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
-				D82E68EF280706A300AFA077 /* GoogleService-Info.plist */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
 			);
 			path = FitBB;
