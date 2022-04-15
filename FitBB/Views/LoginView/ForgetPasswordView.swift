@@ -12,6 +12,8 @@ struct ForgetPasswordView: View {
     @State private var email = ""
     @Binding var showForgetPasswordView: Bool
     
+    @ObservedObject var forgotPasswordViewModel: ForgotPasswordViewModelImpl
+    
     var signInText: some View {
         Button(action: {
             showForgetPasswordView.toggle()
@@ -36,7 +38,7 @@ struct ForgetPasswordView: View {
                 Image(systemName: "envelope.fill")
                     .foregroundColor(Color("Color1"))
                 
-                TextField("Email Address", text: $email)
+                TextField("Email Address", text: $forgotPasswordViewModel.email)
             }
             
             Divider().background(Color.white.opacity(0.5))
@@ -46,7 +48,10 @@ struct ForgetPasswordView: View {
     }
     
     var resetPasswordButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            forgotPasswordViewModel.sendPasswordReset()
+            showForgetPasswordView.toggle()
+        }) {
             Text("Reset Password")
                 .foregroundColor(.white)
                 .fontWeight(.black)
@@ -89,6 +94,8 @@ struct ForgetPasswordView: View {
 
 struct ForgetPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgetPasswordView(index: .constant(0), showForgetPasswordView: .constant(true))
+        ForgetPasswordView(index: .constant(0),
+                           showForgetPasswordView: .constant(true),
+                           forgotPasswordViewModel: ForgotPasswordViewModelImpl(service: ForgotPasswordServiceImpl()))
     }
 }

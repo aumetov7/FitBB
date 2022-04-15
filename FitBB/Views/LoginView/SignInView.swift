@@ -12,6 +12,10 @@ struct SignInView: View {
         service: LoginServiceImpl()
     )
     
+    @StateObject private var forgotPasswordViewModel = ForgotPasswordViewModelImpl(
+        service: ForgotPasswordServiceImpl()
+    )
+    
     @Binding var index: Int
     @Binding var showForgetPasswordView: Bool
     
@@ -22,8 +26,9 @@ struct SignInView: View {
                                showForgetPasswordView: $showForgetPasswordView)
             } else {
                 ForgetPasswordView(index: $index,
-                                   showForgetPasswordView: $showForgetPasswordView)
-            } 
+                                   showForgetPasswordView: $showForgetPasswordView,
+                                   forgotPasswordViewModel: forgotPasswordViewModel)
+            }
         }
     }
 }

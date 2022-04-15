@@ -36,6 +36,8 @@
 		D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA22806CC7D000143E4 /* SignInView.swift */; };
 		D85E4CA52806D95D000143E4 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA42806D95D000143E4 /* SignView.swift */; };
 		D85E4CA72806DA0F000143E4 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA62806DA0F000143E4 /* SignUpView.swift */; };
+		D8BC7B0328099F8200E56E81 /* ForgonPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgonPasswordService.swift */; };
+		D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */; };
 		D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFEBED28098E910015171E /* LoginCredentials.swift */; };
 		D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DD8C4528016F68004D3C69 /* FitBBApp.swift */; };
 		D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DD8C4728016F68004D3C69 /* ContentView.swift */; };
@@ -68,6 +70,8 @@
 		D85E4CA22806CC7D000143E4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D85E4CA42806D95D000143E4 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		D85E4CA62806DA0F000143E4 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D8BC7B0228099F8200E56E81 /* ForgonPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgonPasswordService.swift; sourceTree = "<group>"; };
+		D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		D8BFEBED28098E910015171E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		D8DD8C4228016F68004D3C69 /* FitBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitBB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DD8C4528016F68004D3C69 /* FitBBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBBApp.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				D82E690C2808247E00AFA077 /* RegistrationService.swift */,
 				D82E6919280845ED00AFA077 /* SessionService.swift */,
 				D82D4DDA2808513B00C15946 /* LoginService.swift */,
+				D8BC7B0228099F8200E56E81 /* ForgonPasswordService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			children = (
 				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
 				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
+				D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8BC7B0328099F8200E56E81 /* ForgonPasswordService.swift in Sources */,
 				D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */,
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
@@ -304,6 +311,7 @@
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
 				D82E6914280832B100AFA077 /* SignInViewPage.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
+				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,

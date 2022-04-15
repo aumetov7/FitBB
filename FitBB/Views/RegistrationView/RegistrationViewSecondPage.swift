@@ -143,6 +143,16 @@ struct RegistrationViewSecondPage: View {
             .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: -2)
             .cornerRadius(35)
             .padding(.horizontal, 20)
+            .alert(isPresented: $regViewModel.hasError,
+                   content: {
+                if case .failed(let error) = regViewModel.state {
+                    return Alert(title: Text("Error"),
+                                 message: Text(error.localizedDescription))
+                } else {
+                    return Alert(title: Text("Error"),
+                                 message: Text("Something went wrong"))
+                }
+            })
             
             signUpButton
         }
