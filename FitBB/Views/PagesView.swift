@@ -15,6 +15,7 @@ struct PagesView: View {
                     Image(systemName: "person.fill")
                     Text("Profile")
                 }
+                .environmentObject(SessionServiceImpl())
             
             ExercisesView()
                 .tabItem {
@@ -46,6 +47,6 @@ struct PagesView: View {
 
 struct PagesView_Previews: PreviewProvider {
     static var previews: some View {
-        PagesView()
+        PagesView() 
     }
 }

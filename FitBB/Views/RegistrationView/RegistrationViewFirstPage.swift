@@ -17,7 +17,7 @@ struct RegistrationViewFirstPage: View {
     @Binding var showRegistrationView: Bool
     
     func check(emailAddress: String, firstPassword: String, secondPassword: String) -> Bool {
-        let password = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        let password = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
         
         if (firstPassword == secondPassword) &&
             (!firstPassword.isEmpty || !secondPassword.isEmpty) &&
@@ -28,6 +28,18 @@ struct RegistrationViewFirstPage: View {
             return false
         }
     }
+    
+//    func textFieldEmailValidation(_ string: String) -> Bool {
+//        if string.count > 100 {
+//            return false
+//        }
+//
+//        let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
+//        "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+//        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
+//
+//        return emailPredicate.evaluate(with: string)
+//    }
     
     var signUpText: some View {
         Button(action: { index = 1 }) {

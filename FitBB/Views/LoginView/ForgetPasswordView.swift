@@ -39,6 +39,7 @@ struct ForgetPasswordView: View {
                     .foregroundColor(Color("Color1"))
                 
                 TextField("Email Address", text: $forgotPasswordViewModel.email)
+                    .keyboardType(.emailAddress)
             }
             
             Divider().background(Color.white.opacity(0.5))

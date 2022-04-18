@@ -43,6 +43,7 @@ struct SignInViewPage: View {
                     .foregroundColor(Color("Color1"))
                 
                 TextField("Email Address", text: $loginViewModel.credential.email)
+                    .keyboardType(.emailAddress)
             }
             
             Divider().background(Color.white.opacity(0.5))

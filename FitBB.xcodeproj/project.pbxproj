@@ -33,6 +33,7 @@
 		D82E6914280832B100AFA077 /* SignInViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6913280832B100AFA077 /* SignInViewPage.swift */; };
 		D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69172808458E00AFA077 /* SessionUserDetails.swift */; };
 		D82E691A280845ED00AFA077 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6919280845ED00AFA077 /* SessionService.swift */; };
+		D8406D1F280D7BB900445272 /* PasswordValidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D1E280D7BB900445272 /* PasswordValidateView.swift */; };
 		D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA22806CC7D000143E4 /* SignInView.swift */; };
 		D85E4CA52806D95D000143E4 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA42806D95D000143E4 /* SignView.swift */; };
 		D85E4CA72806DA0F000143E4 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E4CA62806DA0F000143E4 /* SignUpView.swift */; };
@@ -67,6 +68,7 @@
 		D82E6913280832B100AFA077 /* SignInViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPage.swift; sourceTree = "<group>"; };
 		D82E69172808458E00AFA077 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
 		D82E6919280845ED00AFA077 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		D8406D1E280D7BB900445272 /* PasswordValidateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidateView.swift; sourceTree = "<group>"; };
 		D85E4CA22806CC7D000143E4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D85E4CA42806D95D000143E4 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		D85E4CA62806DA0F000143E4 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				D85E4CA62806DA0F000143E4 /* SignUpView.swift */,
 				D82E69112808302400AFA077 /* RegistrationViewFirstPage.swift */,
 				D82E690128070D9E00AFA077 /* RegistrationViewSecondPage.swift */,
+				D8406D1E280D7BB900445272 /* PasswordValidateView.swift */,
 			);
 			path = RegistrationView;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
+				D8406D1F280D7BB900445272 /* PasswordValidateView.swift in Sources */,
 				D85E4CA32806CC7D000143E4 /* SignInView.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);

@@ -33,5 +33,6 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView(index: .constant(1), showRegistrationView: .constant(false))
+            .environmentObject(RegistrationViewModelImpl(service: RegistrationServiceImpl()))
     }
 }

@@ -36,5 +36,7 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(index: .constant(0), showForgetPasswordView: .constant(false))
+            .environmentObject(LoginViewModelImpl(service: LoginServiceImpl()))
+            .environmentObject(ForgotPasswordViewModelImpl(service: ForgotPasswordServiceImpl()))
     }
 }
