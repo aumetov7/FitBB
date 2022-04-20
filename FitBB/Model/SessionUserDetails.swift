@@ -9,6 +9,7 @@ import Foundation
 
 struct SessionUserDetails {
     let firstName: String
+    let dateOfBirth: String
     let gender: String
     let goal: String
 }

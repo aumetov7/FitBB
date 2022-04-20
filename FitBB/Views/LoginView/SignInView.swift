@@ -1,42 +1,174 @@
 //
-//  SignInView.swift
+//  SignIn.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 13/4/22.
+//  Created by Акбар Уметов on 20/4/22.
 //
 
 import SwiftUI
 
 struct SignInView: View {
-    @StateObject private var loginViewModel = LoginViewModelImpl(
-        service: LoginServiceImpl()
-    )
+    @State private var showPassword = false
     
-    @StateObject private var forgotPasswordViewModel = ForgotPasswordViewModelImpl(
-        service: ForgotPasswordServiceImpl()
-    )
+    @ObservedObject var loginViewModel: LoginViewModelImpl
     
-    @Binding var index: Int
+    @Binding var showSignUpView: Bool
     @Binding var showForgetPasswordView: Bool
+    
+    var signInText: some View {
+        Text("SIGN IN")
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
+    }
+    
+    var emailTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Email")
+                .fontWeight(.light)
+                .font(.system(.callout))
+                .foregroundColor(.black)
+                .padding(.leading)
+            
+            HStack {
+                TextField("", text: $loginViewModel.credential.email)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .keyboardType(.emailAddress)
+            }
+            .padding(.horizontal)
+            
+            Divider()
+                .padding(.horizontal)
+        }
+    }
+    
+    var passwordTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Password")
+                .fontWeight(.light)
+                .font(.system(.callout))
+                .foregroundColor(.black)
+                .padding(.leading)
+            
+            HStack {
+                if !showPassword {
+                    SecureField("", text: $loginViewModel.credential.password)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                } else {
+                    TextField("", text: $loginViewModel.credential.password)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                }
+                
+                Button(action: { showPassword.toggle() }) {
+                    if !showPassword {
+                        Image(systemName: "eye.slash")
+                            .foregroundColor(.black)
+                    } else {
+                        Image(systemName: "eye")
+                            .foregroundColor(.black)
+                    }
+                }
+            }
+            .padding(.horizontal)
+            
+            Divider()
+                .padding(.horizontal)
+        }
+    }
+    
+    var forgetPasswordButton: some View {
+        HStack {
+            Spacer(minLength: 0)
+            
+            Button(action: { showForgetPasswordView.toggle() }) {
+                Text("Forget Password?")
+                    .underline()
+                    .fontWeight(.light)
+                    .font(.system(.callout))
+                    .foregroundColor(.black)
+                    .padding(.leading)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 30)
+    }
+    
+    var signUpButton: some View {
+        HStack {
+            Button(action: { showSignUpView.toggle() }) {
+                Text("Sign Up")
+                    .underline()
+                    .fontWeight(.light)
+                    .font(.system(.callout))
+                    .foregroundColor(.black)
+            }
+        }
+    }
     
     var body: some View {
         ZStack {
-            if !showForgetPasswordView {
-                SignInViewPage(loginViewModel: loginViewModel, index: $index,
-                               showForgetPasswordView: $showForgetPasswordView)
-            } else {
-                ForgetPasswordView(index: $index,
-                                   showForgetPasswordView: $showForgetPasswordView,
-                                   forgotPasswordViewModel: forgotPasswordViewModel)
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(Color("background"))
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Spacer()
+                
+                signInText
+                
+                Spacer()
+                
+                VStack {
+                    emailTextField
+                    
+                    passwordTextField
+                    
+                    forgetPasswordButton
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
+                
+                Spacer()
+                
+                RaisedButton(buttonText: "Sign In") {
+                    loginViewModel.login()
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 45)
+                .alert(isPresented: $loginViewModel.hasError,
+                       content: {
+                    if case .failed(let error) = loginViewModel.state {
+                        return Alert(title: Text("Error"),
+                                     message: Text(error.localizedDescription))
+                    } else {
+                        return Alert(title: Text("Error"),
+                                     message: Text("Something went wrong"))
+                    }
+                })
+                
+                HStack(spacing: 3) {
+                    Text("Dont have an Account?")
+                        .fontWeight(.light)
+                        .font(.system(.callout))
+                        .foregroundColor(.black)
+                    
+                    
+                    signUpButton
+                }
             }
+            .padding(.horizontal)
         }
     }
 }
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView(index: .constant(0), showForgetPasswordView: .constant(false))
-            .environmentObject(LoginViewModelImpl(service: LoginServiceImpl()))
-            .environmentObject(ForgotPasswordViewModelImpl(service: ForgotPasswordServiceImpl()))
+        SignInView(loginViewModel: LoginViewModelImpl(service: LoginServiceImpl()),
+               showSignUpView: .constant(false),
+               showForgetPasswordView: .constant(false))
     }
 }

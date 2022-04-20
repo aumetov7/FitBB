@@ -58,9 +58,13 @@ private extension SessionServiceImpl {
         .child("users")
         .child(uid)
         .observe(.value) { [weak self] snapshot in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            
             guard let self = self,
                   let value = snapshot.value as? NSDictionary,
                   let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
+                  let dateOfBirth = value[RegistrationKeys.dateOfBirth.rawValue] as? String,
                   let gender = value[RegistrationKeys.gender.rawValue] as? String,
                   let goal = value[RegistrationKeys.goal.rawValue] as? String else {
                 return
@@ -68,6 +72,7 @@ private extension SessionServiceImpl {
             
             DispatchQueue.main.async {
                 self.userDetails = SessionUserDetails(firstName: firstName,
+                                                      dateOfBirth: dateOfBirth,
                                                       gender: gender,
                                                       goal: goal)
             }

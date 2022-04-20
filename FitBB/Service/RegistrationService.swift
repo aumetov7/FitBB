@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 enum RegistrationKeys: String {
-    case firstName, gender, goal
+    case firstName, dateOfBirth, gender, goal
 }
 
 protocol RegistrationService {
@@ -29,7 +29,11 @@ final class RegistrationServiceImpl: RegistrationService {
                             promise(.failure(err))
                         } else {
                             if let uid = res?.user.uid {
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "dd.MM.yyyy"
+                                
                                 let values = [RegistrationKeys.firstName.rawValue: details.firstName,
+                                              RegistrationKeys.dateOfBirth.rawValue: dateFormatter.string(from: details.dateOfBirth!),
                                               RegistrationKeys.gender.rawValue: details.gender,
                                               RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
                                 

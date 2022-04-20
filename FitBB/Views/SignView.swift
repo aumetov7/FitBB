@@ -1,36 +1,20 @@
 //
-//  SingView.swift
+//  NewSignView.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 13/4/22.
+//  Created by Акбар Уметов on 20/4/22.
 //
 
 import SwiftUI
 
 struct SignView: View {
-    @State private var index = 0
-    @State private var showRegistrationView = false
-    @State private var showForgetPasswordView = false
+    @State private var showSignUpVuew = false
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(Color.clear)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                Image(systemName: "applelogo")
-                    .font(.largeTitle)
-                    .padding(.bottom, 15)
-                    .foregroundColor(Color("Color1"))
-                
-                ZStack {
-                    
-                    SignUpView(index: $index, showRegistrationView: $showRegistrationView)
-                        .zIndex(Double(index))
-                    SignInView(index: $index, showForgetPasswordView: $showForgetPasswordView)
-                }
-            }
+        if !showSignUpVuew {
+            SignInCombineView(showSignUpView: $showSignUpVuew)
+        } else {
+            SignUpCombineView(showSignUpView: $showSignUpVuew)
         }
     }
 }

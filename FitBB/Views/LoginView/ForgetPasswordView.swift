@@ -1,102 +1,82 @@
 //
-//  ForgetPasswordView.swift
+//  ForgetPassword.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 14/4/22.
+//  Created by Акбар Уметов on 20/4/22.
 //
 
 import SwiftUI
 
 struct ForgetPasswordView: View {
-    @Binding var index: Int
-    @State private var email = ""
-    @Binding var showForgetPasswordView: Bool
-    
     @ObservedObject var forgotPasswordViewModel: ForgotPasswordViewModelImpl
     
-    var signInText: some View {
-        Button(action: {
-            showForgetPasswordView.toggle()
-            index = 0
-        }) {
-            VStack(spacing: 10) {
-                Text("Sign In")
-                    .foregroundColor(index == 0 ? .black : .gray)
-                    .font(.title)
-                    .fontWeight(.black)
-                
-                Capsule()
-                    .fill(index == 0 ? Color.black : Color.clear)
-                    .frame(width: 100, height: 5)
-            }
-        }
+    @Binding var showForgetPasswordView: Bool
+    
+    var forgetPasswordText: some View {
+        Text("PASSWORD")
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
     }
     
-    var emailAddressTextField: some View {
-        VStack {
-            HStack(spacing: 15) {
-                Image(systemName: "envelope.fill")
-                    .foregroundColor(Color("Color1"))
-                
-                TextField("Email Address", text: $forgotPasswordViewModel.email)
+    var emailTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Email")
+                .fontWeight(.light)
+                .font(.system(.callout))
+                .foregroundColor(.black)
+                .padding(.leading)
+            
+            HStack {
+                TextField("", text: $forgotPasswordViewModel.email)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
                     .keyboardType(.emailAddress)
             }
+            .padding(.horizontal)
             
-            Divider().background(Color.white.opacity(0.5))
+            Divider()
+                .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .padding(.top, 40)
-    }
-    
-    var resetPasswordButton: some View {
-        Button(action: {
-            forgotPasswordViewModel.sendPasswordReset()
-            showForgetPasswordView.toggle()
-        }) {
-            Text("Reset Password")
-                .foregroundColor(.white)
-                .fontWeight(.black)
-                .padding(.vertical)
-                .padding(.horizontal, 50)
-                .background(Color("Color1"))
-                .clipShape(Capsule())
-                .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
-        }
-        .offset(y: 25)
-        .opacity(index == 0 ? 1 : 0)
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack {
-                HStack {
-                    signInText
-
-                    Spacer(minLength: 0)
-                }
-                .padding(.top, 30)
-                
-                emailAddressTextField
-                    .padding(.bottom, 140)
-            }
-            .padding()
-            .padding(.bottom, 65)
-            .background(Color("background"))
-            .clipShape(SignInCShape())
-            .contentShape(SignInCShape())
-            .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: -2)
-            .cornerRadius(35)
-            .padding(.horizontal, 20)
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(Color("background"))
+                .edgesIgnoringSafeArea(.all)
             
-            resetPasswordButton
+            VStack {
+                Spacer()
+                
+                forgetPasswordText
+                
+                Spacer()
+                
+                VStack {
+                    emailTextField
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
+                
+                Spacer()
+                
+                RaisedButton(buttonText: "Reset password") {
+                    forgotPasswordViewModel.sendPasswordReset()
+                    showForgetPasswordView.toggle()
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 65)
+            }
+            .padding(.horizontal)
         }
     }
 }
 
 struct ForgetPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgetPasswordView(index: .constant(0),
-                           showForgetPasswordView: .constant(true),
-                           forgotPasswordViewModel: ForgotPasswordViewModelImpl(service: ForgotPasswordServiceImpl()))
+        ForgetPasswordView(forgotPasswordViewModel: ForgotPasswordViewModelImpl(service: ForgotPasswordServiceImpl()),
+                       showForgetPasswordView: .constant(true))
     }
 }
