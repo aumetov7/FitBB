@@ -38,6 +38,9 @@
 		D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDF28103531001567BB /* ForgetPasswordView.swift */; };
 		D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE12810368A001567BB /* SignInCombineView.swift */; };
 		D8796DE42810379B001567BB /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE32810379B001567BB /* SignView.swift */; };
+		D8975655281169740075AD73 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975654281169740075AD73 /* ImagePicker.swift */; };
+		D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975656281175E00075AD73 /* EmbossedButton.swift */; };
+		D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897565928117B8D0075AD73 /* ImageExtension.swift */; };
 		D8BC7B0328099F8200E56E81 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */; };
 		D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */; };
 		D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFEBED28098E910015171E /* LoginCredentials.swift */; };
@@ -74,6 +77,9 @@
 		D8796DDF28103531001567BB /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		D8796DE12810368A001567BB /* SignInCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCombineView.swift; sourceTree = "<group>"; };
 		D8796DE32810379B001567BB /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
+		D8975654281169740075AD73 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D8975656281175E00075AD73 /* EmbossedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossedButton.swift; sourceTree = "<group>"; };
+		D897565928117B8D0075AD73 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		D8BFEBED28098E910015171E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 				D8DD8C4728016F68004D3C69 /* ContentView.swift */,
 				D82E6907280808E800AFA077 /* PagesView.swift */,
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
+				D8975654281169740075AD73 /* ImagePicker.swift */,
 				D8796DE32810379B001567BB /* SignView.swift */,
 				D82E69162808356500AFA077 /* LoginView */,
 				D82E69152808355300AFA077 /* RegistrationView */,
@@ -177,8 +184,17 @@
 			isa = PBXGroup;
 			children = (
 				D8406D21280EC6D500445272 /* RaisedButton.swift */,
+				D8975656281175E00075AD73 /* EmbossedButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		D897565828117B790075AD73 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D897565928117B8D0075AD73 /* ImageExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D8DD8C3928016F68004D3C69 = {
@@ -205,6 +221,7 @@
 				D82E60BE2802F011008CE10A /* Model */,
 				D82E690E28082BE900AFA077 /* ViewModel */,
 				D82E690B2808246C00AFA077 /* Service */,
+				D897565828117B790075AD73 /* Extensions */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
 			);
@@ -324,12 +341,15 @@
 				D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */,
 				D82E690D2808247E00AFA077 /* RegistrationService.swift in Sources */,
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
+				D8975655281169740075AD73 /* ImagePicker.swift in Sources */,
 				D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */,
+				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,
 				D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */,
+				D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
