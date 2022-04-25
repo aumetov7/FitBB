@@ -1,21 +1,21 @@
 //
-//  RegistrationViewModel.swift
+//  UpdateProfileViewModel.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 14/4/22.
+//  Created by Акбар Уметов on 25/4/22.
 //
 
 import Foundation
 import Combine
 
-enum RegistrationState {
+enum UpdateProfileState {
     case successfull
     case failed(error: Error)
     case notAvailable
 }
 
-protocol RegistrationViewModel {
-    func register()
+protocol UpdateProfileViewModel {
+    func update()
     
     var service: RegistrationService { get }
     var state: RegistrationState { get }
@@ -25,7 +25,7 @@ protocol RegistrationViewModel {
     init(service: RegistrationService)
 }
 
-final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
+final class UpdateProfileViewModelImpl: ObservableObject, UpdateProfileViewModel {
     @Published var state: RegistrationState = .notAvailable
     @Published var hasError: Bool = false
     @Published var userDetails: RegistrationDetails = RegistrationDetails.new
@@ -37,22 +37,6 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     init(service: RegistrationService) {
         self.service = service
         setupErrorSubscriptions()
-    }
-    
-    func register() {
-        service
-            .register(with: userDetails)
-            .sink { [weak self] res in
-                switch res {
-                case .failure(let error):
-                    self?.state = .failed(error: error)
-                default: break
-                }
-                
-            } receiveValue: { [weak self] in
-                self?.state = .successfull
-            }
-            .store(in: &subscription)
     }
     
     func update() {
@@ -71,7 +55,7 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     }
 }
 
-extension RegistrationViewModelImpl {
+extension UpdateProfileViewModelImpl {
     func setupErrorSubscriptions() {
         $state
             .map { state -> Bool in

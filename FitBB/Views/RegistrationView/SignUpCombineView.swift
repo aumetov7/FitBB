@@ -20,9 +20,6 @@ struct SignUpCombineView: View {
         SignUpView(regViewModel: regViewModel,
                              showSignUpDetailInfoView: $showSignUpDetailInfoView,
                              showSignUpView: $showSignUpView)
-            .sheet(isPresented: $showSignUpDetailInfoView) {
-                SignUpDetailInfoView(regViewModel: regViewModel)
-            }
     }
 }
 

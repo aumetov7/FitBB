@@ -16,6 +16,7 @@ enum RegistrationKeys: String {
 
 protocol RegistrationService {
     func register(with details: RegistrationDetails) -> AnyPublisher<Void, Error>
+    func updateAccountInfo(with details: RegistrationDetails) -> AnyPublisher<Void, Error>
 }
 
 final class RegistrationServiceImpl: RegistrationService {
@@ -29,11 +30,9 @@ final class RegistrationServiceImpl: RegistrationService {
                             promise(.failure(err))
                         } else {
                             if let uid = res?.user.uid {
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "dd.MM.yyyy"
                                 
                                 let values = [RegistrationKeys.firstName.rawValue: details.firstName,
-                                              RegistrationKeys.dateOfBirth.rawValue: dateFormatter.string(from: details.dateOfBirth!),
+                                              RegistrationKeys.dateOfBirth.rawValue: "",
                                               RegistrationKeys.gender.rawValue: details.gender,
                                               RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
                                 
@@ -51,6 +50,33 @@ final class RegistrationServiceImpl: RegistrationService {
                             } else {
                                 promise(.failure(NSError(domain: "Invalid User Id", code: 0, userInfo: nil)))
                             }
+                        }
+                    }
+            }
+        }
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
+    }
+    
+    func updateAccountInfo(with details: RegistrationDetails) -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future { promise in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                
+                let values = [RegistrationKeys.firstName.rawValue: details.firstName,
+                              RegistrationKeys.dateOfBirth.rawValue: dateFormatter.string(from: details.dateOfBirth!),
+                              RegistrationKeys.gender.rawValue: details.gender,
+                              RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
+                
+                Database.database()
+                    .reference().child("users").child(uid).updateChildValues(values) { error, ref in
+                        if let err = error {
+                            promise(.failure(err))
+                        } else {
+                            promise(.success(()))
                         }
                     }
             }

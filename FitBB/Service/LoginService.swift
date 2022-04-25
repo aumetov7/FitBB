@@ -31,6 +31,4 @@ final class LoginServiceImpl: LoginService {
         .receive(on: RunLoop.main)
         .eraseToAnyPublisher()
     }
-    
-    
 }

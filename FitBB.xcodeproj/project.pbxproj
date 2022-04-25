@@ -29,9 +29,10 @@
 		D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */; };
 		D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69172808458E00AFA077 /* SessionUserDetails.swift */; };
 		D82E691A280845ED00AFA077 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6919280845ED00AFA077 /* SessionService.swift */; };
+		D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */; };
 		D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D1E280D7BB900445272 /* SignUpView.swift */; };
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
-		D8796DD6280FEA12001567BB /* SignUpDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD5280FEA12001567BB /* SignUpDetailInfoView.swift */; };
+		D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD5280FEA12001567BB /* ProfileDetailView.swift */; };
 		D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD9280FED19001567BB /* DatePickerTextField.swift */; };
 		D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDB28102DEC001567BB /* SignUpCombineView.swift */; };
 		D8796DDE28103096001567BB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDD28103096001567BB /* SignInView.swift */; };
@@ -68,9 +69,10 @@
 		D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		D82E69172808458E00AFA077 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
 		D82E6919280845ED00AFA077 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		D8406D1E280D7BB900445272 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
-		D8796DD5280FEA12001567BB /* SignUpDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDetailInfoView.swift; sourceTree = "<group>"; };
+		D8796DD5280FEA12001567BB /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		D8796DD9280FED19001567BB /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
 		D8796DDB28102DEC001567BB /* SignUpCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCombineView.swift; sourceTree = "<group>"; };
 		D8796DDD28103096001567BB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
+				D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */,
 				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
 				D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */,
 			);
@@ -164,7 +167,7 @@
 			children = (
 				D8796DDB28102DEC001567BB /* SignUpCombineView.swift */,
 				D8406D1E280D7BB900445272 /* SignUpView.swift */,
-				D8796DD5280FEA12001567BB /* SignUpDetailInfoView.swift */,
+				D8796DD5280FEA12001567BB /* ProfileDetailView.swift */,
 				D8796DD9280FED19001567BB /* DatePickerTextField.swift */,
 			);
 			path = RegistrationView;
@@ -325,7 +328,7 @@
 				D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
-				D8796DD6280FEA12001567BB /* SignUpDetailInfoView.swift in Sources */,
+				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */,
 				D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */,
@@ -347,6 +350,7 @@
 				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */,
+				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,
 				D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */,
 				D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */,

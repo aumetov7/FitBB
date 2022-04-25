@@ -7,14 +7,21 @@
 
 import SwiftUI
 
-struct SignUpDetailInfoView: View {
-    @ObservedObject var regViewModel: RegistrationViewModelImpl
+struct ProfileDetailView: View {
+    @ObservedObject var updateProfileViewModel: UpdateProfileViewModelImpl
+    
+    @State private var firstName = ""
+    @State private var dateOfBirth: Date?
+    @State private var gender = ""
+    @State private var goal = ""
+    
+    @Binding var showProfileDetailView: Bool
     
     var genderArray = ["Male", "Female", "Any"]
     var goalArray = ["Muscle grow", "Burn Fat", "Work Out"]
     
     var signUpText: some View {
-        Text("SIGN UP")
+        Text("Profile Detail")
             .font(.largeTitle)
             .fontWeight(.black)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -30,7 +37,7 @@ struct SignUpDetailInfoView: View {
                 .padding(.leading)
             
             HStack {
-                TextField("", text: $regViewModel.userDetails.firstName)
+                TextField("", text: $updateProfileViewModel.userDetails.firstName)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .keyboardType(.namePhonePad)
@@ -51,7 +58,7 @@ struct SignUpDetailInfoView: View {
                 .padding(.leading)
             
             HStack {
-                DatePickerTextField(placeholder: "", date: $regViewModel.userDetails.dateOfBirth)
+                DatePickerTextField(placeholder: "", date: $updateProfileViewModel.userDetails.dateOfBirth)
             }
             .frame(height: 25)
             .padding(.horizontal)
@@ -70,7 +77,7 @@ struct SignUpDetailInfoView: View {
             
             HStack {
                 
-                Picker("Gender", selection: $regViewModel.userDetails.gender) {
+                Picker("Gender", selection: $updateProfileViewModel.userDetails.gender) {
                     ForEach(genderArray, id: \.self) {
                         Text($0)
                     }
@@ -93,7 +100,7 @@ struct SignUpDetailInfoView: View {
             
             HStack {
                 
-                Picker("Goal", selection: $regViewModel.userDetails.goal) {
+                Picker("Goal", selection: $updateProfileViewModel.userDetails.goal) {
                     ForEach(goalArray, id: \.self) {
                         Text($0)
                     }
@@ -134,21 +141,12 @@ struct SignUpDetailInfoView: View {
                 
                 Spacer()
                 
-                RaisedButton(buttonText: "Sign Up") {
-                    regViewModel.register()
+                RaisedButton(buttonText: "Update") {
+                    updateProfileViewModel.update()
+                    showProfileDetailView.toggle()
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 65)
-                .alert(isPresented: $regViewModel.hasError,
-                       content: {
-                    if case .failed(let error) = regViewModel.state {
-                        return Alert(title: Text("Error"),
-                                     message: Text(error.localizedDescription))
-                    } else {
-                        return Alert(title: Text("Error"),
-                                     message: Text("Something went wrong"))
-                    }
-                })
             }
             .padding(.horizontal)
         }
@@ -157,6 +155,7 @@ struct SignUpDetailInfoView: View {
 
 struct SignUpDetailInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpDetailInfoView(regViewModel: RegistrationViewModelImpl(service: RegistrationServiceImpl()))
+        ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(service: RegistrationServiceImpl()),
+                             showProfileDetailView: .constant(true))
     }
 }

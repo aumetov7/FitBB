@@ -53,31 +53,31 @@ private extension SessionServiceImpl {
     
     func handleRefresh(with uid: String) {
         Database
-        .database()
-        .reference()
-        .child("users")
-        .child(uid)
-        .observe(.value) { [weak self] snapshot in
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            
-            guard let self = self,
-                  let value = snapshot.value as? NSDictionary,
-                  let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
-                  let dateOfBirth = value[RegistrationKeys.dateOfBirth.rawValue] as? String,
-                  let gender = value[RegistrationKeys.gender.rawValue] as? String,
-                  let goal = value[RegistrationKeys.goal.rawValue] as? String else {
-                return
+            .database()
+            .reference()
+            .child("users")
+            .child(uid)
+            .observe(.value) { [weak self] snapshot in
+                guard let self = self,
+                      let value = snapshot.value as? NSDictionary,
+                      let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
+                      let dateOfBirth = value[RegistrationKeys.dateOfBirth.rawValue] as? String,
+                      let gender = value[RegistrationKeys.gender.rawValue] as? String,
+                      let goal = value[RegistrationKeys.goal.rawValue] as? String else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.userDetails = SessionUserDetails(firstName: firstName,
+                                                          dateOfBirth: dateOfBirth,
+                                                          gender: gender,
+                                                          goal: goal)
+                }
+                
+                print("Detail First Name: \(firstName)")
+                print("Detail Date of Birth: \(dateOfBirth)")
+                print("Detail Gender: \(gender)")
+                print("Detail Goal: \(goal)")
             }
-            
-            DispatchQueue.main.async {
-                self.userDetails = SessionUserDetails(firstName: firstName,
-                                                      dateOfBirth: dateOfBirth,
-                                                      gender: gender,
-                                                      goal: goal)
-            }
-        }
-        
-            
     }
 }

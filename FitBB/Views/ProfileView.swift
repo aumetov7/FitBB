@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var updateProfileViewModel = UpdateProfileViewModelImpl(
+        service: RegistrationServiceImpl()
+    )
+    
     @State private var image: Image?
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var showProfileDetailView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
+    }
+    
+    @Sendable private func checkInfo() async {
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        if sessionService.userDetails?.firstName == nil || sessionService.userDetails?.firstName == "" &&
+            sessionService.userDetails?.dateOfBirth == nil || sessionService.userDetails?.dateOfBirth == "" &&
+            sessionService.userDetails?.gender == nil || sessionService.userDetails?.gender == "" &&
+            sessionService.userDetails?.goal == nil || sessionService.userDetails?.goal == "" {
+            showProfileDetailView = true
+        }
+        
+        print("Detail view appear: \(showProfileDetailView)")
     }
     
     var body: some View {
@@ -108,6 +125,7 @@ struct ProfileView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .padding(.leading)
+                .task(checkInfo)
                 
                 Spacer()
             }
@@ -117,6 +135,9 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showImagePicker) {
                 ImagePicker(image: $inputImage)
+            }
+            .sheet(isPresented: $showProfileDetailView) {
+                ProfileDetailView(updateProfileViewModel: updateProfileViewModel, showProfileDetailView: $showProfileDetailView)
             }
         }
     }

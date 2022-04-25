@@ -267,7 +267,7 @@ struct SignUpView: View {
                 Spacer()
                 
                 VStack {
-                    RaisedButton(buttonText: "Continue", action: {
+                    RaisedButton(buttonText: "Sign Up", action: {
                         if regViewModel.userDetails.password != regViewModel.userDetails.repeatPassword &&
                             !emailValidation(text: regViewModel.userDetails.email) {
                             error = true
@@ -280,7 +280,7 @@ struct SignUpView: View {
                             errorState = .passwordError
                         } else if regViewModel.userDetails.password == regViewModel.userDetails.repeatPassword &&
                                     emailValidation(text: regViewModel.userDetails.email) {
-                            showSignUpDetailInfoView.toggle()
+                            regViewModel.register()
                         }
                     })
                     .padding(.horizontal)
@@ -303,6 +303,16 @@ struct SignUpView: View {
                                          message: Text("Something went wrong"))
                         }
                     }
+                    .alert(isPresented: $regViewModel.hasError,
+                           content: {
+                        if case .failed(let error) = regViewModel.state {
+                            return Alert(title: Text("Error"),
+                                         message: Text(error.localizedDescription))
+                        } else {
+                            return Alert(title: Text("Error"),
+                                         message: Text("Something went wrong"))
+                        }
+                    })
                     
                     HStack(spacing: 3) {
                         Text("Dont have an Account?")

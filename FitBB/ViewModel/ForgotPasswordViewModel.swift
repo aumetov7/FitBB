@@ -12,7 +12,6 @@ protocol ForgotPasswordViewModel {
     var service: ForgotPasswordService { get }
     var email: String { get }
     
-    
     func sendPasswordReset()
     
     init(service: ForgotPasswordService)
@@ -37,12 +36,9 @@ final class ForgotPasswordViewModelImpl: ObservableObject, ForgotPasswordViewMod
                 print("Sent Password Reset Request")
             }
             .store(in: &subscriptions)
-
     }
     
     init(service: ForgotPasswordService) {
         self.service = service
     }
-    
-    
 }
