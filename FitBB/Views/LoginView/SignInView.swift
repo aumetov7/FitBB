@@ -26,9 +26,7 @@ struct SignInView: View {
     var emailTextField: some View {
         VStack(alignment: .leading) {
             Text("Email")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
                 .padding(.leading)
             
             HStack {
@@ -47,9 +45,7 @@ struct SignInView: View {
     var passwordTextField: some View {
         VStack(alignment: .leading) {
             Text("Password")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
                 .padding(.leading)
             
             HStack {
@@ -87,9 +83,7 @@ struct SignInView: View {
             Button(action: { showForgetPasswordView.toggle() }) {
                 Text("Forget Password?")
                     .underline()
-                    .fontWeight(.light)
-                    .font(.system(.callout))
-                    .foregroundColor(.black)
+                    .signText()
                     .padding(.leading)
             }
         }
@@ -102,9 +96,7 @@ struct SignInView: View {
             Button(action: { showSignUpView.toggle() }) {
                 Text("Sign Up")
                     .underline()
-                    .fontWeight(.light)
-                    .font(.system(.callout))
-                    .foregroundColor(.black)
+                    .signText()
             }
         }
     }
@@ -152,10 +144,7 @@ struct SignInView: View {
                 
                 HStack(spacing: 3) {
                     Text("Dont have an Account?")
-                        .fontWeight(.light)
-                        .font(.system(.callout))
-                        .foregroundColor(.black)
-                    
+                        .signText()
                     
                     signUpButton
                 }
