@@ -30,6 +30,8 @@
 		D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69172808458E00AFA077 /* SessionUserDetails.swift */; };
 		D82E691A280845ED00AFA077 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6919280845ED00AFA077 /* SessionService.swift */; };
 		D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */; };
+		D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C94428184067009AFB75 /* SignUpViewExtension.swift */; };
+		D830C94728184092009AFB75 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C94628184092009AFB75 /* TextExtension.swift */; };
 		D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D1E280D7BB900445272 /* SignUpView.swift */; };
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
 		D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD5280FEA12001567BB /* ProfileDetailView.swift */; };
@@ -70,6 +72,8 @@
 		D82E69172808458E00AFA077 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
 		D82E6919280845ED00AFA077 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		D830C94428184067009AFB75 /* SignUpViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewExtension.swift; sourceTree = "<group>"; };
+		D830C94628184092009AFB75 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		D8406D1E280D7BB900445272 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D8796DD5280FEA12001567BB /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				D897565928117B8D0075AD73 /* ImageExtension.swift */,
+				D830C94428184067009AFB75 /* SignUpViewExtension.swift */,
+				D830C94628184092009AFB75 /* TextExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +355,8 @@
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
+				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
+				D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,

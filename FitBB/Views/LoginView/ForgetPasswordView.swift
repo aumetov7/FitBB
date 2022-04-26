@@ -23,9 +23,7 @@ struct ForgetPasswordView: View {
     var emailTextField: some View {
         VStack(alignment: .leading) {
             Text("Email")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
                 .padding(.leading)
             
             HStack {
@@ -38,6 +36,13 @@ struct ForgetPasswordView: View {
             
             Divider()
                 .padding(.horizontal)
+        }
+    }
+    
+    var resetPasswordButton: some View {
+        RaisedButton(buttonText: "Reset password") {
+            forgotPasswordViewModel.sendPasswordReset()
+            showForgetPasswordView.toggle()
         }
     }
     
@@ -62,10 +67,7 @@ struct ForgetPasswordView: View {
                 
                 Spacer()
                 
-                RaisedButton(buttonText: "Reset password") {
-                    forgotPasswordViewModel.sendPasswordReset()
-                    showForgetPasswordView.toggle()
-                }
+                resetPasswordButton
                 .padding(.horizontal)
                 .padding(.bottom, 65)
             }

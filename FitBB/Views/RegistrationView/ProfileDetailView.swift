@@ -10,18 +10,13 @@ import SwiftUI
 struct ProfileDetailView: View {
     @ObservedObject var updateProfileViewModel: UpdateProfileViewModelImpl
     
-    @State private var firstName = ""
-    @State private var dateOfBirth: Date?
-    @State private var gender = ""
-    @State private var goal = ""
-    
     @Binding var showProfileDetailView: Bool
     
     var genderArray = ["Male", "Female", "Any"]
     var goalArray = ["Muscle grow", "Burn Fat", "Work Out"]
     
     var signUpText: some View {
-        Text("Profile Detail")
+        Text("Profile Details")
             .font(.largeTitle)
             .fontWeight(.black)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -31,9 +26,7 @@ struct ProfileDetailView: View {
     var firtNameTextField: some View {
         VStack(alignment: .leading) {
             Text("First name")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
                 .padding(.leading)
             
             HStack {
@@ -52,9 +45,7 @@ struct ProfileDetailView: View {
     var dateOfBirthTextField: some View {
         VStack(alignment: .leading) {
             Text("Date of birth")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
                 .padding(.leading)
             
             HStack {
@@ -71,12 +62,9 @@ struct ProfileDetailView: View {
     var genderPicker: some View {
         VStack(alignment: .leading) {
             Text("Gender")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
             
             HStack {
-                
                 Picker("Gender", selection: $updateProfileViewModel.userDetails.gender) {
                     ForEach(genderArray, id: \.self) {
                         Text($0)
@@ -94,12 +82,9 @@ struct ProfileDetailView: View {
     var goalPicker: some View {
         VStack(alignment: .leading) {
             Text("Goal")
-                .fontWeight(.light)
-                .font(.system(.callout))
-                .foregroundColor(.black)
+                .signText()
             
             HStack {
-                
                 Picker("Goal", selection: $updateProfileViewModel.userDetails.goal) {
                     ForEach(goalArray, id: \.self) {
                         Text($0)
@@ -112,6 +97,13 @@ struct ProfileDetailView: View {
             Divider()
         }
         .padding(.horizontal)
+    }
+    
+    var updateButton: some View {
+        RaisedButton(buttonText: "Update") {
+            updateProfileViewModel.update()
+            showProfileDetailView.toggle()
+        }
     }
     
     var body: some View {
@@ -141,10 +133,7 @@ struct ProfileDetailView: View {
                 
                 Spacer()
                 
-                RaisedButton(buttonText: "Update") {
-                    updateProfileViewModel.update()
-                    showProfileDetailView.toggle()
-                }
+                updateButton
                 .padding(.horizontal)
                 .padding(.bottom, 65)
             }

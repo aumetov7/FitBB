@@ -47,5 +47,6 @@ struct PagesView: View {
 struct PagesView_Previews: PreviewProvider {
     static var previews: some View {
         PagesView()
+            .environmentObject(SessionServiceImpl())
     }
 }

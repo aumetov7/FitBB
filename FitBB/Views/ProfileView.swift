@@ -4,7 +4,6 @@
 //
 //  Created by Акбар Уметов on 10/4/22.
 //
-
 import SwiftUI
 
 struct ProfileView: View {
@@ -26,11 +25,16 @@ struct ProfileView: View {
     
     @Sendable private func checkInfo() async {
         try? await Task.sleep(nanoseconds: 2_000_000_000)
-        if sessionService.userDetails?.firstName == nil || sessionService.userDetails?.firstName == "" &&
-            sessionService.userDetails?.dateOfBirth == nil || sessionService.userDetails?.dateOfBirth == "" &&
-            sessionService.userDetails?.gender == nil || sessionService.userDetails?.gender == "" &&
-            sessionService.userDetails?.goal == nil || sessionService.userDetails?.goal == "" {
-            showProfileDetailView = true
+//        if sessionService.userDetails == nil {
+//            showProfileDetailView.toggle()
+//        }
+        
+        if sessionService.userDetails == nil ||
+            (sessionService.userDetails?.firstName == "" &&
+             sessionService.userDetails?.dateOfBirth == "" &&
+             sessionService.userDetails?.gender == "" &&
+             sessionService.userDetails?.goal == "") {
+            showProfileDetailView.toggle()
         }
         
         print("Detail view appear: \(showProfileDetailView)")
@@ -108,24 +112,17 @@ struct ProfileView: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Birth Date: \(sessionService.userDetails?.dateOfBirth ?? "N/A")")
-                        .font(.system(.body, design: .rounded))
-                        .fontWeight(.medium)
-                        .kerning(0.5)
+                        .makeRound()
                     
                     Text("Gender: \(sessionService.userDetails?.gender ?? "N/A")")
-                        .font(.system(.body, design: .rounded))
-                        .fontWeight(.medium)
-                        .kerning(0.5)
+                        .makeRound()
                     
                     Text("Goal: \(sessionService.userDetails?.goal ?? "N/A")")
-                        .font(.system(.body, design: .rounded))
-                        .fontWeight(.medium)
-                        .kerning(0.5)
+                        .makeRound()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .padding(.leading)
-                .task(checkInfo)
                 
                 Spacer()
             }
@@ -137,9 +134,11 @@ struct ProfileView: View {
                 ImagePicker(image: $inputImage)
             }
             .sheet(isPresented: $showProfileDetailView) {
-                ProfileDetailView(updateProfileViewModel: updateProfileViewModel, showProfileDetailView: $showProfileDetailView)
+                ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
+                                  showProfileDetailView: $showProfileDetailView)
             }
         }
+        .task(checkInfo)
     }
 }
 
