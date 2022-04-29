@@ -17,6 +17,7 @@ struct ProfileView: View {
     @State private var showProfileDetailView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
+    @EnvironmentObject var googleSignInService: GoogleSignInService
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
@@ -51,6 +52,7 @@ struct ProfileView: View {
                 HStack {
                     Button(action: {
                         sessionService.logout()
+                        googleSignInService.signOut()
                     }, label: {
                         HStack {
                             Image(systemName: "chevron.backward.circle")
@@ -147,5 +149,6 @@ struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
             .environmentObject(SessionServiceImpl())
+            .environmentObject(GoogleSignInService())
     }
 }

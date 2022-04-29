@@ -24,6 +24,7 @@ struct SignInCombineView: View {
         SignInView(loginViewModel: loginViewModel,
                showSignUpView: $showSignUpView,
                showForgetPasswordView: $showForgetPasswordView)
+        .environmentObject(GoogleSignInService())
             .sheet(isPresented: $showForgetPasswordView) {
                 ForgetPasswordView(forgotPasswordViewModel: forgotPasswordViewModel,
                                showForgetPasswordView: $showForgetPasswordView)

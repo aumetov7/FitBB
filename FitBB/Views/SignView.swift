@@ -13,6 +13,7 @@ struct SignView: View {
     var body: some View {
         if !showSignUpVuew {
             SignInCombineView(showSignUpView: $showSignUpVuew)
+                .environmentObject(GoogleSignInService())
         } else {
             SignUpCombineView(showSignUpView: $showSignUpVuew)
         }

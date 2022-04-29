@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct SignInView: View {
     @State private var showPassword = false
     
     @ObservedObject var loginViewModel: LoginViewModelImpl
+    
+    @EnvironmentObject var googleSignInService: GoogleSignInService
     
     @Binding var showSignUpView: Bool
     @Binding var showForgetPasswordView: Bool
@@ -142,6 +145,34 @@ struct SignInView: View {
                     }
                 })
                 
+                HStack(spacing: 5) {
+                    VStack {
+                        Divider()
+                            .background(Color.black)
+                    }
+                    
+                    Text("Or Sign In with")
+                        .signText()
+                    
+                    VStack {
+                        Divider()
+                            .background(Color.black)
+                    }
+                }
+                .padding(.horizontal)
+                
+                HStack {
+                    Button(action: {
+                        googleSignInService.signIn()
+                    }, label: {
+                        Text("Sign in via Google")
+                    })
+                    
+                    
+                }
+                .padding(.horizontal)
+                .frame(width: 155, height: 46)
+                
                 HStack(spacing: 3) {
                     Text("Dont have an Account?")
                         .signText()
@@ -159,5 +190,6 @@ struct SignInView_Previews: PreviewProvider {
         SignInView(loginViewModel: LoginViewModelImpl(service: LoginServiceImpl()),
                showSignUpView: .constant(false),
                showForgetPasswordView: .constant(false))
+        .environmentObject(GoogleSignInService())
     }
 }

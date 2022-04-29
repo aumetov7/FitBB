@@ -7,13 +7,20 @@
 
 import SwiftUI
 import Firebase
+import GoogleSignIn
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
         
         return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
     }
 }
 
@@ -21,6 +28,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 struct FitBBApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var sessionService = SessionServiceImpl()
+//    @StateObject private var googleSignInService = GoogleSignInService()
     
     var body: some Scene {
         WindowGroup {
@@ -28,6 +36,7 @@ struct FitBBApp: App {
             case .loggedIn:
                 ContentView()
                     .environmentObject(sessionService)
+//                    .environmentObject(googleSignInService)
             case .loggedOut:
                 SignView()
                     .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
@@ -42,7 +51,7 @@ extension UIApplication {
         let windowScene = scenes.first as? UIWindowScene
         guard let window = windowScene?.windows.first else { return }
         
-//        guard let window = windows.first else { return }
+        //        guard let window = windows.first else { return }
         let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
         
         tapGesture.requiresExclusiveTouchType = false
