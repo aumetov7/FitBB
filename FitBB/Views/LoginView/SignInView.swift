@@ -129,7 +129,7 @@ struct SignInView: View {
                 
                 Spacer()
                 
-                RaisedButton(buttonText: "Sign In") {
+                RaisedButton(buttonText: "SIGN IN") {
                     loginViewModel.login()
                 }
                 .padding(.horizontal)
@@ -151,8 +151,10 @@ struct SignInView: View {
                             .background(Color.black)
                     }
                     
-                    Text("Or Sign In with")
+                    Text("Or Connect with")
                         .signText()
+                        .frame(width: 120)
+                        .lineLimit(1)
                     
                     VStack {
                         Divider()
@@ -161,17 +163,21 @@ struct SignInView: View {
                 }
                 .padding(.horizontal)
                 
-                HStack {
+                HStack(alignment: .bottom, spacing: 50) {
+//                    Button(action: { }, label: {
+//                        Image("apple-logo")
+//                            .resizedToFill(width: 38, height: 38)
+//                    })
+                    
                     Button(action: {
                         googleSignInService.signIn()
                     }, label: {
-                        Text("Sign in via Google")
+                        Image("google-plus")
+                            .resizedToFill(width: 38, height: 38)
                     })
-                    
-                    
                 }
-                .padding(.horizontal)
-                .frame(width: 155, height: 46)
+//                .padding(.horizontal)
+//                .frame(width: 155, height: 46)
                 
                 HStack(spacing: 3) {
                     Text("Dont have an Account?")

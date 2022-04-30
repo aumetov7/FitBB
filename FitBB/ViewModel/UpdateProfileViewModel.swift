@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 enum UpdateProfileState {
     case successfull
@@ -29,6 +30,7 @@ final class UpdateProfileViewModelImpl: ObservableObject, UpdateProfileViewModel
     @Published var state: RegistrationState = .notAvailable
     @Published var hasError: Bool = false
     @Published var userDetails: RegistrationDetails = RegistrationDetails.new
+//    @Published var profileImage: UIImage
     
     let service: RegistrationService
     

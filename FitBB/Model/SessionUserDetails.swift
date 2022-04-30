@@ -8,6 +8,7 @@
 import Foundation
 
 struct SessionUserDetails {
+    let profileImage: String
     let firstName: String
     let dateOfBirth: String
     let gender: String

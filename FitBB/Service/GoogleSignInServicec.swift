@@ -11,9 +11,7 @@ import Firebase
 import FirebaseDatabase
 import Combine
 
-fileprivate let clientId = "589383907991-mbel8f96gkk7r1n0fbp4g5tqvfo03mbe.apps.googleusercontent.com"
-
-class GoogleSignInService:  ObservableObject {
+class GoogleSignInService: ObservableObject {
     var signInConfig = GIDConfiguration.init(clientID: clientId)
     
     func signIn() {
@@ -31,13 +29,13 @@ class GoogleSignInService:  ObservableObject {
         }
     }
     
-    func signOut() {
-        let firebaseAuth = Auth.auth()
-        
-        do {
-            try firebaseAuth.signOut()
-        } catch let sighOutError as NSError {
-            print("Error singing out: %@", sighOutError)
-        }
-    }
+//    func signOut() {
+//        let firebaseAuth = Auth.auth()
+//
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let sighOutError as NSError {
+//            print("Error singing out: %@", sighOutError)
+//        }
+//    }
 }

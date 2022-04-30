@@ -15,6 +15,7 @@ struct PagesView: View {
                     Image(systemName: "person.fill")
                     Text("Profile")
                 }
+                .environmentObject(GoogleSignInService())
             
             ExercisesView()
                 .tabItem {

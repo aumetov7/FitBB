@@ -9,9 +9,11 @@ import Combine
 import Foundation
 import Firebase
 import FirebaseDatabase
+import UIKit
+import FirebaseStorage
 
 enum RegistrationKeys: String {
-    case firstName, dateOfBirth, gender, goal
+    case profileImage, firstName, dateOfBirth, gender, goal
 }
 
 protocol RegistrationService {
@@ -31,7 +33,8 @@ final class RegistrationServiceImpl: RegistrationService {
                         } else {
                             if let uid = res?.user.uid {
                                 
-                                let values = [RegistrationKeys.firstName.rawValue: details.firstName,
+                                let values = [RegistrationKeys.profileImage.rawValue: "",
+                                              RegistrationKeys.firstName.rawValue: details.firstName,
                                               RegistrationKeys.dateOfBirth.rawValue: "",
                                               RegistrationKeys.gender.rawValue: details.gender,
                                               RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
@@ -66,7 +69,8 @@ final class RegistrationServiceImpl: RegistrationService {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd.MM.yyyy"
                 
-                let values = [RegistrationKeys.firstName.rawValue: details.firstName,
+                let values = [RegistrationKeys.profileImage.rawValue: "",
+                              RegistrationKeys.firstName.rawValue: details.firstName,
                               RegistrationKeys.dateOfBirth.rawValue: dateFormatter.string(from: details.dateOfBirth!),
                               RegistrationKeys.gender.rawValue: details.gender,
                               RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
@@ -85,3 +89,4 @@ final class RegistrationServiceImpl: RegistrationService {
         .eraseToAnyPublisher()
     }
 }
+

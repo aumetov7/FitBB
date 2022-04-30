@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct RegistrationDetails {
     var email: String
     var password: String
     var repeatPassword: String // do i need it?
+    var profileImage: String
     var firstName: String
     var dateOfBirth: Date?
     var gender: String
@@ -22,6 +24,7 @@ extension RegistrationDetails {
         RegistrationDetails(email: "",
                             password: "",
                             repeatPassword: "",
+                            profileImage: "",
                             firstName: "",
                             dateOfBirth: Date(),
                             gender: "",

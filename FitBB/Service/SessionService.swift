@@ -60,6 +60,7 @@ private extension SessionServiceImpl {
             .observe(.value) { [weak self] snapshot in
                 guard let self = self,
                       let value = snapshot.value as? NSDictionary,
+                      let profileImage = value[RegistrationKeys.profileImage.rawValue] as? String,
                       let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
                       let dateOfBirth = value[RegistrationKeys.dateOfBirth.rawValue] as? String,
                       let gender = value[RegistrationKeys.gender.rawValue] as? String,
@@ -68,7 +69,8 @@ private extension SessionServiceImpl {
                 }
                 
                 DispatchQueue.main.async {
-                    self.userDetails = SessionUserDetails(firstName: firstName,
+                    self.userDetails = SessionUserDetails(profileImage: profileImage,
+                                                          firstName: firstName,
                                                           dateOfBirth: dateOfBirth,
                                                           gender: gender,
                                                           goal: goal)

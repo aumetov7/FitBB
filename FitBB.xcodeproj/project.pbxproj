@@ -46,6 +46,8 @@
 		D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897565928117B8D0075AD73 /* ImageExtension.swift */; };
 		D8AAF064281AD1B600D1A650 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAF063281AD1B600D1A650 /* GoogleSignIn */; };
 		D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */; };
+		D8AAF071281D4AC700D1A650 /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */; };
+		D8AAF073281D64E100D1A650 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF072281D64E100D1A650 /* Information.swift */; };
 		D8BC7B0328099F8200E56E81 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */; };
 		D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */; };
 		D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFEBED28098E910015171E /* LoginCredentials.swift */; };
@@ -90,6 +92,8 @@
 		D897565928117B8D0075AD73 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		D8AAF065281AD33800D1A650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInServicec.swift; sourceTree = "<group>"; };
+		D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
+		D8AAF072281D64E100D1A650 /* Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		D8BFEBED28098E910015171E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				D82D4DDA2808513B00C15946 /* LoginService.swift */,
 				D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */,
 				D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */,
+				D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				D82E690E28082BE900AFA077 /* ViewModel */,
 				D82E690B2808246C00AFA077 /* Service */,
 				D897565828117B790075AD73 /* Extensions */,
+				D8AAF072281D64E100D1A650 /* Information.swift */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
 			);
@@ -341,12 +347,14 @@
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
 				D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */,
+				D8AAF073281D64E100D1A650 /* Information.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */,
 				D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */,
+				D8AAF071281D4AC700D1A650 /* ProfileImageService.swift in Sources */,
 				D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */,
 				D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
