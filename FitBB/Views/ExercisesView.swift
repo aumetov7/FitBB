@@ -16,11 +16,7 @@ struct ExercisesView: View {
                 VStack {
                     ExerciseDetailView(index: index, selectedTab: $selectedTab)
                         .tag(index)
-                    Spacer()
-                    Text("Video")
-                    Spacer()
-                    Text("Start button")
-                    Text("Raiting")
+                   
                 }
             }
         }

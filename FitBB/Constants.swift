@@ -1,5 +1,5 @@
 //
-//  URL.swift
+//  Constants.swift
 //  FitBB
 //
 //  Created by Акбар Уметов on 30/4/22.

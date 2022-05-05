@@ -17,6 +17,7 @@ struct RegistrationDetails {
     var dateOfBirth: Date?
     var gender: String
     var goal: String
+    var days: String
 }
 
 extension RegistrationDetails {
@@ -28,6 +29,7 @@ extension RegistrationDetails {
                             firstName: "",
                             dateOfBirth: Date(),
                             gender: "",
-                            goal: "")
+                            goal: "",
+                            days: "")
     }
 }

@@ -240,7 +240,7 @@ struct SignUpView: View {
                     })
                     
                     HStack(spacing: 3) {
-                        Text("Dont have an Account?")
+                        Text("Already have an Account?")
                             .signText()
                         
                         signInButton

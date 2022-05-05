@@ -13,7 +13,7 @@ import UIKit
 import FirebaseStorage
 
 enum RegistrationKeys: String {
-    case profileImage, firstName, dateOfBirth, gender, goal
+    case profileImage, firstName, dateOfBirth, gender, goal, days
 }
 
 protocol RegistrationService {
@@ -33,11 +33,12 @@ final class RegistrationServiceImpl: RegistrationService {
                         } else {
                             if let uid = res?.user.uid {
                                 
-                                let values = [RegistrationKeys.profileImage.rawValue: "",
+                                let values = [RegistrationKeys.profileImage.rawValue: details.profileImage,
                                               RegistrationKeys.firstName.rawValue: details.firstName,
                                               RegistrationKeys.dateOfBirth.rawValue: "",
                                               RegistrationKeys.gender.rawValue: details.gender,
-                                              RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
+                                              RegistrationKeys.goal.rawValue: details.goal,
+                                              RegistrationKeys.days.rawValue: details.days] as [String : Any]
                                 
                                 Database.database()
                                     .reference()
@@ -69,11 +70,12 @@ final class RegistrationServiceImpl: RegistrationService {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd.MM.yyyy"
                 
-                let values = [RegistrationKeys.profileImage.rawValue: "",
+                let values = [RegistrationKeys.profileImage.rawValue: details.profileImage,
                               RegistrationKeys.firstName.rawValue: details.firstName,
                               RegistrationKeys.dateOfBirth.rawValue: dateFormatter.string(from: details.dateOfBirth!),
                               RegistrationKeys.gender.rawValue: details.gender,
-                              RegistrationKeys.goal.rawValue: details.goal] as [String : Any]
+                              RegistrationKeys.goal.rawValue: details.goal,
+                              RegistrationKeys.days.rawValue: details.days] as [String : Any]
                 
                 Database.database()
                     .reference().child("users").child(uid).updateChildValues(values) { error, ref in

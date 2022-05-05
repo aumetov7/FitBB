@@ -13,4 +13,5 @@ struct SessionUserDetails {
     let dateOfBirth: String
     let gender: String
     let goal: String
+    let days: String
 }

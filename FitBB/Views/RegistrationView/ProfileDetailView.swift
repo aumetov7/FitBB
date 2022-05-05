@@ -12,8 +12,11 @@ struct ProfileDetailView: View {
     
     @Binding var showProfileDetailView: Bool
     
-    var genderArray = ["Male", "Female", "Any"]
-    var goalArray = ["Muscle grow", "Burn Fat", "Work Out"]
+    @State private var day = "3"
+    
+    var genderArray = ["Male", "Female", "Other"]
+    var goalArray = ["Muscle Grow", "Burn Fat", "Work Out"]
+    var days = ["1", "2", "3", "4"]
     
     var signUpText: some View {
         Text("Profile Details")
@@ -99,6 +102,26 @@ struct ProfileDetailView: View {
         .padding(.horizontal)
     }
     
+    var daysPicker: some View {
+        VStack(alignment: .leading) {
+            Text("Days")
+                .signText()
+            
+            HStack {
+                Picker("Days", selection: $updateProfileViewModel.userDetails.days) {
+                    ForEach(days, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .padding(.horizontal)
+            
+            Divider()
+        }
+        .padding(.horizontal)
+    }
+    
     var updateButton: some View {
         RaisedButton(buttonText: "Update") {
             updateProfileViewModel.update()
@@ -127,6 +150,8 @@ struct ProfileDetailView: View {
                     genderPicker
                     
                     goalPicker
+                    
+                    daysPicker
                 }
                 .frame(height: 316, alignment: .center)
                 .padding(.bottom, 25)

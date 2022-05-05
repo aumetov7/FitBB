@@ -12,8 +12,7 @@ struct SignInView: View {
     @State private var showPassword = false
     
     @ObservedObject var loginViewModel: LoginViewModelImpl
-    
-    @EnvironmentObject var googleSignInService: GoogleSignInService
+    @ObservedObject var googleSignInViewModel: GoogleSignInViewModelImpl
     
     @Binding var showSignUpView: Bool
     @Binding var showForgetPasswordView: Bool
@@ -164,20 +163,20 @@ struct SignInView: View {
                 .padding(.horizontal)
                 
                 HStack(alignment: .bottom, spacing: 50) {
-//                    Button(action: { }, label: {
-//                        Image("apple-logo")
-//                            .resizedToFill(width: 38, height: 38)
-//                    })
+                    //                    Button(action: { }, label: {
+                    //                        Image("apple-logo")
+                    //                            .resizedToFill(width: 38, height: 38)
+                    //                    })
                     
                     Button(action: {
-                        googleSignInService.signIn()
+                        googleSignInViewModel.signIn()
                     }, label: {
                         Image("google-plus")
                             .resizedToFill(width: 38, height: 38)
                     })
                 }
-//                .padding(.horizontal)
-//                .frame(width: 155, height: 46)
+                //                .padding(.horizontal)
+                //                .frame(width: 155, height: 46)
                 
                 HStack(spacing: 3) {
                     Text("Dont have an Account?")
@@ -194,8 +193,8 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(loginViewModel: LoginViewModelImpl(service: LoginServiceImpl()),
-               showSignUpView: .constant(false),
-               showForgetPasswordView: .constant(false))
-        .environmentObject(GoogleSignInService())
+                   googleSignInViewModel: GoogleSignInViewModelImpl(service: GoogleSignInServiceImpl()),
+                   showSignUpView: .constant(false),
+                   showForgetPasswordView: .constant(false))
     }
 }

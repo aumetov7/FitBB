@@ -64,7 +64,8 @@ private extension SessionServiceImpl {
                       let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
                       let dateOfBirth = value[RegistrationKeys.dateOfBirth.rawValue] as? String,
                       let gender = value[RegistrationKeys.gender.rawValue] as? String,
-                      let goal = value[RegistrationKeys.goal.rawValue] as? String else {
+                      let goal = value[RegistrationKeys.goal.rawValue] as? String,
+                      let days = value[RegistrationKeys.days.rawValue] as? String else {
                     return
                 }
                 
@@ -73,13 +74,16 @@ private extension SessionServiceImpl {
                                                           firstName: firstName,
                                                           dateOfBirth: dateOfBirth,
                                                           gender: gender,
-                                                          goal: goal)
+                                                          goal: goal,
+                                                          days: days)
                 }
                 
+                print("Detail Profile Image: \(profileImage)")
                 print("Detail First Name: \(firstName)")
                 print("Detail Date of Birth: \(dateOfBirth)")
                 print("Detail Gender: \(gender)")
                 print("Detail Goal: \(goal)")
+                print("Detail WorkOut Days: \(days)")
             }
     }
 }

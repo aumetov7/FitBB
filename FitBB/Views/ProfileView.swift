@@ -20,7 +20,6 @@ struct ProfileView: View {
     @State private var showImageAddButton = true
     
     @EnvironmentObject var sessionService: SessionServiceImpl
-    @EnvironmentObject var googleSignInService: GoogleSignInService
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
@@ -48,7 +47,6 @@ struct ProfileView: View {
         HStack {
             Button(action: {
                 sessionService.logout()
-                //                        googleSignInService.signOut()
             }, label: {
                 HStack {
                     Image(systemName: "chevron.backward.circle")
@@ -71,7 +69,6 @@ struct ProfileView: View {
                 .fontWeight(.heavy)
                 .kerning(0.7)
             
-            
             Text("\(sessionService.userDetails?.firstName ?? "N/A")")
                 .font(.system(.title, design: .rounded))
                 .fontWeight(.bold)
@@ -90,7 +87,7 @@ struct ProfileView: View {
                 Circle()
                     .frame(width: 150, height: 150)
                     .foregroundColor(.white)
-
+                
                 Text("""
                     Choose profile
                     photo
@@ -121,6 +118,9 @@ struct ProfileView: View {
                 .makeRound()
             
             Text("Goal: \(sessionService.userDetails?.goal ?? "N/A")")
+                .makeRound()
+            
+            Text("Workout Days: \(sessionService.userDetails?.days ?? "N/A")")
                 .makeRound()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -172,6 +172,5 @@ struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
             .environmentObject(SessionServiceImpl())
-            .environmentObject(GoogleSignInService())
     }
 }

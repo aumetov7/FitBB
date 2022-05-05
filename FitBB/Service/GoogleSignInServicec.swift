@@ -8,34 +8,43 @@
 import Foundation
 import GoogleSignIn
 import Firebase
-import FirebaseDatabase
 import Combine
+import UIKit
 
-class GoogleSignInService: ObservableObject {
-    var signInConfig = GIDConfiguration.init(clientID: clientId)
+protocol GoogleSignInService {
+    func signIn() -> AnyPublisher<Void, Error>
+}
+
+class GoogleSignInServiceImpl: GoogleSignInService {
+    private var signInConfig = GIDConfiguration.init(clientID: clientId)
     
-    func signIn() {
-        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-        
-        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: presentingViewController) { user, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
+    func signIn() -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future { promise in
+                guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                
+                GIDSignIn.sharedInstance.signIn(with: self.signInConfig, presenting: presentingViewController) { user, error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else {
+                        guard let authentification = user?.authentication, let idToken = authentification.idToken else { return }
+                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                       accessToken: authentification.accessToken)
+                        
+                        Auth
+                            .auth()
+                            .signIn(with: credential) { authResult, error in
+                                if let error = error {
+                                    promise(.failure(error))
+                                } else {
+                                    promise(.success(()))
+                                }
+                            }
+                    }
+                }
             }
-            
-            guard let authentification = user?.authentication, let idToken = authentification.idToken else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentification.accessToken)
-            
-            Auth.auth().signIn(with: credential)
         }
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
     }
-    
-//    func signOut() {
-//        let firebaseAuth = Auth.auth()
-//
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let sighOutError as NSError {
-//            print("Error singing out: %@", sighOutError)
-//        }
-//    }
 }

@@ -16,19 +16,23 @@ struct SignInCombineView: View {
         service: ForgotPasswordServiceImpl()
     )
     
+    @StateObject private var googleSignInViewModel = GoogleSignInViewModelImpl(
+        service: GoogleSignInServiceImpl()
+    )
+    
     @State private var showForgetPasswordView = false
     
     @Binding var showSignUpView: Bool
     
     var body: some View {
         SignInView(loginViewModel: loginViewModel,
-               showSignUpView: $showSignUpView,
-               showForgetPasswordView: $showForgetPasswordView)
-        .environmentObject(GoogleSignInService())
-            .sheet(isPresented: $showForgetPasswordView) {
-                ForgetPasswordView(forgotPasswordViewModel: forgotPasswordViewModel,
+                   googleSignInViewModel: googleSignInViewModel,
+                   showSignUpView: $showSignUpView,
+                   showForgetPasswordView: $showForgetPasswordView)
+        .sheet(isPresented: $showForgetPasswordView) {
+            ForgetPasswordView(forgotPasswordViewModel: forgotPasswordViewModel,
                                showForgetPasswordView: $showForgetPasswordView)
-            }
+        }
     }
 }
 
