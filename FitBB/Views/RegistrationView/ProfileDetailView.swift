@@ -164,6 +164,7 @@ struct ProfileDetailView: View {
             }
             .padding(.horizontal)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

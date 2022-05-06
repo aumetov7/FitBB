@@ -73,6 +73,7 @@ struct ForgetPasswordView: View {
             }
             .padding(.horizontal)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

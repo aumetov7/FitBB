@@ -44,6 +44,7 @@
 		D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDF28103531001567BB /* ForgetPasswordView.swift */; };
 		D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE12810368A001567BB /* SignInCombineView.swift */; };
 		D8796DE42810379B001567BB /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE32810379B001567BB /* SignView.swift */; };
+		D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D0444282542EF0088B84F /* ProfileMenuView.swift */; };
 		D8975655281169740075AD73 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975654281169740075AD73 /* ImagePicker.swift */; };
 		D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975656281175E00075AD73 /* EmbossedButton.swift */; };
 		D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897565928117B8D0075AD73 /* ImageExtension.swift */; };
@@ -92,6 +93,7 @@
 		D8796DDF28103531001567BB /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		D8796DE12810368A001567BB /* SignInCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCombineView.swift; sourceTree = "<group>"; };
 		D8796DE32810379B001567BB /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
+		D87D0444282542EF0088B84F /* ProfileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuView.swift; sourceTree = "<group>"; };
 		D8975654281169740075AD73 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D8975656281175E00075AD73 /* EmbossedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossedButton.swift; sourceTree = "<group>"; };
 		D897565928117B8D0075AD73 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				D8DD8C4728016F68004D3C69 /* ContentView.swift */,
 				D82E6907280808E800AFA077 /* PagesView.swift */,
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
+				D87D0444282542EF0088B84F /* ProfileMenuView.swift */,
 				D8975654281169740075AD73 /* ImagePicker.swift */,
 				D8796DE32810379B001567BB /* SignView.swift */,
 				D82E69162808356500AFA077 /* LoginView */,
@@ -376,6 +379,7 @@
 				D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */,
 				D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
+				D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */,
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
 				D82E6908280808E800AFA077 /* PagesView.swift in Sources */,
 				D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */,
@@ -525,6 +529,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitBB/Preview Content\"";
@@ -544,6 +550,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = aumetov.FitBB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -555,6 +562,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitBB/Preview Content\"";
@@ -574,6 +583,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = aumetov.FitBB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -81,10 +81,12 @@ struct SignUpView: View {
                     SecureField("", text: $regViewModel.userDetails.password)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .textContentType(.password)
                 } else {
                     TextField("", text: $regViewModel.userDetails.password)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .textContentType(.password)
                 }
                 
                 Button(action: {
@@ -125,10 +127,12 @@ struct SignUpView: View {
                     SecureField("", text: $regViewModel.userDetails.repeatPassword)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .textContentType(.password)
                 } else {
                     TextField("", text: $regViewModel.userDetails.repeatPassword)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .textContentType(.password)
                 }
                 
                 Button(action: { showRepeatPassword.toggle() }) {
@@ -249,6 +253,7 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

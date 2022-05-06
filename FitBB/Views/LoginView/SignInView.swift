@@ -187,6 +187,7 @@ struct SignInView: View {
             }
             .padding(.horizontal)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

@@ -17,7 +17,7 @@ struct ProfileView: View {
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
     @State private var showProfileDetailView = false
-    @State private var showImageAddButton = true
+    @State private var showProfileMenu = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -60,6 +60,57 @@ struct ProfileView: View {
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.top, 25)
+    }
+    
+    var profileMenuButton: some View {
+//        Button(action: {
+//            showProfileMenu.toggle()
+//        }, label: {
+//            Image(systemName: "line.3.horizontal")
+//                .resizedToFill(width: 15, height: 15)
+//                .font(.headline)
+//                .foregroundColor(.black)
+//                .padding(5)
+//        })
+//        .buttonStyle(EmbossedButtonStyle(buttonShape: .round))
+//        .frame(maxWidth: .infinity, alignment: .trailing)
+//        .padding(.top, 25)
+//        .padding(.trailing, 20)
+        
+        Menu(content: {
+            Button(action: {
+                
+            }, label: {
+                HStack(spacing: 15) {
+                    Image(systemName: "person.crop.circle")
+                        .resizedToFill(width: 25, height: 25)
+                    
+                    Text("Link Accounts")
+                }
+                .foregroundColor(.black)
+            })
+            
+            Button(action: {
+                sessionService.logout()
+            }, label: {
+                HStack(spacing: 15) {
+                    Image(systemName: "chevron.backward.circle")
+                        .resizedToFill(width: 25, height: 25)
+                    
+                    Text("Logout")
+                }
+                .foregroundColor(.black)
+            })
+        }, label: {
+            Image(systemName: "line.3.horizontal.circle")
+                .resizedToFill(width: 30, height: 30)
+//                .font(.headline)
+                .foregroundColor(.black)
+                .padding(5)
+        })
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .padding(.top, 25)
+        .padding(.trailing, 20)
     }
     
     var welcomeUserText: some View {
@@ -135,7 +186,8 @@ struct ProfileView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                logoutButton
+//                logoutButton
+                profileMenuButton
                 
                 welcomeUserText
                 
@@ -162,6 +214,9 @@ struct ProfileView: View {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
                                   showProfileDetailView: $showProfileDetailView)
             }
+//            .sheet(isPresented: $showProfileMenu) {
+//                ProfileMenuView()
+//            }
         }
         .task(checkInfo)
     }

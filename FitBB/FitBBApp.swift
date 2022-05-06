@@ -28,15 +28,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 struct FitBBApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var sessionService = SessionServiceImpl()
-//    @StateObject private var googleSignInService = GoogleSignInService()
     
     var body: some Scene {
         WindowGroup {
             switch sessionService.state {
             case .loggedIn:
-                ContentView()
-                    .environmentObject(sessionService)
-//                    .environmentObject(googleSignInService)
+//                ContentView()
+//                    .environmentObject(sessionService)
+                if sessionService.userDetails == nil {
+                    ProgressView()
+                } else {
+                    ContentView()
+                        .environmentObject(sessionService)
+                }
             case .loggedOut:
                 SignView()
                     .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
