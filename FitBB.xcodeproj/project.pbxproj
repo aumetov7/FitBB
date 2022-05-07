@@ -37,6 +37,10 @@
 		D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86875A3281FF41F00A95616 /* VideoUrlService.swift */; };
 		D86875A72821372D00A95616 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D86875A62821372D00A95616 /* FirebaseFirestore */; };
 		D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */; };
+		D8731BD328268D8D006A60AC /* ColorSchemeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */; };
+		D8731BD5282691B7006A60AC /* LinkAccountServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8731BD4282691B7006A60AC /* LinkAccountServise.swift */; };
+		D8731BD728269329006A60AC /* LinkAccoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8731BD628269329006A60AC /* LinkAccoutViewModel.swift */; };
+		D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8731BD828269543006A60AC /* LinkAccountView.swift */; };
 		D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD5280FEA12001567BB /* ProfileDetailView.swift */; };
 		D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD9280FED19001567BB /* DatePickerTextField.swift */; };
 		D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDB28102DEC001567BB /* SignUpCombineView.swift */; };
@@ -45,6 +49,8 @@
 		D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE12810368A001567BB /* SignInCombineView.swift */; };
 		D8796DE42810379B001567BB /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE32810379B001567BB /* SignView.swift */; };
 		D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D0444282542EF0088B84F /* ProfileMenuView.swift */; };
+		D88BBFA12826713300A4B92D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA02826713300A4B92D /* ViewExtension.swift */; };
+		D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */; };
 		D8975655281169740075AD73 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975654281169740075AD73 /* ImagePicker.swift */; };
 		D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975656281175E00075AD73 /* EmbossedButton.swift */; };
 		D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897565928117B8D0075AD73 /* ImageExtension.swift */; };
@@ -86,6 +92,10 @@
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D86875A3281FF41F00A95616 /* VideoUrlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUrlService.swift; sourceTree = "<group>"; };
 		D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewModel.swift; sourceTree = "<group>"; };
+		D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeUtilities.swift; sourceTree = "<group>"; };
+		D8731BD4282691B7006A60AC /* LinkAccountServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountServise.swift; sourceTree = "<group>"; };
+		D8731BD628269329006A60AC /* LinkAccoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccoutViewModel.swift; sourceTree = "<group>"; };
+		D8731BD828269543006A60AC /* LinkAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountView.swift; sourceTree = "<group>"; };
 		D8796DD5280FEA12001567BB /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		D8796DD9280FED19001567BB /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
 		D8796DDB28102DEC001567BB /* SignUpCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCombineView.swift; sourceTree = "<group>"; };
@@ -94,6 +104,8 @@
 		D8796DE12810368A001567BB /* SignInCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCombineView.swift; sourceTree = "<group>"; };
 		D8796DE32810379B001567BB /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		D87D0444282542EF0088B84F /* ProfileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuView.swift; sourceTree = "<group>"; };
+		D88BBFA02826713300A4B92D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfSheetView.swift; sourceTree = "<group>"; };
 		D8975654281169740075AD73 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D8975656281175E00075AD73 /* EmbossedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossedButton.swift; sourceTree = "<group>"; };
 		D897565928117B8D0075AD73 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -136,6 +148,8 @@
 				D82E6907280808E800AFA077 /* PagesView.swift */,
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
 				D87D0444282542EF0088B84F /* ProfileMenuView.swift */,
+				D8731BD828269543006A60AC /* LinkAccountView.swift */,
+				D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */,
 				D8975654281169740075AD73 /* ImagePicker.swift */,
 				D8796DE32810379B001567BB /* SignView.swift */,
 				D82E69162808356500AFA077 /* LoginView */,
@@ -170,6 +184,7 @@
 				D82D4DDA2808513B00C15946 /* LoginService.swift */,
 				D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */,
 				D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */,
+				D8731BD4282691B7006A60AC /* LinkAccountServise.swift */,
 				D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */,
 				D86875A3281FF41F00A95616 /* VideoUrlService.swift */,
 			);
@@ -183,6 +198,7 @@
 				D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */,
 				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
 				D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */,
+				D8731BD628269329006A60AC /* LinkAccoutViewModel.swift */,
 				D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
@@ -231,6 +247,7 @@
 				D897565928117B8D0075AD73 /* ImageExtension.swift */,
 				D830C94428184067009AFB75 /* SignUpViewExtension.swift */,
 				D830C94628184092009AFB75 /* TextExtension.swift */,
+				D88BBFA02826713300A4B92D /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,6 +279,7 @@
 				D82E690E28082BE900AFA077 /* ViewModel */,
 				D82E690B2808246C00AFA077 /* Service */,
 				D897565828117B790075AD73 /* Extensions */,
+				D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */,
 				D8AAF072281D64E100D1A650 /* Constants.swift */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
@@ -365,13 +383,16 @@
 				D8BC7B0328099F8200E56E81 /* ForgotPasswordService.swift in Sources */,
 				D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */,
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
+				D8731BD5282691B7006A60AC /* LinkAccountServise.swift in Sources */,
 				D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
 				D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */,
+				D8731BD728269329006A60AC /* LinkAccoutViewModel.swift in Sources */,
 				D8AAF073281D64E100D1A650 /* Constants.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
+				D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */,
 				D82E60BA2802EF1D008CE10A /* ProfileView.swift in Sources */,
 				D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */,
 				D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */,
@@ -380,7 +401,9 @@
 				D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
 				D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */,
+				D8731BD328268D8D006A60AC /* ColorSchemeUtilities.swift in Sources */,
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
+				D88BBFA12826713300A4B92D /* ViewExtension.swift in Sources */,
 				D82E6908280808E800AFA077 /* PagesView.swift in Sources */,
 				D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */,
 				D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */,
@@ -395,6 +418,7 @@
 				D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
+				D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
 				D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */,

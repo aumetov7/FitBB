@@ -27,7 +27,7 @@ struct ProfileView: View {
     }
     
     @Sendable private func checkInfo() async {
-        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
         //        if sessionService.userDetails == nil {
         //            showProfileDetailView.toggle()
         //        }
@@ -43,74 +43,61 @@ struct ProfileView: View {
         print("Detail view appear: \(showProfileDetailView)")
     }
     
-    var logoutButton: some View {
-        HStack {
-            Button(action: {
-                sessionService.logout()
-            }, label: {
-                HStack {
-                    Image(systemName: "chevron.backward.circle")
-                        .font(.headline)
-                    Text("Logout")
-                        .fontWeight(.medium)
-                }
-            })
-            .buttonStyle(EmbossedButtonStyle())
-            .padding(.trailing)
-        }
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .padding(.top, 25)
-    }
+    //    var logoutButton: some View {
+    //        HStack {
+    //            Button(action: {
+    //                sessionService.logout()
+    //            }, label: {
+    //                HStack {
+    //                    Image(systemName: "chevron.backward.circle")
+    //                        .font(.headline)
+    //                    Text("Logout")
+    //                        .fontWeight(.medium)
+    //                }
+    //            })
+    //            .buttonStyle(EmbossedButtonStyle())
+    //            .padding(.trailing)
+    //        }
+    //        .frame(maxWidth: .infinity, alignment: .trailing)
+    //        .padding(.top, 25)
+    //    }
     
     var profileMenuButton: some View {
-//        Button(action: {
-//            showProfileMenu.toggle()
-//        }, label: {
-//            Image(systemName: "line.3.horizontal")
-//                .resizedToFill(width: 15, height: 15)
-//                .font(.headline)
-//                .foregroundColor(.black)
-//                .padding(5)
-//        })
-//        .buttonStyle(EmbossedButtonStyle(buttonShape: .round))
-//        .frame(maxWidth: .infinity, alignment: .trailing)
-//        .padding(.top, 25)
-//        .padding(.trailing, 20)
         
-        Menu(content: {
-            Button(action: {
-                
-            }, label: {
-                HStack(spacing: 15) {
-                    Image(systemName: "person.crop.circle")
-                        .resizedToFill(width: 25, height: 25)
-                    
-                    Text("Link Accounts")
-                }
-                .foregroundColor(.black)
-            })
-            
-            Button(action: {
-                sessionService.logout()
-            }, label: {
-                HStack(spacing: 15) {
-                    Image(systemName: "chevron.backward.circle")
-                        .resizedToFill(width: 25, height: 25)
-                    
-                    Text("Logout")
-                }
-                .foregroundColor(.black)
-            })
-        }, label: {
-            Image(systemName: "line.3.horizontal.circle")
-                .resizedToFill(width: 30, height: 30)
-//                .font(.headline)
+        Button {
+            showProfileMenu.toggle()
+            print("ShowProfileMenu: \(showProfileMenu)")
+        } label: {
+            Image(systemName: "line.3.horizontal")
+                .resizedToFill(width: 15, height: 15)
+                .font(.headline)
                 .foregroundColor(.black)
                 .padding(5)
+        }
+        .buttonStyle(EmbossedButtonStyle())
+        .halfSheet(showSheet: $showProfileMenu, sheetView: {
+            ProfileMenuView(showProfileMenu: $showProfileMenu)
+                .environmentObject(SessionServiceImpl())
+        }, onEnd: {
+            print("Dismiss")
         })
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.top, 25)
         .padding(.trailing, 20)
+    }
+    
+    var editButton: some View {
+        Button {
+            showProfileDetailView.toggle()
+        } label: {
+            Text("Edit")
+                .makeRound()
+                .padding([.leading, .trailing], 10)
+        }
+        .buttonStyle(EmbossedButtonStyle())
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.top, 25)
+        .padding(.leading, 20)
     }
     
     var welcomeUserText: some View {
@@ -186,8 +173,10 @@ struct ProfileView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-//                logoutButton
-                profileMenuButton
+                HStack(alignment: .center) {
+                    editButton
+                    profileMenuButton
+                }
                 
                 welcomeUserText
                 
@@ -214,14 +203,10 @@ struct ProfileView: View {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
                                   showProfileDetailView: $showProfileDetailView)
             }
-//            .sheet(isPresented: $showProfileMenu) {
-//                ProfileMenuView()
-//            }
         }
         .task(checkInfo)
     }
 }
-
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {

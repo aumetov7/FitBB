@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PagesView: View {
+    
     var body: some View {
         TabView {
             ProfileView()
