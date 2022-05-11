@@ -130,11 +130,7 @@ struct ProfileDetailView: View {
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(Color("background"))
-                .edgesIgnoringSafeArea(.all)
-            
+//        ContainerView {
             VStack {
                 Spacer()
                 
@@ -163,8 +159,8 @@ struct ProfileDetailView: View {
                 .padding(.bottom, 65)
             }
             .padding(.horizontal)
-        }
-        .ignoresSafeArea(.keyboard)
+            .ignoresSafeArea(.keyboard)
+//        }  
     }
 }
 

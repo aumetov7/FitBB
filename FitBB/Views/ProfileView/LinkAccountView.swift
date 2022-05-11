@@ -13,25 +13,26 @@ struct LinkAccountView: View {
         service: LinkAccountServiceImpl()
     )
     
-    @Binding var showProfileMenu: Bool
-    
     var body: some View {
-        ZStack {
-            Color("background").edgesIgnoringSafeArea(.all)
-            
-            SignInButton()
-                .onTapGesture {
-                    linkAccountViewModel.linkGoogleAccount()
-                    showProfileMenu.toggle()
-                }
-                .padding(.all)
-        }
+//        ContainerView {
+            VStack {
+                Text("Link Accounts")
+                    .titleText()
+                    .padding(.top)
+                
+                SignInButton()
+                    .onTapGesture {
+                        linkAccountViewModel.linkGoogleAccount()
+                    }
+                    .padding(.all)
+            }
+//        }
     }
 }
 
 struct LinkAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        LinkAccountView(showProfileMenu: .constant(true))
+        LinkAccountView()
     }
 }
 

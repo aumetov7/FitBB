@@ -14,18 +14,16 @@ struct ProfileMenuView: View {
     @AppStorage("selectedAppearance") var selectedAppearance = 1
     
     @Binding var showProfileMenu: Bool
+    @Binding var showMedicalInfo: Bool
+    @Binding var showLinkAccount: Bool
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(Color("background"))
-                    .edgesIgnoringSafeArea(.all)
-                
+//            ContainerView {
                 List {
-                    Button(action: {
-                        
-                    }, label: {
+                    Button {
+                        showProfileMenu.toggle()
+                        showMedicalInfo.toggle()
+                    } label: {
                         HStack(spacing: 15) {
                             Image(systemName: "heart.text.square")
                                 .resizedToFill(width: 25, height: 25)
@@ -33,20 +31,22 @@ struct ProfileMenuView: View {
                             Text("Medical Info")
                         }
                         .foregroundColor(.black)
-                    })
-                    .listRowBackground(Color("background"))
-                    
-                    NavigationLink(destination: LinkAccountView(showProfileMenu: $showProfileMenu)) {
-                            HStack(spacing: 15) {
-                                Image(systemName: "person.crop.circle.badge.plus")
-                                    .resizedToFill(width: 25, height: 25)
-                                
-                                Text("Link Accounts")
-                            }
-                            .foregroundColor(.black)
                     }
                     .listRowBackground(Color("background"))
                     
+                    Button {
+                        showProfileMenu.toggle()
+                        showLinkAccount.toggle()
+                    } label: {
+                        HStack(spacing: 15) {
+                            Image(systemName: "person.crop.circle.badge.plus")
+                                .resizedToFill(width: 25, height: 25)
+
+                            Text("Link Accounts")
+                        }
+                        .foregroundColor(.black)
+                    }
+                    .listRowBackground(Color("background"))
                     
                     HStack(spacing: 15) {
                         Image(systemName: "sun.max.circle")
@@ -105,16 +105,16 @@ struct ProfileMenuView: View {
                     })
                     .listRowBackground(Color("background"))
                 }
-            }
-            .navigationBarHidden(true)
-            
-        }
+//            }
+//            .navigationBarHidden(true)
     }
 }
 
 struct ProfileMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMenuView(showProfileMenu: .constant(true))
+        ProfileMenuView(showProfileMenu: .constant(true),
+                        showMedicalInfo: .constant(false),
+                        showLinkAccount: .constant(false))
             .environmentObject(SessionServiceImpl())
     }
 }

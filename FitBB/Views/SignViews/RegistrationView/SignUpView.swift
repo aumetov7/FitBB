@@ -45,10 +45,7 @@ struct SignUpView: View {
     
     var signUpText: some View {
         Text("SIGN UP")
-            .font(.largeTitle)
-            .fontWeight(.black)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
+            .titleText()
     }
     
     var emailTextField: some View {
@@ -174,11 +171,7 @@ struct SignUpView: View {
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(Color("background"))
-                .edgesIgnoringSafeArea(.all)
-            
+//        ContainerView {
             VStack {
                 Spacer()
                 
@@ -252,8 +245,8 @@ struct SignUpView: View {
                 }
             }
             .padding(.horizontal)
-        }
-        .ignoresSafeArea(.keyboard)
+            .ignoresSafeArea(.keyboard)
+//        }
     }
 }
 

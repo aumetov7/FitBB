@@ -18,6 +18,8 @@ struct ProfileView: View {
     @State private var inputImage: UIImage?
     @State private var showProfileDetailView = false
     @State private var showProfileMenu = false
+    @State private var showMedicalInfo = false
+    @State private var showLinkAccount = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -63,7 +65,6 @@ struct ProfileView: View {
     //    }
     
     var profileMenuButton: some View {
-        
         Button {
             showProfileMenu.toggle()
             print("ShowProfileMenu: \(showProfileMenu)")
@@ -74,10 +75,12 @@ struct ProfileView: View {
                 .foregroundColor(.black)
                 .padding(5)
         }
-        .buttonStyle(EmbossedButtonStyle())
+//        .buttonStyle(EmbossedButtonStyle())
         .halfSheet(showSheet: $showProfileMenu, sheetView: {
-            ProfileMenuView(showProfileMenu: $showProfileMenu)
-                .environmentObject(SessionServiceImpl())
+            ProfileMenuView(showProfileMenu: $showProfileMenu,
+                            showMedicalInfo: $showMedicalInfo,
+                            showLinkAccount: $showLinkAccount)
+            .environmentObject(SessionServiceImpl())
         }, onEnd: {
             print("Dismiss")
         })
@@ -92,9 +95,10 @@ struct ProfileView: View {
         } label: {
             Text("Edit")
                 .makeRound()
+                .foregroundColor(.black)
                 .padding([.leading, .trailing], 10)
         }
-        .buttonStyle(EmbossedButtonStyle())
+//        .buttonStyle(EmbossedButtonStyle())
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 25)
         .padding(.leading, 20)
@@ -103,14 +107,16 @@ struct ProfileView: View {
     var welcomeUserText: some View {
         VStack {
             Text("Welcome")
-                .font(.system(.largeTitle, design: .rounded))
-                .fontWeight(.heavy)
-                .kerning(0.7)
+                .titleText()
+//                .font(.system(.largeTitle, design: .rounded))
+//                .fontWeight(.heavy)
+//                .kerning(0.7)
             
             Text("\(sessionService.userDetails?.firstName ?? "N/A")")
-                .font(.system(.title, design: .rounded))
-                .fontWeight(.bold)
-                .kerning(0.7)
+                .titleText()
+//                .font(.system(.title, design: .rounded))
+//                .fontWeight(.bold)
+//                .kerning(0.7)
                 .padding(.bottom, 100)
         }
     }
@@ -133,6 +139,7 @@ struct ProfileView: View {
                 .multilineTextAlignment(.center)
             }
         }
+        
     }
     
     var addImageButton: some View {
@@ -167,31 +174,38 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(Color("background"))
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                HStack(alignment: .center) {
-                    editButton
-                    profileMenuButton
-                }
-                
-                welcomeUserText
-                
-                ZStack(alignment: .bottomTrailing) {
-                    profileImage
+        NavigationView {
+//            ContainerView {
+                VStack {
+                    NavigationLink(destination: MedicalInfoView(), isActive: $showMedicalInfo) {
+                        EmptyView()
+                    }
                     
-                    addImageButton
+                    NavigationLink(destination: LinkAccountView(), isActive: $showLinkAccount) {
+                        EmptyView()
+                    }
+                    
+                    HStack(alignment: .center) {
+                        editButton
+                        profileMenuButton
+                    }
+                    
+                    welcomeUserText
+                    
+                    ZStack(alignment: .bottomTrailing) {
+                        profileImage
+                        
+                        addImageButton
+                    }
+                    .padding(.bottom, 50)
+                    
+                    userDetails
+                    
+                    Spacer()
                 }
-                .padding(.bottom, 50)
-                
-                userDetails
-                
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
+//            }
+            .navigationBarHidden(true)
+//            .frame(maxWidth: .infinity)
             .onChange(of: inputImage) { newImage in
                 loadImage()
                 profileImageService.updateProfileImage(with: newImage!)
@@ -203,8 +217,8 @@ struct ProfileView: View {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
                                   showProfileDetailView: $showProfileDetailView)
             }
+            .task(checkInfo)
         }
-        .task(checkInfo)
     }
 }
 

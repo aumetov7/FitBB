@@ -20,4 +20,19 @@ extension Text {
             .font(.system(.callout))
             .foregroundColor(.black)
     }
+    
+    func chatBubbleText() -> some View {
+        self
+            .padding(.all, 20)
+            .foregroundColor(.white)
+            .background(Color.blue)
+    }
+    
+    func titleText() -> some View {
+        self
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
+    }
 }
