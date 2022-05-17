@@ -25,13 +25,14 @@ struct HalfSheetHelper<SheetView: View>: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        let sheetController = CustomHostingController(rootView: sheetView)
+        
         if showSheet {
-            let sheetController = CustomHostingController(rootView: sheetView)
-            
             sheetController.presentationController?.delegate = context.coordinator
             uiViewController.present(sheetController, animated: true)
         } else {
-            uiViewController.dismiss(animated: true)
+//            uiViewController.dismiss(animated: true)
+            sheetController.dismiss(animated: true)
         }
     }
     

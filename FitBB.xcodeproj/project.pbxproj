@@ -37,7 +37,6 @@
 		D83528AE282800D900E6532C /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AD282800D900E6532C /* PickerField.swift */; };
 		D83528B0282A6EEA00E6532C /* MedicalInfoChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */; };
 		D83528B2282A6F7700E6532C /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528B1282A6F7700E6532C /* ContainerView.swift */; };
-		D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D1E280D7BB900445272 /* SignUpView.swift */; };
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
 		D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F64F282BB05E007CE32D /* CustomPickerView.swift */; };
 		D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */; };
@@ -50,7 +49,7 @@
 		D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8731BD828269543006A60AC /* LinkAccountView.swift */; };
 		D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD5280FEA12001567BB /* ProfileDetailView.swift */; };
 		D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DD9280FED19001567BB /* DatePickerTextField.swift */; };
-		D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDB28102DEC001567BB /* SignUpCombineView.swift */; };
+		D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDB28102DEC001567BB /* SignUpView.swift */; };
 		D8796DDE28103096001567BB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDD28103096001567BB /* SignInView.swift */; };
 		D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DDF28103531001567BB /* ForgetPasswordView.swift */; };
 		D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8796DE12810368A001567BB /* SignInCombineView.swift */; };
@@ -63,12 +62,19 @@
 		D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897565928117B8D0075AD73 /* ImageExtension.swift */; };
 		D8A3D723282A78C50038A689 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A3D722282A78C50038A689 /* ChatBubbleShape.swift */; };
 		D8A3D725282A7A770038A689 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A3D724282A7A770038A689 /* ChatBubbleView.swift */; };
+		D8A8A3C3282E6CAF00F55725 /* UpdateProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3C2282E6CAF00F55725 /* UpdateProfileService.swift */; };
+		D8A8A3C5282E6EDB00F55725 /* MedicalInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3C4282E6EDB00F55725 /* MedicalInfoService.swift */; };
+		D8A8A3C7282E6F1000F55725 /* MedicalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3C6282E6F1000F55725 /* MedicalDetails.swift */; };
+		D8A8A3C9282E70D100F55725 /* MedicalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3C8282E70D100F55725 /* MedicalInfoViewModel.swift */; };
+		D8A8A3CB282E729500F55725 /* SessionMedicalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3CA282E729500F55725 /* SessionMedicalDetails.swift */; };
+		D8A8A3CD282E739C00F55725 /* MedicalInfoCombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3CC282E739C00F55725 /* MedicalInfoCombineView.swift */; };
+		D8A8A3F52833A2A600F55725 /* MedicalQuestionnaireText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8A3F42833A2A600F55725 /* MedicalQuestionnaireText.swift */; };
 		D8AAF064281AD1B600D1A650 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAF063281AD1B600D1A650 /* GoogleSignIn */; };
 		D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */; };
 		D8AAF071281D4AC700D1A650 /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */; };
 		D8AAF073281D64E100D1A650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF072281D64E100D1A650 /* Constants.swift */; };
-		D8BC7B0328099F8200E56E81 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */; };
-		D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */; };
+		D8BC7B0328099F8200E56E81 /* ForgetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgetPasswordService.swift */; };
+		D8BC7B0528099FB200E56E81 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgetPasswordViewModel.swift */; };
 		D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFEBED28098E910015171E /* LoginCredentials.swift */; };
 		D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DD8C4528016F68004D3C69 /* FitBBApp.swift */; };
 		D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DD8C4728016F68004D3C69 /* ContentView.swift */; };
@@ -102,7 +108,6 @@
 		D83528AD282800D900E6532C /* PickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoChatView.swift; sourceTree = "<group>"; };
 		D83528B1282A6F7700E6532C /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
-		D8406D1E280D7BB900445272 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D855F64F282BB05E007CE32D /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalChatMessageViews.swift; sourceTree = "<group>"; };
@@ -114,7 +119,7 @@
 		D8731BD828269543006A60AC /* LinkAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountView.swift; sourceTree = "<group>"; };
 		D8796DD5280FEA12001567BB /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		D8796DD9280FED19001567BB /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
-		D8796DDB28102DEC001567BB /* SignUpCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCombineView.swift; sourceTree = "<group>"; };
+		D8796DDB28102DEC001567BB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D8796DDD28103096001567BB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D8796DDF28103531001567BB /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		D8796DE12810368A001567BB /* SignInCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCombineView.swift; sourceTree = "<group>"; };
@@ -127,12 +132,19 @@
 		D897565928117B8D0075AD73 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		D8A3D722282A78C50038A689 /* ChatBubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleShape.swift; sourceTree = "<group>"; };
 		D8A3D724282A7A770038A689 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
-		D8AAF065281AD33800D1A650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D8A8A3BF282E44EC00F55725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D8A8A3C2282E6CAF00F55725 /* UpdateProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileService.swift; sourceTree = "<group>"; };
+		D8A8A3C4282E6EDB00F55725 /* MedicalInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoService.swift; sourceTree = "<group>"; };
+		D8A8A3C6282E6F1000F55725 /* MedicalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalDetails.swift; sourceTree = "<group>"; };
+		D8A8A3C8282E70D100F55725 /* MedicalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoViewModel.swift; sourceTree = "<group>"; };
+		D8A8A3CA282E729500F55725 /* SessionMedicalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMedicalDetails.swift; sourceTree = "<group>"; };
+		D8A8A3CC282E739C00F55725 /* MedicalInfoCombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoCombineView.swift; sourceTree = "<group>"; };
+		D8A8A3F42833A2A600F55725 /* MedicalQuestionnaireText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalQuestionnaireText.swift; sourceTree = "<group>"; };
 		D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInServicec.swift; sourceTree = "<group>"; };
 		D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		D8AAF072281D64E100D1A650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
-		D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		D8BC7B0228099F8200E56E81 /* ForgetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordService.swift; sourceTree = "<group>"; };
+		D8BC7B0428099FB200E56E81 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		D8BFEBED28098E910015171E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		D8DD8C4228016F68004D3C69 /* FitBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitBB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DD8C4528016F68004D3C69 /* FitBBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBBApp.swift; sourceTree = "<group>"; };
@@ -164,16 +176,15 @@
 			children = (
 				D8DD8C4728016F68004D3C69 /* ContentView.swift */,
 				D82E6907280808E800AFA077 /* PagesView.swift */,
-				D83528B4282A746000E6532C /* ProfileView */,
-				D83528B5282A748200E6532C /* SignViews */,
+				D8796DE32810379B001567BB /* SignView.swift */,
 				D82E60C32802FA26008CE10A /* ExercisesView.swift */,
 				D80430E52805E5E000146B64 /* ExerciseDetailView.swift */,
 				D82E60C52802FAF1008CE10A /* FoodView.swift */,
 				D82E60C72802FAFF008CE10A /* HistoryView.swift */,
 				D82E60C92802FB0C008CE10A /* SuccessView.swift */,
 				D80430E32805DF0500146B64 /* HeaderView.swift */,
+				D83528B4282A746000E6532C /* ProfileView */,
 				D83528B3282A744500E6532C /* CustomViews */,
-				D8406D20280EC6C400445272 /* Button */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,9 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				D80430E12805ACBC00146B64 /* Exercise.swift */,
-				D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */,
-				D82E69172808458E00AFA077 /* SessionUserDetails.swift */,
-				D8BFEBED28098E910015171E /* LoginCredentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,57 +200,18 @@
 		D82E690B2808246C00AFA077 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				D82E690C2808247E00AFA077 /* RegistrationService.swift */,
-				D82E6919280845ED00AFA077 /* SessionService.swift */,
-				D82D4DDA2808513B00C15946 /* LoginService.swift */,
-				D8BC7B0228099F8200E56E81 /* ForgotPasswordService.swift */,
-				D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */,
-				D8731BD4282691B7006A60AC /* LinkAccountServise.swift */,
-				D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */,
 				D86875A3281FF41F00A95616 /* VideoUrlService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		D82E690E28082BE900AFA077 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
-				D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */,
-				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
-				D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */,
-				D8731BD628269329006A60AC /* LinkAccoutViewModel.swift */,
-				D8BC7B0428099FB200E56E81 /* ForgotPasswordViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		D82E69152808355300AFA077 /* RegistrationView */ = {
-			isa = PBXGroup;
-			children = (
-				D8796DDB28102DEC001567BB /* SignUpCombineView.swift */,
-				D8406D1E280D7BB900445272 /* SignUpView.swift */,
-			);
-			path = RegistrationView;
-			sourceTree = "<group>";
-		};
-		D82E69162808356500AFA077 /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				D8796DE12810368A001567BB /* SignInCombineView.swift */,
-				D8796DDD28103096001567BB /* SignInView.swift */,
-				D8796DDF28103531001567BB /* ForgetPasswordView.swift */,
-			);
-			path = LoginView;
-			sourceTree = "<group>";
-		};
 		D83528B3282A744500E6532C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				D8406D20280EC6C400445272 /* Button */,
+				D8A8A3F328339EF800F55725 /* PickerTextField */,
 				D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */,
 				D8975654281169740075AD73 /* ImagePicker.swift */,
-				D83528AB2827FBFF00E6532C /* PickerTextField.swift */,
-				D83528AD282800D900E6532C /* PickerField.swift */,
 				D8796DD9280FED19001567BB /* DatePickerTextField.swift */,
 				D855F64F282BB05E007CE32D /* CustomPickerView.swift */,
 				D83528B1282A6F7700E6532C /* ContainerView.swift */,
@@ -255,25 +224,8 @@
 			children = (
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
 				D87D0444282542EF0088B84F /* ProfileMenuView.swift */,
-				D83528A72827DF9F00E6532C /* MedicalInfoView.swift */,
-				D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */,
-				D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */,
-				D8A3D722282A78C50038A689 /* ChatBubbleShape.swift */,
-				D8A3D724282A7A770038A689 /* ChatBubbleView.swift */,
-				D8731BD828269543006A60AC /* LinkAccountView.swift */,
-				D8796DD5280FEA12001567BB /* ProfileDetailView.swift */,
 			);
 			path = ProfileView;
-			sourceTree = "<group>";
-		};
-		D83528B5282A748200E6532C /* SignViews */ = {
-			isa = PBXGroup;
-			children = (
-				D8796DE32810379B001567BB /* SignView.swift */,
-				D82E69162808356500AFA077 /* LoginView */,
-				D82E69152808355300AFA077 /* RegistrationView */,
-			);
-			path = SignViews;
 			sourceTree = "<group>";
 		};
 		D8406D20280EC6C400445272 /* Button */ = {
@@ -299,8 +251,287 @@
 				D830C94428184067009AFB75 /* SignUpViewExtension.swift */,
 				D830C94628184092009AFB75 /* TextExtension.swift */,
 				D88BBFA02826713300A4B92D /* ViewExtension.swift */,
+				D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */,
+				D8AAF072281D64E100D1A650 /* Constants.swift */,
+				D8A8A3F42833A2A600F55725 /* MedicalQuestionnaireText.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D8A8A3D2283399AD00F55725 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3D4283399C100F55725 /* Model */,
+				D8A8A3D6283399D700F55725 /* Service */,
+				D8A8A3D7283399DC00F55725 /* ViewModel */,
+				D8A8A3D3283399B800F55725 /* Views */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		D8A8A3D3283399B800F55725 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8796DDB28102DEC001567BB /* SignUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8A8A3D4283399C100F55725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3C6282E6F1000F55725 /* MedicalDetails.swift */,
+				D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8A8A3D6283399D700F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D82E690C2808247E00AFA077 /* RegistrationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3D7283399DC00F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D82E690F28082BFF00AFA077 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3D828339A8100F55725 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3D928339A8700F55725 /* PasswordAuth */,
+				D8A8A3DA28339A9A00F55725 /* GoogleSignIn */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D8A8A3D928339A8700F55725 /* PasswordAuth */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3DE28339ADE00F55725 /* Model */,
+				D8A8A3DD28339AD800F55725 /* Service */,
+				D8A8A3DC28339AD100F55725 /* ViewModel */,
+				D8A8A3DB28339AC900F55725 /* Views */,
+			);
+			path = PasswordAuth;
+			sourceTree = "<group>";
+		};
+		D8A8A3DA28339A9A00F55725 /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3E028339C5900F55725 /* Service */,
+				D8A8A3DF28339C5300F55725 /* ViewModel */,
+			);
+			path = GoogleSignIn;
+			sourceTree = "<group>";
+		};
+		D8A8A3DB28339AC900F55725 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8796DE12810368A001567BB /* SignInCombineView.swift */,
+				D8796DDD28103096001567BB /* SignInView.swift */,
+				D8796DDF28103531001567BB /* ForgetPasswordView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8A8A3DC28339AD100F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D8BC7B0428099FB200E56E81 /* ForgetPasswordViewModel.swift */,
+				D82D4DDC2808525700C15946 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3DD28339AD800F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8BC7B0228099F8200E56E81 /* ForgetPasswordService.swift */,
+				D82D4DDA2808513B00C15946 /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3DE28339ADE00F55725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8BFEBED28098E910015171E /* LoginCredentials.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8A8A3DF28339C5300F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3E028339C5900F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3E128339C8900F55725 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3E428339CA500F55725 /* Model */,
+				D8A8A3E328339CA000F55725 /* Service */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		D8A8A3E328339CA000F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D82E6919280845ED00AFA077 /* SessionService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3E428339CA500F55725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D82E69172808458E00AFA077 /* SessionUserDetails.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8A8A3E528339CE000F55725 /* LinkAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3E728339CF600F55725 /* Service */,
+				D8A8A3E628339CF000F55725 /* ViewModel */,
+				D8A8A3F128339E7900F55725 /* Views */,
+			);
+			path = LinkAccounts;
+			sourceTree = "<group>";
+		};
+		D8A8A3E628339CF000F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D8731BD628269329006A60AC /* LinkAccoutViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3E728339CF600F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8731BD4282691B7006A60AC /* LinkAccountServise.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3E828339D3200F55725 /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3EB28339D4C00F55725 /* Service */,
+				D8A8A3EA28339D4600F55725 /* ViewModel */,
+				D8A8A3E928339D4100F55725 /* Views */,
+			);
+			path = UpdateProfile;
+			sourceTree = "<group>";
+		};
+		D8A8A3E928339D4100F55725 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8796DD5280FEA12001567BB /* ProfileDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8A8A3EA28339D4600F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3EB28339D4C00F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */,
+				D8A8A3C2282E6CAF00F55725 /* UpdateProfileService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3EC28339DE100F55725 /* MedicalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3F028339E3200F55725 /* Model */,
+				D8A8A3EF28339E1600F55725 /* Service */,
+				D8A8A3EE28339E1100F55725 /* ViewModel */,
+				D8A8A3ED28339E0B00F55725 /* Views */,
+			);
+			path = MedicalInfo;
+			sourceTree = "<group>";
+		};
+		D8A8A3ED28339E0B00F55725 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3CC282E739C00F55725 /* MedicalInfoCombineView.swift */,
+				D83528A72827DF9F00E6532C /* MedicalInfoView.swift */,
+				D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */,
+				D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */,
+				D8A3D722282A78C50038A689 /* ChatBubbleShape.swift */,
+				D8A3D724282A7A770038A689 /* ChatBubbleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8A8A3EE28339E1100F55725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3C8282E70D100F55725 /* MedicalInfoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D8A8A3EF28339E1600F55725 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3C4282E6EDB00F55725 /* MedicalInfoService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8A8A3F028339E3200F55725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8A8A3CA282E729500F55725 /* SessionMedicalDetails.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8A8A3F128339E7900F55725 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8731BD828269543006A60AC /* LinkAccountView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8A8A3F328339EF800F55725 /* PickerTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D83528AB2827FBFF00E6532C /* PickerTextField.swift */,
+				D83528AD282800D900E6532C /* PickerField.swift */,
+			);
+			path = PickerTextField;
 			sourceTree = "<group>";
 		};
 		D8DD8C3928016F68004D3C69 = {
@@ -323,15 +554,18 @@
 		D8DD8C4428016F68004D3C69 /* FitBB */ = {
 			isa = PBXGroup;
 			children = (
-				D8AAF065281AD33800D1A650 /* Info.plist */,
+				D8A8A3BF282E44EC00F55725 /* Info.plist */,
 				D8DD8C4528016F68004D3C69 /* FitBBApp.swift */,
 				D82E60BB2802EFCC008CE10A /* Views */,
+				D8A8A3D2283399AD00F55725 /* Registration */,
+				D8A8A3D828339A8100F55725 /* Login */,
+				D8A8A3E128339C8900F55725 /* Session */,
+				D8A8A3E828339D3200F55725 /* UpdateProfile */,
+				D8A8A3E528339CE000F55725 /* LinkAccounts */,
+				D8A8A3EC28339DE100F55725 /* MedicalInfo */,
 				D82E60BE2802F011008CE10A /* Model */,
-				D82E690E28082BE900AFA077 /* ViewModel */,
 				D82E690B2808246C00AFA077 /* Service */,
 				D897565828117B790075AD73 /* Extensions */,
-				D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */,
-				D8AAF072281D64E100D1A650 /* Constants.swift */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
 			);
@@ -431,17 +665,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BC7B0328099F8200E56E81 /* ForgotPasswordService.swift in Sources */,
+				D8BC7B0328099F8200E56E81 /* ForgetPasswordService.swift in Sources */,
 				D8DD8C4828016F68004D3C69 /* ContentView.swift in Sources */,
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D8731BD5282691B7006A60AC /* LinkAccountServise.swift in Sources */,
 				D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */,
 				D83528AC2827FBFF00E6532C /* PickerTextField.swift in Sources */,
+				D8A8A3C9282E70D100F55725 /* MedicalInfoViewModel.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
+				D8A8A3C5282E6EDB00F55725 /* MedicalInfoService.swift in Sources */,
 				D8796DE22810368A001567BB /* SignInCombineView.swift in Sources */,
 				D8731BD728269329006A60AC /* LinkAccoutViewModel.swift in Sources */,
 				D8AAF073281D64E100D1A650 /* Constants.swift in Sources */,
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
+				D8A8A3C3282E6CAF00F55725 /* UpdateProfileService.swift in Sources */,
+				D8A8A3CD282E739C00F55725 /* MedicalInfoCombineView.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
 				D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */,
@@ -465,6 +703,7 @@
 				D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */,
 				D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */,
 				D82E691A280845ED00AFA077 /* SessionService.swift in Sources */,
+				D8A8A3C7282E6F1000F55725 /* MedicalDetails.swift in Sources */,
 				D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */,
 				D8796DDE28103096001567BB /* SignInView.swift in Sources */,
 				D8796DE42810379B001567BB /* SignView.swift in Sources */,
@@ -472,20 +711,21 @@
 				D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */,
 				D82E690D2808247E00AFA077 /* RegistrationService.swift in Sources */,
 				D82E60C82802FAFF008CE10A /* HistoryView.swift in Sources */,
+				D8A8A3CB282E729500F55725 /* SessionMedicalDetails.swift in Sources */,
 				D8975655281169740075AD73 /* ImagePicker.swift in Sources */,
 				D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
-				D8BC7B0528099FB200E56E81 /* ForgotPasswordViewModel.swift in Sources */,
+				D8BC7B0528099FB200E56E81 /* ForgetPasswordViewModel.swift in Sources */,
 				D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */,
+				D8A8A3F52833A2A600F55725 /* MedicalQuestionnaireText.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */,
 				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
 				D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */,
-				D8796DDC28102DEC001567BB /* SignUpCombineView.swift in Sources */,
+				D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
 				D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,
-				D8406D1F280D7BB900445272 /* SignUpView.swift in Sources */,
 				D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);

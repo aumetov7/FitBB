@@ -33,14 +33,8 @@ struct FitBBApp: App {
         WindowGroup {
             switch sessionService.state {
             case .loggedIn:
-//                ContentView()
-//                    .environmentObject(sessionService)
-                if sessionService.userDetails == nil {
-                    ProgressView()
-                } else {
-                    ContentView()
-                        .environmentObject(sessionService)
-                }
+                ContentView()
+                    .environmentObject(sessionService)
             case .loggedOut:
                 SignView()
                     .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)

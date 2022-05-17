@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject private var updateProfileViewModel = UpdateProfileViewModelImpl(
-        service: RegistrationServiceImpl()
+        service: UpdateProfileServiceImpl()
     )
     
     @StateObject private var profileImageService = ProfileImageService()
@@ -20,8 +20,68 @@ struct ProfileView: View {
     @State private var showProfileMenu = false
     @State private var showMedicalInfo = false
     @State private var showLinkAccount = false
+    @State private var showMedicalInfoChatView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                if showMedicalInfoChatView {
+                    NavigationLink(destination: MedicalInfoChatView(), isActive: $showMedicalInfo) {
+                        EmptyView()
+                    }
+                } else {
+                    NavigationLink(destination: MedicalInfoView(), isActive: $showMedicalInfo) {
+                        EmptyView()
+                    }
+                }
+                
+                NavigationLink(destination: LinkAccountView(), isActive: $showLinkAccount) {
+                    EmptyView()
+                }
+                
+                HStack(alignment: .center) {
+                    editButton
+                    profileMenuButton
+                }
+                
+                welcomeUserText
+                
+                ZStack(alignment: .bottomTrailing) {
+                    profileImage
+                    
+                    addImageButton
+                }
+                .padding(.bottom, 50)
+                
+                userDetails
+                
+                Spacer()
+            }
+            .navigationBarHidden(true)
+            .onChange(of: inputImage) { newImage in
+                loadImage()
+                profileImageService.updateProfileImage(with: newImage!)
+            }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(image: $inputImage)
+            }
+            .sheet(isPresented: $showProfileDetailView) {
+                ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
+                                  showProfileDetailView: $showProfileDetailView)
+            }
+            .halfSheet(showSheet: $showProfileMenu, sheetView: {
+                ProfileMenuView(showProfileMenu: $showProfileMenu,
+                                showMedicalInfo: $showMedicalInfo,
+                                showLinkAccount: $showLinkAccount)
+                .environmentObject(sessionService)
+            }, onEnd: {
+                print("Dismiss")
+            })
+        }
+        .task(checkInfo)
+    }
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
@@ -30,39 +90,20 @@ struct ProfileView: View {
     
     @Sendable private func checkInfo() async {
         try? await Task.sleep(nanoseconds: 1_000_000_000)
-        //        if sessionService.userDetails == nil {
-        //            showProfileDetailView.toggle()
-        //        }
         
         if sessionService.userDetails == nil ||
             (sessionService.userDetails?.firstName == "" &&
-             sessionService.userDetails?.dateOfBirth == "" &&
-             sessionService.userDetails?.gender == "" &&
-             sessionService.userDetails?.goal == "") {
+            sessionService.userDetails?.dateOfBirth == "" &&
+            sessionService.userDetails?.gender == "" &&
+            sessionService.userDetails?.goal == "" &&
+            sessionService.userDetails?.days == "") {
             showProfileDetailView.toggle()
         }
         
-        print("Detail view appear: \(showProfileDetailView)")
+        if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
+            showMedicalInfoChatView.toggle()
+        }
     }
-    
-    //    var logoutButton: some View {
-    //        HStack {
-    //            Button(action: {
-    //                sessionService.logout()
-    //            }, label: {
-    //                HStack {
-    //                    Image(systemName: "chevron.backward.circle")
-    //                        .font(.headline)
-    //                    Text("Logout")
-    //                        .fontWeight(.medium)
-    //                }
-    //            })
-    //            .buttonStyle(EmbossedButtonStyle())
-    //            .padding(.trailing)
-    //        }
-    //        .frame(maxWidth: .infinity, alignment: .trailing)
-    //        .padding(.top, 25)
-    //    }
     
     var profileMenuButton: some View {
         Button {
@@ -75,15 +116,7 @@ struct ProfileView: View {
                 .foregroundColor(.black)
                 .padding(5)
         }
-//        .buttonStyle(EmbossedButtonStyle())
-        .halfSheet(showSheet: $showProfileMenu, sheetView: {
-            ProfileMenuView(showProfileMenu: $showProfileMenu,
-                            showMedicalInfo: $showMedicalInfo,
-                            showLinkAccount: $showLinkAccount)
-            .environmentObject(SessionServiceImpl())
-        }, onEnd: {
-            print("Dismiss")
-        })
+        //        .buttonStyle(EmbossedButtonStyle())
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.top, 25)
         .padding(.trailing, 20)
@@ -98,7 +131,7 @@ struct ProfileView: View {
                 .foregroundColor(.black)
                 .padding([.leading, .trailing], 10)
         }
-//        .buttonStyle(EmbossedButtonStyle())
+        //        .buttonStyle(EmbossedButtonStyle())
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 25)
         .padding(.leading, 20)
@@ -108,15 +141,9 @@ struct ProfileView: View {
         VStack {
             Text("Welcome")
                 .titleText()
-//                .font(.system(.largeTitle, design: .rounded))
-//                .fontWeight(.heavy)
-//                .kerning(0.7)
             
             Text("\(sessionService.userDetails?.firstName ?? "N/A")")
                 .titleText()
-//                .font(.system(.title, design: .rounded))
-//                .fontWeight(.bold)
-//                .kerning(0.7)
                 .padding(.bottom, 100)
         }
     }
@@ -171,54 +198,6 @@ struct ProfileView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
         .padding(.leading)
-    }
-    
-    var body: some View {
-        NavigationView {
-//            ContainerView {
-                VStack {
-                    NavigationLink(destination: MedicalInfoView(), isActive: $showMedicalInfo) {
-                        EmptyView()
-                    }
-                    
-                    NavigationLink(destination: LinkAccountView(), isActive: $showLinkAccount) {
-                        EmptyView()
-                    }
-                    
-                    HStack(alignment: .center) {
-                        editButton
-                        profileMenuButton
-                    }
-                    
-                    welcomeUserText
-                    
-                    ZStack(alignment: .bottomTrailing) {
-                        profileImage
-                        
-                        addImageButton
-                    }
-                    .padding(.bottom, 50)
-                    
-                    userDetails
-                    
-                    Spacer()
-                }
-//            }
-            .navigationBarHidden(true)
-//            .frame(maxWidth: .infinity)
-            .onChange(of: inputImage) { newImage in
-                loadImage()
-                profileImageService.updateProfileImage(with: newImage!)
-            }
-            .sheet(isPresented: $showImagePicker) {
-                ImagePicker(image: $inputImage)
-            }
-            .sheet(isPresented: $showProfileDetailView) {
-                ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
-                                  showProfileDetailView: $showProfileDetailView)
-            }
-            .task(checkInfo)
-        }
     }
 }
 

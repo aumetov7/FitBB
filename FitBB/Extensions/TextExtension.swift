@@ -35,4 +35,14 @@ extension Text {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
     }
+    
+    
+}
+
+extension TextField {
+    func textField() -> some View {
+        self
+            .textInputAutocapitalization(.never)
+            .disableAutocorrection(true)
+    }
 }
