@@ -13,6 +13,7 @@ import UIKit
 
 protocol LinkAccountService {
     func linkGoogleAccount() -> AnyPublisher<Void, Error>
+    func linkEmailPasswordAccount(with accoundDetails: RegistrationDetails) -> AnyPublisher<Void, Error>
 }
 
 class LinkAccountServiceImpl: LinkAccountService {
@@ -40,6 +41,24 @@ class LinkAccountServiceImpl: LinkAccountService {
                         })
                     }
                 }
+            }
+        }
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
+    }
+    
+    func linkEmailPasswordAccount(with accoundDetails: RegistrationDetails) -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future { promise in
+                let credential = EmailAuthProvider.credential(withEmail: accoundDetails.email, password: accoundDetails.password)
+                
+                Auth.auth().currentUser?.link(with: credential, completion: { authResult, error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else {
+                        promise(.success(()))
+                    }
+                })
             }
         }
         .receive(on: RunLoop.main)

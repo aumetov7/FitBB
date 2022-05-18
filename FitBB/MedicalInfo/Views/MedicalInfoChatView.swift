@@ -281,6 +281,7 @@ struct MedicalInfoChatView: View {
         case is HeartTextSecondView.Type: return AnyView(
             HeartTextSecondView(medicalInfoViewModel: medicalInfoViewModel,
                                 showSpinePartPicker: $showSpinePartPicker,
+                                showSpinePicker: $showSpinePicker,
                                 showHeartPicker: $showHeartPicker,
                                 showTypingText: $showTypingText))
         case is HeartAnswerView.Type: return AnyView(

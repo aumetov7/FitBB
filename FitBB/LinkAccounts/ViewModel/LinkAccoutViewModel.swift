@@ -16,7 +16,9 @@ enum LinkAccountState {
 
 protocol LinkAccountViewModel {
     func linkGoogleAccount()
+    func linkEmailPasswordAccount()
     
+    var userDetails: RegistrationDetails { get }
     var service: LinkAccountService { get }
     var state: LinkAccountState { get }
     var hasError: Bool { get }
@@ -27,6 +29,7 @@ protocol LinkAccountViewModel {
 final class LinkAccountViewModelImpl: ObservableObject, LinkAccountViewModel {
     @Published var state: LinkAccountState = .notAvailable
     @Published var hasError: Bool = false
+    @Published var userDetails: RegistrationDetails = RegistrationDetails.new
     
     let service: LinkAccountService
     
@@ -35,6 +38,21 @@ final class LinkAccountViewModelImpl: ObservableObject, LinkAccountViewModel {
     func linkGoogleAccount() {
         service
             .linkGoogleAccount()
+            .sink { res in
+                switch res {
+                case .failure(let error):
+                    self.state = .failed(error: error)
+                default: break
+                }
+            } receiveValue: { [weak self] in
+                self?.state = .successfull
+            }
+            .store(in: &subscription)
+    }
+    
+    func linkEmailPasswordAccount() {
+        service
+            .linkEmailPasswordAccount(with: userDetails)
             .sink { res in
                 switch res {
                 case .failure(let error):

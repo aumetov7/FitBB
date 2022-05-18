@@ -20,6 +20,10 @@ struct SignInCombineView: View {
         service: GoogleSignInServiceImpl()
     )
     
+    @StateObject private var anonymousAuthViewModel = AnonymousAuthViewModelImpl(
+        service: AnonymousAuthServiseImpl()
+    )
+    
     @State private var showForgetPasswordView = false
     
     @Binding var showSignUpView: Bool
@@ -27,6 +31,7 @@ struct SignInCombineView: View {
     var body: some View {
         SignInView(loginViewModel: loginViewModel,
                    googleSignInViewModel: googleSignInViewModel,
+                   anonymousAuthViewModel: anonymousAuthViewModel,
                    showSignUpView: $showSignUpView,
                    showForgetPasswordView: $showForgetPasswordView)
         .sheet(isPresented: $showForgetPasswordView) {

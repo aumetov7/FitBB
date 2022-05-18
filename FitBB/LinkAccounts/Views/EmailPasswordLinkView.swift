@@ -1,24 +1,22 @@
 //
-//  NewSignUpView.swift
+//  EmailPasswordLinkView.swift
 //  FitBB
 //
-//  Created by Акбар Уметов on 20/4/22.
+//  Created by Акбар Уметов on 18/5/22.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
-    @StateObject private var regViewModel = RegistrationViewModelImpl(
-        service: RegistrationServiceImpl()
-    )
-
+struct EmailPasswordLinkView: View {
     @State private var showPassword = false
     @State private var showRepeatPassword = false
     @State private var showPasswordDetails = false
     @State private var error = false
     @State private var passwordError = false
     
-    @Binding var showSignUpView: Bool
+    @ObservedObject var linkAccountViewModel: LinkAccountViewModelImpl
+    
+    @Binding var showEmailPasswordLinkView: Bool
     
     let emptyText = "Password must not be empty"
     let lowercaseText = "Password must have at least a 1 lowercase letter"
@@ -50,8 +48,6 @@ struct SignUpView: View {
             
             VStack {
                 signUpButton
-                    
-                signIn
             }
         }
         .padding(.horizontal)
@@ -87,7 +83,7 @@ struct SignUpView: View {
                 .padding(.leading)
             
             HStack {
-                TextField("", text: $regViewModel.userDetails.email)
+                TextField("", text: $linkAccountViewModel.userDetails.email)
                     .textField()
                     .keyboardType(.emailAddress)
             }
@@ -130,7 +126,7 @@ struct SignUpView: View {
                 .padding(.leading)
             
             HStack {
-                showPasswordTextField(showPassword: showPassword, text: $regViewModel.userDetails.password)
+                showPasswordTextField(showPassword: showPassword, text: $linkAccountViewModel.userDetails.password)
                 
                 Button(action: {
                     withAnimation {
@@ -160,7 +156,7 @@ struct SignUpView: View {
                 .padding(.leading)
             
             HStack {
-                showPasswordTextField(showPassword: showRepeatPassword, text: $regViewModel.userDetails.repeatPassword)
+                showPasswordTextField(showPassword: showRepeatPassword, text: $linkAccountViewModel.userDetails.repeatPassword)
                 
                 Button(action: { showRepeatPassword.toggle() }) {
                     showPasswordButton(showPassword: showRepeatPassword)
@@ -177,19 +173,19 @@ struct SignUpView: View {
     func check() -> some View {
         if showPasswordDetails {
             VStack(alignment: .leading, spacing: 10) {
-                checkView(password: regViewModel.userDetails.password,
+                checkView(password: linkAccountViewModel.userDetails.password,
                           checkFunction: isPasswordEmpty,
                           text: emptyText)
-                checkView(password: regViewModel.userDetails.password,
+                checkView(password: linkAccountViewModel.userDetails.password,
                           checkFunction: isContainsLowercaseLetter,
                           text: lowercaseText)
-                checkView(password: regViewModel.userDetails.password,
+                checkView(password: linkAccountViewModel.userDetails.password,
                           checkFunction: isMoreThanEightChar,
                           text: lengthText)
-                checkView(password: regViewModel.userDetails.password,
+                checkView(password: linkAccountViewModel.userDetails.password,
                           checkFunction: isContainsDigit,
                           text: digitText)
-                checkView(password: regViewModel.userDetails.password,
+                checkView(password: linkAccountViewModel.userDetails.password,
                           checkFunction: isContainsUppercaseLetter,
                           text: uppercaseText)
             }
@@ -202,21 +198,22 @@ struct SignUpView: View {
     }
     
     var signUpButton: some View {
-        RaisedButton(buttonText: "Sign Up", action: {
-            if regViewModel.userDetails.password != regViewModel.userDetails.repeatPassword {
-                regViewModel.hasError = true
+        RaisedButton(buttonText: "Link Accounts", action: {
+            if linkAccountViewModel.userDetails.password != linkAccountViewModel.userDetails.repeatPassword {
+                linkAccountViewModel.hasError = true
                 passwordError = true
             } else {
-                regViewModel.register()
+                linkAccountViewModel.linkEmailPasswordAccount()
+                showEmailPasswordLinkView.toggle()
             }
         })
         .padding(.horizontal)
         .padding(.bottom, 45)
-        .disabled(passwordValidation(text: regViewModel.userDetails.password) ? false : true)
-        .foregroundColor(passwordValidation(text: regViewModel.userDetails.password) ? .black : .gray)
-        .alert(isPresented: $regViewModel.hasError,
+        .disabled(passwordValidation(text: linkAccountViewModel.userDetails.password) ? false : true)
+        .foregroundColor(passwordValidation(text: linkAccountViewModel.userDetails.password) ? .black : .gray)
+        .alert(isPresented: $linkAccountViewModel.hasError,
                content: {
-            if case .failed(let error) = regViewModel.state {
+            if case .failed(let error) = linkAccountViewModel.state {
                 return Alert(title: Text("Error"),
                              message: Text(error.localizedDescription))
             } else if passwordError { // Should add an Alert for password && email
@@ -228,24 +225,13 @@ struct SignUpView: View {
             }
         })
     }
-    
-    var signIn: some View {
-        HStack(spacing: 3) {
-            Text("Already have an Account?")
-                .signText()
-            
-            Button(action: { showSignUpView.toggle() }) {
-                Text("Sign In")
-                    .underline()
-                    .signText()
-            }
-        }
-    }
-
 }
 
-struct SignUpCombineView_Previews: PreviewProvider {
+struct EmailPasswordLinkView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(showSignUpView: .constant(false))
+        EmailPasswordLinkView(linkAccountViewModel: LinkAccountViewModelImpl(
+            service: LinkAccountServiceImpl()),
+                              showEmailPasswordLinkView: .constant(true)
+        )
     }
 }

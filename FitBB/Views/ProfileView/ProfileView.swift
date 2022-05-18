@@ -27,14 +27,8 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if showMedicalInfoChatView {
-                    NavigationLink(destination: MedicalInfoChatView(), isActive: $showMedicalInfo) {
-                        EmptyView()
-                    }
-                } else {
-                    NavigationLink(destination: MedicalInfoView(), isActive: $showMedicalInfo) {
-                        EmptyView()
-                    }
+                NavigationLink(destination: MedicalInfoCombineView(), isActive: $showMedicalInfo) {
+                    EmptyView()
                 }
                 
                 NavigationLink(destination: LinkAccountView(), isActive: $showLinkAccount) {

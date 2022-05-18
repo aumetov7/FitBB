@@ -282,9 +282,6 @@ struct SpinePartTextView: View {
                     .chatBubbleText()
             }
             .task(nextMessage)
-            .onAppear {
-                showTypingText.toggle()
-            }
         } else {
             ChatBubbleView(direction: .left) {
                 Text("Okay. In which part of your spine you have a \(medicalInfoViewModel.medicalDetails.spine)?")
@@ -354,24 +351,42 @@ struct HeartTextView: View {
 struct HeartTextSecondView: View {
     @ObservedObject var medicalInfoViewModel: MedicalInfoViewModelImpl
     @Binding var showSpinePartPicker: Bool
+    @Binding var showSpinePicker: Bool
     @Binding var showHeartPicker: Bool
     @Binding var showTypingText: Bool
     
     var body: some View {
-        ChatBubbleView(direction: .left) {
-            if medicalInfoViewModel.medicalDetails.spine == "normal" {
+//        ChatBubbleView(direction: .left) {
+//            if medicalInfoViewModel.medicalDetails.spine == "normal" {
+//                Text(medicalQuestionnaireHeartDiseaseNormalText)
+//                    .chatBubbleText()
+//            } else {
+//                Text(medicalQuestionnaireHeartDiseaseHaveProblemText)
+//                    .chatBubbleText()
+//            }
+//        }
+        if medicalInfoViewModel.medicalDetails.spine == "normal" {
+            ChatBubbleView(direction: .left) {
                 Text(medicalQuestionnaireHeartDiseaseNormalText)
                     .chatBubbleText()
-            } else {
+            }
+            .onAppear {
+                showSpinePicker.toggle()
+                showHeartPicker.toggle()
+                showTypingText.toggle()
+            }
+        } else {
+            ChatBubbleView(direction: .left) {
                 Text(medicalQuestionnaireHeartDiseaseHaveProblemText)
                     .chatBubbleText()
             }
+            .onAppear {
+                showSpinePartPicker.toggle()
+                showHeartPicker.toggle()
+                showTypingText.toggle()
+            }
         }
-        .onAppear {
-            showSpinePartPicker.toggle()
-            showHeartPicker.toggle()
-            showTypingText.toggle()
-        }
+        
     }
 }
 

@@ -5,9 +5,9 @@
 //  Created by Акбар Уметов on 26/4/22.
 //
 
-import Foundation
+import SwiftUI
 
-extension SignUpView {
+extension View {
     func isPasswordEmpty(text: String) -> Bool {
         return !text.isEmpty
     }

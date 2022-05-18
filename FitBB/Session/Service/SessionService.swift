@@ -21,6 +21,7 @@ protocol SessionService {
     var medicalDetails: SessionMedicalDetails? { get }
     var loading: Bool { get }
     
+    func getProviderId() -> [String]
     func logout()
 }
 
@@ -34,6 +35,19 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     
     init() {
         setupFirebaseAuthHandler()
+    }
+    
+    func getProviderId() -> [String] {
+        var providerIDArray: [String] = []
+        
+        
+        guard let providerData = Auth.auth().currentUser?.providerData else { return providerIDArray }
+
+        for userInfo in providerData {
+            providerIDArray.append(userInfo.providerID)
+        }
+        
+        return providerIDArray
     }
     
     func logout() {

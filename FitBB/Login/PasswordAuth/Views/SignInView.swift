@@ -13,6 +13,7 @@ struct SignInView: View {
     
     @ObservedObject var loginViewModel: LoginViewModelImpl
     @ObservedObject var googleSignInViewModel: GoogleSignInViewModelImpl
+    @ObservedObject var anonymousAuthViewModel: AnonymousAuthViewModelImpl
     
     @Binding var showSignUpView: Bool
     @Binding var showForgetPasswordView: Bool
@@ -31,6 +32,8 @@ struct SignInView: View {
                 passwordTextField
                 
                 forgetPasswordButton
+                
+                anonymousAuthButton
             }
             .frame(height: 316, alignment: .center)
             .padding(.bottom, 25)
@@ -124,6 +127,31 @@ struct SignInView: View {
         .padding(.top, 30)
     }
     
+    var anonymousAuthButton: some View {
+        HStack {
+            Spacer(minLength: 0)
+            
+            Button(action: { anonymousAuthViewModel.anonymousAuth() }) {
+                Text("Anonymous Authentification")
+                    .underline()
+                    .signText()
+                    .padding(.leading)
+            }
+            .alert(isPresented: $anonymousAuthViewModel.hasError,
+                   content: {
+                if case .failed(let error) = anonymousAuthViewModel.state {
+                    return Alert(title: Text("Error"),
+                                 message: Text(error.localizedDescription))
+                } else {
+                    return Alert(title: Text("Error"),
+                                 message: Text("Something went wrong"))
+                }
+            })
+        }
+        .padding(.horizontal)
+        .padding(.top, 2)
+    }
+    
     var signInButton: some View {
         RaisedButton(buttonText: "SIGN IN") {
             loginViewModel.login()
@@ -162,16 +190,23 @@ struct SignInView: View {
     }
     
     var connectWithButtons: some View {
-        HStack(alignment: .bottom, spacing: 50) {
+        HStack(alignment: .bottom, spacing: 20) {
             //                    Button(action: { }, label: {
             //                        Image("apple-logo")
             //                            .resizedToFill(width: 38, height: 38)
             //                    })
             
+//            Button(action: {
+//
+//            }) {
+//                Image("email")
+//                    .resizedToFill(width: 38, height: 38)
+//            }
+            
             Button(action: {
                 googleSignInViewModel.signIn()
             }, label: {
-                Image("Google-Plus")
+                Image("google-plus")
                     .resizedToFill(width: 38, height: 38)
             })
         }
@@ -193,8 +228,12 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView(loginViewModel: LoginViewModelImpl(service: LoginServiceImpl()),
-                   googleSignInViewModel: GoogleSignInViewModelImpl(service: GoogleSignInServiceImpl()),
+        SignInView(loginViewModel: LoginViewModelImpl(
+                    service: LoginServiceImpl()),
+                   googleSignInViewModel: GoogleSignInViewModelImpl(
+                    service: GoogleSignInServiceImpl()),
+                   anonymousAuthViewModel: AnonymousAuthViewModelImpl(
+                    service: AnonymousAuthServiseImpl()),
                    showSignUpView: .constant(false),
                    showForgetPasswordView: .constant(false))
     }

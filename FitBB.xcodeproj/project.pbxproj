@@ -73,6 +73,9 @@
 		D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */; };
 		D8AAF071281D4AC700D1A650 /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */; };
 		D8AAF073281D64E100D1A650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAF072281D64E100D1A650 /* Constants.swift */; };
+		D8B8F9002834FBF100ED4B9A /* EmailPasswordLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8F8FF2834FBF100ED4B9A /* EmailPasswordLinkView.swift */; };
+		D8B8F9032835081200ED4B9A /* AnonymousAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8F9022835081200ED4B9A /* AnonymousAuthService.swift */; };
+		D8B8F9052835082200ED4B9A /* AnonymousAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8F9042835082200ED4B9A /* AnonymousAuthViewModel.swift */; };
 		D8BC7B0328099F8200E56E81 /* ForgetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0228099F8200E56E81 /* ForgetPasswordService.swift */; };
 		D8BC7B0528099FB200E56E81 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC7B0428099FB200E56E81 /* ForgetPasswordViewModel.swift */; };
 		D8BFEBEE28098E910015171E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFEBED28098E910015171E /* LoginCredentials.swift */; };
@@ -143,6 +146,9 @@
 		D8AAF06C281AE10D00D1A650 /* GoogleSignInServicec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInServicec.swift; sourceTree = "<group>"; };
 		D8AAF070281D4AC700D1A650 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		D8AAF072281D64E100D1A650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D8B8F8FF2834FBF100ED4B9A /* EmailPasswordLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordLinkView.swift; sourceTree = "<group>"; };
+		D8B8F9022835081200ED4B9A /* AnonymousAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthService.swift; sourceTree = "<group>"; };
+		D8B8F9042835082200ED4B9A /* AnonymousAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthViewModel.swift; sourceTree = "<group>"; };
 		D8BC7B0228099F8200E56E81 /* ForgetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordService.swift; sourceTree = "<group>"; };
 		D8BC7B0428099FB200E56E81 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		D8BFEBED28098E910015171E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
@@ -305,6 +311,7 @@
 		D8A8A3D828339A8100F55725 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D8B8F901283507F700ED4B9A /* AnonymousAuth */,
 				D8A8A3D928339A8700F55725 /* PasswordAuth */,
 				D8A8A3DA28339A9A00F55725 /* GoogleSignIn */,
 			);
@@ -521,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				D8731BD828269543006A60AC /* LinkAccountView.swift */,
+				D8B8F8FF2834FBF100ED4B9A /* EmailPasswordLinkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -532,6 +540,31 @@
 				D83528AD282800D900E6532C /* PickerField.swift */,
 			);
 			path = PickerTextField;
+			sourceTree = "<group>";
+		};
+		D8B8F901283507F700ED4B9A /* AnonymousAuth */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8F90628350A0C00ED4B9A /* Service */,
+				D8B8F90728350A1300ED4B9A /* ViewModel */,
+			);
+			path = AnonymousAuth;
+			sourceTree = "<group>";
+		};
+		D8B8F90628350A0C00ED4B9A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8F9022835081200ED4B9A /* AnonymousAuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8B8F90728350A1300ED4B9A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8F9042835082200ED4B9A /* AnonymousAuthViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D8DD8C3928016F68004D3C69 = {
@@ -691,6 +724,7 @@
 				D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */,
 				D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */,
 				D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */,
+				D8B8F9002834FBF100ED4B9A /* EmailPasswordLinkView.swift in Sources */,
 				D83528B2282A6F7700E6532C /* ContainerView.swift in Sources */,
 				D82E60C62802FAF1008CE10A /* FoodView.swift in Sources */,
 				D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */,
@@ -716,6 +750,7 @@
 				D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgetPasswordViewModel.swift in Sources */,
+				D8B8F9052835082200ED4B9A /* AnonymousAuthViewModel.swift in Sources */,
 				D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */,
 				D8A8A3F52833A2A600F55725 /* MedicalQuestionnaireText.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
@@ -725,6 +760,7 @@
 				D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
 				D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */,
+				D8B8F9032835081200ED4B9A /* AnonymousAuthService.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,
 				D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
