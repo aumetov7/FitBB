@@ -22,5 +22,8 @@ struct SignView: View {
 struct SignView_Previews: PreviewProvider {
     static var previews: some View {
         SignView()
+        
+        SignView()
+            .preferredColorScheme(.dark)
     }
 }

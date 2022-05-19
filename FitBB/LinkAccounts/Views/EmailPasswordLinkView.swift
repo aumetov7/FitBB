@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EmailPasswordLinkView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var showPassword = false
     @State private var showRepeatPassword = false
     @State private var showPasswordDetails = false
@@ -24,33 +26,41 @@ struct EmailPasswordLinkView: View {
     let digitText = "Password must have at least a 1 digit"
     let uppercaseText = "Password must have at least a 1 uppercase letter"
     
+    var color: Color {
+        return colorScheme == .dark ? .white : .black
+    }
+    
     var body: some View {
-        VStack {
-            Spacer()
-            
-            signUpText
-            
-            Spacer()
-            
+        GeometryReader { geometry in
             VStack {
-                emailTextField
+                Spacer()
                 
-                passwordTextField
+                signUpText
                 
-                repeatPasswordView
+                Spacer()
                 
-                check()
+                VStack {
+                    emailTextField
+                    
+                    passwordTextField
+                    
+                    repeatPasswordView
+                    
+                    check()
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                VStack {
+                    signUpButton
+                }
+                .padding(.horizontal)
             }
-            .frame(height: 316, alignment: .center)
-            .padding(.bottom, 25)
-            
-            Spacer()
-            
-            VStack {
-                signUpButton
-            }
+            .customBackgroundColor(colorScheme: colorScheme)
         }
-        .padding(.horizontal)
         .ignoresSafeArea(.keyboard)
     }
     
@@ -74,6 +84,7 @@ struct EmailPasswordLinkView: View {
     var signUpText: some View {
         Text("SIGN UP")
             .titleText()
+            .padding(.horizontal)
     }
     
     var emailTextField: some View {
@@ -90,6 +101,7 @@ struct EmailPasswordLinkView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -112,10 +124,10 @@ struct EmailPasswordLinkView: View {
     func showPasswordButton(showPassword: Bool) -> some View {
         if !showPassword {
             Image(systemName: "eye.slash")
-                .foregroundColor(.black)
+                .foregroundColor(color)
         } else {
             Image(systemName: "eye")
-                .foregroundColor(.black)
+                .foregroundColor(color)
         }
     }
     
@@ -134,7 +146,7 @@ struct EmailPasswordLinkView: View {
                     }
                 }) {
                     Image(systemName: "questionmark.circle")
-                        .foregroundColor(.black)
+                        .foregroundColor(color)
                 }
                 .padding(.trailing, 2)
                 
@@ -145,6 +157,7 @@ struct EmailPasswordLinkView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -165,6 +178,7 @@ struct EmailPasswordLinkView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -231,7 +245,11 @@ struct EmailPasswordLinkView_Previews: PreviewProvider {
     static var previews: some View {
         EmailPasswordLinkView(linkAccountViewModel: LinkAccountViewModelImpl(
             service: LinkAccountServiceImpl()),
-                              showEmailPasswordLinkView: .constant(true)
-        )
+                              showEmailPasswordLinkView: .constant(true))
+        
+        EmailPasswordLinkView(linkAccountViewModel: LinkAccountViewModelImpl(
+            service: LinkAccountServiceImpl()),
+                              showEmailPasswordLinkView: .constant(true))
+        .preferredColorScheme(.dark)
     }
 }

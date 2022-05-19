@@ -9,6 +9,8 @@ import SwiftUI
 import GoogleSignIn
 
 struct SignInView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var showPassword = false
     
     @ObservedObject var loginViewModel: LoginViewModelImpl
@@ -18,45 +20,57 @@ struct SignInView: View {
     @Binding var showSignUpView: Bool
     @Binding var showForgetPasswordView: Bool
     
+    var color: Color {
+        return colorScheme == .dark ? .white : .black
+    }
+    
     var body: some View {
-        VStack {
-            Spacer()
-            
-            signInText
-            
-            Spacer()
-            
+        GeometryReader { geometry in
             VStack {
-                emailTextField
+                Spacer()
                 
-                passwordTextField
+                signInText
                 
-                forgetPasswordButton
+                Spacer()
                 
-                anonymousAuthButton
-            }
-            .frame(height: 316, alignment: .center)
-            .padding(.bottom, 25)
-            
-            Spacer()
-            
-            signInButton
-            
-            connectWithText
+                VStack {
+                    emailTextField
+                    
+                    passwordTextField
+                    
+                    forgetPasswordButton
+                    
+                    anonymousAuthButton
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
                 .padding(.horizontal)
-            
-            connectWithButtons
-            
-            signUp
+                
+                Spacer()
+                
+                VStack {
+                    signInButton
+                    
+                    connectWithText
+                        .padding(.horizontal)
+                    
+                    connectWithButtons
+                    
+                    signUp
+                }
+                .padding(.horizontal)
+                
+            }
+            .customBackgroundColor(colorScheme: colorScheme)
             
         }
-        .padding(.horizontal)
         .ignoresSafeArea(.keyboard)
     }
     
     var signInText: some View {
         Text("SIGN IN")
             .titleText()
+            .padding(.horizontal)
     }
     
     var emailTextField: some View {
@@ -74,6 +88,7 @@ struct SignInView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -98,16 +113,17 @@ struct SignInView: View {
                 Button(action: { showPassword.toggle() }) {
                     if !showPassword {
                         Image(systemName: "eye.slash")
-                            .foregroundColor(.black)
+                            .foregroundColor(color)
                     } else {
                         Image(systemName: "eye")
-                            .foregroundColor(.black)
+                            .foregroundColor(color)
                     }
                 }
             }
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -174,7 +190,7 @@ struct SignInView: View {
         HStack(spacing: 5) {
             VStack {
                 Divider()
-                    .background(Color.black)
+                    .background(color)
             }
             
             Text("Or Connect with")
@@ -184,7 +200,7 @@ struct SignInView: View {
             
             VStack {
                 Divider()
-                    .background(Color.black)
+                    .background(color)
             }
         }
     }
@@ -196,12 +212,12 @@ struct SignInView: View {
             //                            .resizedToFill(width: 38, height: 38)
             //                    })
             
-//            Button(action: {
-//
-//            }) {
-//                Image("email")
-//                    .resizedToFill(width: 38, height: 38)
-//            }
+            //            Button(action: {
+            //
+            //            }) {
+            //                Image("email")
+            //                    .resizedToFill(width: 38, height: 38)
+            //            }
             
             Button(action: {
                 googleSignInViewModel.signIn()
@@ -223,18 +239,29 @@ struct SignInView: View {
                     .signText()
             }
         }
+        .padding(.bottom)
     }
 }
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(loginViewModel: LoginViewModelImpl(
-                    service: LoginServiceImpl()),
+            service: LoginServiceImpl()),
                    googleSignInViewModel: GoogleSignInViewModelImpl(
                     service: GoogleSignInServiceImpl()),
                    anonymousAuthViewModel: AnonymousAuthViewModelImpl(
                     service: AnonymousAuthServiseImpl()),
                    showSignUpView: .constant(false),
                    showForgetPasswordView: .constant(false))
+        
+        SignInView(loginViewModel: LoginViewModelImpl(
+            service: LoginServiceImpl()),
+                   googleSignInViewModel: GoogleSignInViewModelImpl(
+                    service: GoogleSignInServiceImpl()),
+                   anonymousAuthViewModel: AnonymousAuthViewModelImpl(
+                    service: AnonymousAuthServiseImpl()),
+                   showSignUpView: .constant(false),
+                   showForgetPasswordView: .constant(false))
+        .preferredColorScheme(.dark)
     }
 }

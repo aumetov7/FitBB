@@ -18,7 +18,6 @@ extension Text {
         self
             .fontWeight(.light)
             .font(.system(.callout))
-            .foregroundColor(.black)
     }
     
     func chatBubbleText() -> some View {

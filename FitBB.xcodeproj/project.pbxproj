@@ -30,7 +30,7 @@
 		D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E69172808458E00AFA077 /* SessionUserDetails.swift */; };
 		D82E691A280845ED00AFA077 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E6919280845ED00AFA077 /* SessionService.swift */; };
 		D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */; };
-		D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C94428184067009AFB75 /* SignUpViewExtension.swift */; };
+		D830C94528184067009AFB75 /* PasswordValidationViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C94428184067009AFB75 /* PasswordValidationViewExtension.swift */; };
 		D830C94728184092009AFB75 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D830C94628184092009AFB75 /* TextExtension.swift */; };
 		D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528A72827DF9F00E6532C /* MedicalInfoView.swift */; };
 		D83528AC2827FBFF00E6532C /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AB2827FBFF00E6532C /* PickerTextField.swift */; };
@@ -104,7 +104,7 @@
 		D82E69172808458E00AFA077 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
 		D82E6919280845ED00AFA077 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D830C93D2816F1C3009AFB75 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
-		D830C94428184067009AFB75 /* SignUpViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewExtension.swift; sourceTree = "<group>"; };
+		D830C94428184067009AFB75 /* PasswordValidationViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidationViewExtension.swift; sourceTree = "<group>"; };
 		D830C94628184092009AFB75 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		D83528A72827DF9F00E6532C /* MedicalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoView.swift; sourceTree = "<group>"; };
 		D83528AB2827FBFF00E6532C /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				D897565928117B8D0075AD73 /* ImageExtension.swift */,
-				D830C94428184067009AFB75 /* SignUpViewExtension.swift */,
+				D830C94428184067009AFB75 /* PasswordValidationViewExtension.swift */,
 				D830C94628184092009AFB75 /* TextExtension.swift */,
 				D88BBFA02826713300A4B92D /* ViewExtension.swift */,
 				D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */,
@@ -756,7 +756,7 @@
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */,
 				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
-				D830C94528184067009AFB75 /* SignUpViewExtension.swift in Sources */,
+				D830C94528184067009AFB75 /* PasswordValidationViewExtension.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
 				D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */,

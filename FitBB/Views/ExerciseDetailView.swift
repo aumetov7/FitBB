@@ -10,8 +10,11 @@ import AVKit
 import FirebaseStorage
 
 struct ExerciseDetailView: View {
-    var index: Int
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @Binding var selectedTab: Int
+    
+    var index: Int
     
 //    var videoStringURL = ""
     
@@ -47,12 +50,19 @@ struct ExerciseDetailView: View {
                 
             }
             .frame(maxWidth: .infinity)
+            .padding(.bottom)
         }
+        .customBackgroundColor(colorScheme: colorScheme)
     }
 }
 
 struct ExerciseDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseDetailView(index: 0, selectedTab: .constant(0))
+        ExerciseDetailView(selectedTab: .constant(0),
+                           index: 0)
+        
+        ExerciseDetailView(selectedTab: .constant(0),
+                           index: 0)
+        .preferredColorScheme(.dark)
     }
 }

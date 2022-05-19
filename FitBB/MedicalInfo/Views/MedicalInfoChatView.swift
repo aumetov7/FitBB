@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MedicalInfoChatView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @StateObject private var medicalInfoViewModel = MedicalInfoViewModelImpl(
         service: MedicalInfoServiceImpl()
     )
@@ -51,7 +53,9 @@ struct MedicalInfoChatView: View {
                                 JointsAndLigamentsAnswerView.self,
                                 FinishTheQuestionaireView.self]
     
-    
+    var color: Color {
+        return colorScheme == .dark ? Color.white : Color(UIColor.lightGray)
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -64,6 +68,7 @@ struct MedicalInfoChatView: View {
                 .frame(height: geometry.size.height * 0.04)
                 
                 Divider()
+                    .background(color)
                 
                 VStack {
                     ScrollView {
@@ -82,6 +87,7 @@ struct MedicalInfoChatView: View {
                 }
                 
                 Divider()
+                    .background(color)
                 
                 VStack {
                     if showMessagePart {
@@ -102,8 +108,11 @@ struct MedicalInfoChatView: View {
                         .padding(.bottom)
                     }
                 }
+                .padding(.bottom)
             }
+            .customBackgroundColor(colorScheme: colorScheme)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     @ViewBuilder
@@ -146,6 +155,7 @@ struct MedicalInfoChatView: View {
                 .keyboardType(.numberPad)
             
             Divider()
+                .background(color)
         }
     }
     
@@ -157,6 +167,7 @@ struct MedicalInfoChatView: View {
                 .keyboardType(.numberPad)
             
             Divider()
+                .background(color)
         }
     }
     
@@ -315,5 +326,8 @@ struct MedicalInfoChatView: View {
 struct MedicalInfoChatView_Previews: PreviewProvider {
     static var previews: some View {
         MedicalInfoChatView()
+        
+        MedicalInfoChatView()
+            .preferredColorScheme(.dark)
     }
 }

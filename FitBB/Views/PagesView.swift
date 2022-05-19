@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PagesView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         TabView {
@@ -41,7 +42,7 @@ struct PagesView: View {
                     Text("Success")
                 }
         }
-        .accentColor(.black)
+        .accentColor(colorScheme == .dark ? .white : .black)
     }
 }
 
@@ -49,5 +50,9 @@ struct PagesView_Previews: PreviewProvider {
     static var previews: some View {
         PagesView()
             .environmentObject(SessionServiceImpl())
+        
+        PagesView()
+            .environmentObject(SessionServiceImpl())
+            .preferredColorScheme(.dark)
     }
 }

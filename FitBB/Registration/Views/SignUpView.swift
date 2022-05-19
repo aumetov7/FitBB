@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @StateObject private var regViewModel = RegistrationViewModelImpl(
         service: RegistrationServiceImpl()
     )
@@ -26,42 +28,51 @@ struct SignUpView: View {
     let digitText = "Password must have at least a 1 digit"
     let uppercaseText = "Password must have at least a 1 uppercase letter"
     
+    var color: Color {
+        return colorScheme == .dark ? .white : .black
+    }
+    
     var body: some View {
-        VStack {
-            Spacer()
-            
-            signUpText
-            
-            Spacer()
-            
+        GeometryReader { geometry in
             VStack {
-                emailTextField
+                Spacer()
                 
-                passwordTextField
+                signUpText
+                    .padding(.horizontal)
                 
-                repeatPasswordView
+                Spacer()
                 
-                check()
-            }
-            .frame(height: 316, alignment: .center)
-            .padding(.bottom, 25)
-            
-            Spacer()
-            
-            VStack {
-                signUpButton
+                VStack {
+                    emailTextField
                     
-                signIn
+                    passwordTextField
+                    
+                    repeatPasswordView
+                    
+                    check()
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                VStack {
+                    signUpButton
+                        
+                    signIn
+                }
+                .padding(.horizontal)
             }
+            .customBackgroundColor(colorScheme: colorScheme)
         }
-        .padding(.horizontal)
         .ignoresSafeArea(.keyboard)
     }
     
     @ViewBuilder
     func checkView(password: String, checkFunction: (String) -> Bool, text: String) -> some View {
         let checkMarkCircle = checkFunction(password) ? "checkmark.circle.fill" : "checkmark.circle"
-        let checkImage = Image(systemName: checkMarkCircle).foregroundColor(checkFunction(password) ? .green : .black)
+        let checkImage = Image(systemName: checkMarkCircle).foregroundColor(checkFunction(password) ? .green : color)
         
         let textView = checkFunction(password) ? Text(text).strikethrough() : Text(text)
         
@@ -94,6 +105,7 @@ struct SignUpView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -116,10 +128,10 @@ struct SignUpView: View {
     func showPasswordButton(showPassword: Bool) -> some View {
         if !showPassword {
             Image(systemName: "eye.slash")
-                .foregroundColor(.black)
+                .foregroundColor(color)
         } else {
             Image(systemName: "eye")
-                .foregroundColor(.black)
+                .foregroundColor(color)
         }
     }
     
@@ -138,7 +150,7 @@ struct SignUpView: View {
                     }
                 }) {
                     Image(systemName: "questionmark.circle")
-                        .foregroundColor(.black)
+                        .foregroundColor(color)
                 }
                 .padding(.trailing, 2)
                 
@@ -149,6 +161,7 @@ struct SignUpView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -169,6 +182,7 @@ struct SignUpView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
                 .padding(.horizontal)
         }
     }
@@ -194,7 +208,7 @@ struct SignUpView: View {
                           text: uppercaseText)
             }
             .transition(.move(edge: .bottom))
-            .foregroundColor(.black)
+            .foregroundColor(color)
             .opacity(0.9)
         } else {
             Spacer()
@@ -213,7 +227,7 @@ struct SignUpView: View {
         .padding(.horizontal)
         .padding(.bottom, 45)
         .disabled(passwordValidation(text: regViewModel.userDetails.password) ? false : true)
-        .foregroundColor(passwordValidation(text: regViewModel.userDetails.password) ? .black : .gray)
+        .foregroundColor(passwordValidation(text: regViewModel.userDetails.password) ? color : .gray)
         .alert(isPresented: $regViewModel.hasError,
                content: {
             if case .failed(let error) = regViewModel.state {
@@ -247,5 +261,8 @@ struct SignUpView: View {
 struct SignUpCombineView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView(showSignUpView: .constant(false))
+        
+        SignUpView(showSignUpView: .constant(false))
+            .preferredColorScheme(.dark)
     }
 }

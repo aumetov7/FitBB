@@ -17,6 +17,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(SessionServiceImpl())
+        
+        ContentView()
+            .environmentObject(SessionServiceImpl())
+            .preferredColorScheme(.dark)
     }
 }
 

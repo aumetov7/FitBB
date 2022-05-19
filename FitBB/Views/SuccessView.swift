@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct SuccessView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     var body: some View {
-        Text("Achievements")
+        GeometryReader { geometry in
+            VStack {
+                Text("Achievements")
+                    .titleText()
+            }
+            .padding()
+        }
+        .customBackgroundColor(colorScheme: colorScheme)
     }
 }
 
 struct SuccessView_Previews: PreviewProvider {
     static var previews: some View {
         SuccessView()
+        
+        SuccessView()
+            .preferredColorScheme(.dark)
     }
 }

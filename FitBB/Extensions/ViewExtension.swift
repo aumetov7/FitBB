@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-// Custom Half Sheet Modifier
-
 extension View {
     func halfSheet<SheetView: View> (showSheet: Binding<Bool>,
                                      @ViewBuilder sheetView: @escaping () -> SheetView,
@@ -19,5 +17,10 @@ extension View {
             .background(
                 HalfSheetHelper(sheetView: sheetView(), onEnd: onEnd, showSheet: showSheet)
             )
+    }
+    
+    func customBackgroundColor(colorScheme: ColorScheme) -> some View {
+        self
+            .background(colorScheme == .dark ? Color("Color2") : Color.white)
     }
 }

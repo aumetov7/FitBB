@@ -26,5 +26,9 @@ struct MedicalInfoCombineView_Previews: PreviewProvider {
     static var previews: some View {
         MedicalInfoCombineView()
             .environmentObject(SessionServiceImpl())
+        
+        MedicalInfoCombineView()
+            .environmentObject(SessionServiceImpl())
+            .preferredColorScheme(.dark)
     }
 }

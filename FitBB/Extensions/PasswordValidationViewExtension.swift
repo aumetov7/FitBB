@@ -1,5 +1,5 @@
 //
-//  SignUpExtension.swift
+//  PasswordValidationViewExtension.swift
 //  FitBB
 //
 //  Created by Акбар Уметов on 26/4/22.

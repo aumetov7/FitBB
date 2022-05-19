@@ -11,6 +11,7 @@ struct ProfileMenuView: View {
     @AppStorage("selectedAppearance") var selectedAppearance = 1
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -21,17 +22,33 @@ struct ProfileMenuView: View {
     var utilities = ColorSchemeUtilites()
     
     var body: some View {
-        List {
-            medicalInfoButton
-            
-            linkAccountsButton
-            
-            changeThemeMenu
-            
-            supportButton
-            
-            logoutButton
+        GeometryReader { geometry in
+            LazyVStack(alignment: .leading) {
+                medicalInfoButton
+                divider(size: geometry.size.width * 0.1)
+                
+                linkAccountsButton
+                divider(size: geometry.size.width * 0.1)
+                
+                changeThemeMenu
+                divider(size: geometry.size.width * 0.1)
+                
+                supportButton
+                divider(size: geometry.size.width * 0.1)
+                
+                logoutButton
+                divider(size: geometry.size.width * 0.1)
+            }
+            .padding()
         }
+        .customBackgroundColor(colorScheme: colorScheme)
+    }
+    
+    @ViewBuilder
+    func divider(size: CGFloat) -> some View {
+        Divider()
+            .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
+            .padding(.leading, size)
     }
     
     @ViewBuilder
@@ -41,8 +58,9 @@ struct ProfileMenuView: View {
                 .resizedToFill(width: 25, height: 25)
             
             Text(buttonName)
+                .makeRound()
         }
-        .foregroundColor(.black)
+        .foregroundColor(colorScheme == .dark ? .white : .black)
     }
     
     var medicalInfoButton: some View {
@@ -53,8 +71,9 @@ struct ProfileMenuView: View {
         } label: {
             menuButtonLabel(imageName: "heart.text.square",
                             buttonName: "Medical Info")
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .listRowBackground(Color("background"))
+        .padding([.top, .bottom], 10)
     }
     
     var linkAccountsButton: some View {
@@ -66,39 +85,56 @@ struct ProfileMenuView: View {
             menuButtonLabel(imageName: "person.crop.circle.badge.plus",
                             buttonName: "Link Accounts")
         }
-        .listRowBackground(Color("background"))
+        .padding([.top, .bottom], 10)
     }
     
     var changeThemeMenu: some View {
-        HStack(spacing: 15) {
-            Image(systemName: "sun.max.circle")
-                .resizedToFill(width: 25, height: 25)
-            
-            Menu("Change Theme") {
-                Button {
-                    selectedAppearance = 1
-                } label: {
+        Menu {
+            Button {
+                selectedAppearance = 1
+            } label: {
+                HStack {
                     Text("System Default")
-                }
-                
-                Button {
-                    selectedAppearance = 2
-                } label: {
-                    Text("Light")
-                }
-                
-                Button {
-                    selectedAppearance = 3
-                } label: {
-                    Text("Dark")
+                        .makeRound()
+                    
+                    if selectedAppearance == 1 {
+                        Image(systemName: "checkmark.circle")
+                    }
                 }
             }
-            .onChange(of: selectedAppearance, perform: { value in
-                utilities.overrideDisplayMode()
-            })
+            
+            Button {
+                selectedAppearance = 2
+            } label: {
+                HStack {
+                    Text("Light")
+                        .makeRound()
+                    
+                    if selectedAppearance == 2 {
+                        Image(systemName: "checkmark.circle")
+                    }
+                }
+            }
+            
+            Button {
+                selectedAppearance = 3
+            } label: {
+                HStack {
+                    Text("Dark")
+                        .makeRound()
+                    
+                    if selectedAppearance == 3 {
+                        Image(systemName: "checkmark.circle")
+                    }
+                }
+            }
+        } label: {
+            menuButtonLabel(imageName: "sun.max.circle", buttonName: "Change Theme")
         }
-        .foregroundColor(.black)
-        .listRowBackground(Color("background"))
+        .onChange(of: selectedAppearance, perform: { value in
+            utilities.overrideDisplayMode()
+        })
+        .padding([.top, .bottom], 10)
     }
     
     var supportButton: some View {
@@ -108,7 +144,7 @@ struct ProfileMenuView: View {
             menuButtonLabel(imageName: "questionmark.circle",
                             buttonName: "Support")
         })
-        .listRowBackground(Color("background"))
+        .padding([.top, .bottom], 10)
     }
     
     var logoutButton: some View {
@@ -120,7 +156,7 @@ struct ProfileMenuView: View {
             menuButtonLabel(imageName: "chevron.backward.circle",
                             buttonName: "Logout")
         })
-        .listRowBackground(Color("background"))
+        .padding([.top, .bottom], 10)
     }
 }
 
@@ -130,5 +166,11 @@ struct ProfileMenuView_Previews: PreviewProvider {
                         showMedicalInfo: .constant(false),
                         showLinkAccount: .constant(false))
         .environmentObject(SessionServiceImpl())
+        
+        ProfileMenuView(showProfileMenu: .constant(true),
+                        showMedicalInfo: .constant(false),
+                        showLinkAccount: .constant(false))
+        .environmentObject(SessionServiceImpl())
+        .preferredColorScheme(.dark)
     }
 }

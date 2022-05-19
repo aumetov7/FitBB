@@ -9,6 +9,8 @@ import SwiftUI
 import GoogleSignIn
 
 struct LinkAccountView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @StateObject private var linkAccountViewModel = LinkAccountViewModelImpl(
         service: LinkAccountServiceImpl()
     )
@@ -17,10 +19,9 @@ struct LinkAccountView: View {
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    //    init() {
-    //        UITableView.appearance().backgroundColor = .clear
-    //        UITableViewCell.appearance().backgroundColor = .clear
-    //    }
+    var color: Color {
+        return colorScheme == .dark ? .white : .black
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -34,13 +35,15 @@ struct LinkAccountView: View {
                                 .resizedToFill(width: 38, height: 38)
                             
                             Text("Google Sign In")
+                                .makeRound()
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: geometry.size.height * 0.05)
                         .padding(.leading)
                     }
                     .buttonStyle(RaisedButtonStyle())
                     .disabled(sessionService.getProviderId().contains("google.com") ? true : false)
-                    .foregroundColor(sessionService.getProviderId().contains("google.com") ? .gray : .black)
+                    .foregroundColor(sessionService.getProviderId().contains("google.com") ? .gray : color)
                     .frame(width: geometry.size.width * 0.5)
                     .padding(.all)
                     
@@ -54,18 +57,21 @@ struct LinkAccountView: View {
                         showEmailPasswordLinkView.toggle()
                     } label: {
                         HStack(spacing: 5) {
-                            //                        Image(systemName: "envelope.circle.fill")
-                            Image("email")
-                                .resizedToFill(width: 38, height: 38)
+//                            Image("email")
+                            Image(systemName: "envelope.circle.fill")
+                                .resizedToFill(width: 32, height: 32)
+                                .foregroundColor(color)
                             
                             Text("Email/Password")
+                                .makeRound()
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: geometry.size.height * 0.05)
                         .padding(.leading)
                     }
                     .buttonStyle(RaisedButtonStyle())
                     .disabled(sessionService.getProviderId().contains("password") ? true : false)
-                    .foregroundColor(sessionService.getProviderId().contains("password") ? .gray : .black)
+                    .foregroundColor(sessionService.getProviderId().contains("password") ? .gray : color)
                     .frame(width: geometry.size.width * 0.5)
                     .padding(.all)
                     
@@ -77,6 +83,7 @@ struct LinkAccountView: View {
             .padding(.all)
             .navigationTitle("Link Accounts")
         }
+        .customBackgroundColor(colorScheme: colorScheme)
         .sheet(isPresented: $showEmailPasswordLinkView) {
             EmailPasswordLinkView(linkAccountViewModel: linkAccountViewModel,
                                   showEmailPasswordLinkView: $showEmailPasswordLinkView)
@@ -99,6 +106,10 @@ struct LinkAccountView_Previews: PreviewProvider {
     static var previews: some View {
         LinkAccountView()
             .environmentObject(SessionServiceImpl())
+        
+        LinkAccountView()
+            .environmentObject(SessionServiceImpl())
+            .preferredColorScheme(.dark)
     }
 }
 

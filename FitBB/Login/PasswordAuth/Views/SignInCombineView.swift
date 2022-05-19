@@ -44,5 +44,8 @@ struct SignInCombineView: View {
 struct SignInCombineView_Previews: PreviewProvider {
     static var previews: some View {
         SignInCombineView(showSignUpView: .constant(false))
+        
+        SignInCombineView(showSignUpView: .constant(false))
+            .preferredColorScheme(.dark)
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileDetailView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @ObservedObject var updateProfileViewModel: UpdateProfileViewModelImpl
     
     @Binding var showProfileDetailView: Bool
@@ -16,33 +18,46 @@ struct ProfileDetailView: View {
     var goalArray = ["Muscle Grow", "Burn Fat", "Work Out"]
     var daysArray = ["1", "2", "3", "4"]
     
+    var color: Color {
+        return colorScheme == .dark ? Color.white : Color(UIColor.lightGray)
+    }
+    
     var body: some View {
-        VStack {
-            Spacer()
-            
-            signUpText
-            
-            Spacer()
-            
+        GeometryReader { geometry in
             VStack {
-                firtNameTextField
+                Spacer()
                 
-                dateOfBirthTextField
+                signUpText
                 
-                segmentedPickerTextField(text: "Gender", selection: $updateProfileViewModel.userDetails.gender, array: genderArray)
-                segmentedPickerTextField(text: "Goal", selection: $updateProfileViewModel.userDetails.goal, array: goalArray)
-                segmentedPickerTextField(text: "Days", selection: $updateProfileViewModel.userDetails.days, array: daysArray)
+                Spacer()
+                
+                VStack {
+                    firtNameTextField
+                    
+                    dateOfBirthTextField
+                    
+                    segmentedPickerTextField(text: "Gender",
+                                             selection: $updateProfileViewModel.userDetails.gender,
+                                             array: genderArray)
+                    segmentedPickerTextField(text: "Goal",
+                                             selection: $updateProfileViewModel.userDetails.goal,
+                                             array: goalArray)
+                    segmentedPickerTextField(text: "Days",
+                                             selection: $updateProfileViewModel.userDetails.days,
+                                             array: daysArray)
+                }
+                .frame(height: 316, alignment: .center)
+                .padding(.bottom, 25)
+                
+                Spacer()
+                
+                updateButton
+                    .padding(.horizontal)
+                    .padding(.bottom, 65)
             }
-            .frame(height: 316, alignment: .center)
-            .padding(.bottom, 25)
-            
-            Spacer()
-            
-            updateButton
-                .padding(.horizontal)
-                .padding(.bottom, 65)
+            .padding(.horizontal)
+            .customBackgroundColor(colorScheme: colorScheme)
         }
-        .padding(.horizontal)
         .ignoresSafeArea(.keyboard)
     }
     
@@ -69,6 +84,7 @@ struct ProfileDetailView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(color)
                 .padding(.horizontal)
         }
     }
@@ -86,6 +102,7 @@ struct ProfileDetailView: View {
             .padding(.horizontal)
             
             Divider()
+                .background(color)
                 .padding(.horizontal)
         }
     }
@@ -104,9 +121,9 @@ struct ProfileDetailView: View {
                 }
                 .pickerStyle(.segmented)
             }
-            .padding(.horizontal)
             
             Divider()
+                .background(color)
         }
         .padding(.horizontal)
     }
@@ -121,7 +138,13 @@ struct ProfileDetailView: View {
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(service: UpdateProfileServiceImpl()),
+        ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(
+                            service: UpdateProfileServiceImpl()),
                           showProfileDetailView: .constant(true))
+        
+        ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(
+                            service: UpdateProfileServiceImpl()),
+                          showProfileDetailView: .constant(true))
+        .preferredColorScheme(.dark)
     }
 }

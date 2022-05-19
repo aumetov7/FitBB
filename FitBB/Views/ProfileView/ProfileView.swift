@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @StateObject private var updateProfileViewModel = UpdateProfileViewModelImpl(
         service: UpdateProfileServiceImpl()
     )
@@ -23,6 +25,10 @@ struct ProfileView: View {
     @State private var showMedicalInfoChatView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
+    
+    var color: Color {
+        return colorScheme == .dark ? .white : .black
+    }
     
     var body: some View {
         NavigationView {
@@ -53,6 +59,7 @@ struct ProfileView: View {
                 
                 Spacer()
             }
+            .customBackgroundColor(colorScheme: colorScheme)
             .navigationBarHidden(true)
             .onChange(of: inputImage) { newImage in
                 loadImage()
@@ -104,11 +111,18 @@ struct ProfileView: View {
             showProfileMenu.toggle()
             print("ShowProfileMenu: \(showProfileMenu)")
         } label: {
-            Image(systemName: "line.3.horizontal")
-                .resizedToFill(width: 15, height: 15)
-                .font(.headline)
-                .foregroundColor(.black)
-                .padding(5)
+            ZStack {
+                Rectangle()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(colorScheme == .dark ? Color("Color2") : Color.white)
+                    
+                
+                Image(systemName: "line.3.horizontal")
+                    .resizedToFill(width: 15, height: 15)
+                    .font(.headline)
+                    .foregroundColor(color)
+                    .padding(5)
+            }
         }
         //        .buttonStyle(EmbossedButtonStyle())
         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -120,10 +134,16 @@ struct ProfileView: View {
         Button {
             showProfileDetailView.toggle()
         } label: {
-            Text("Edit")
-                .makeRound()
-                .foregroundColor(.black)
-                .padding([.leading, .trailing], 10)
+            ZStack {
+                Rectangle()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(colorScheme == .dark ? Color("Color2") : Color.white)
+                
+                Text("Edit")
+                    .makeRound()
+                    .foregroundColor(color)
+                    .padding([.leading, .trailing], 10)
+            }
         }
         //        .buttonStyle(EmbossedButtonStyle())
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -151,7 +171,7 @@ struct ProfileView: View {
             ZStack {
                 Circle()
                     .frame(width: 150, height: 150)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray.opacity(0.15))
                 
                 Text("""
                     Choose profile
@@ -199,5 +219,9 @@ struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
             .environmentObject(SessionServiceImpl())
+        
+        ProfileView()
+            .environmentObject(SessionServiceImpl())
+            .preferredColorScheme(.dark)
     }
 }
