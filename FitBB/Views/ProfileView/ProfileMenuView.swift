@@ -53,14 +53,15 @@ struct ProfileMenuView: View {
     
     @ViewBuilder
     func menuButtonLabel(imageName: String, buttonName: String) -> some View {
-        HStack(spacing: 15) {
-            Image(systemName: imageName)
-                .resizedToFill(width: 25, height: 25)
-            
-            Text(buttonName)
-                .makeRound()
-        }
-        .foregroundColor(colorScheme == .dark ? .white : .black)
+            HStack(spacing: 15) {
+                Image(systemName: imageName)
+                    .resizedToFill(width: 25, height: 25)
+                
+                Text(buttonName)
+                    .makeRound()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(colorScheme == .dark ? .white : .black)
     }
     
     var medicalInfoButton: some View {
@@ -71,7 +72,6 @@ struct ProfileMenuView: View {
         } label: {
             menuButtonLabel(imageName: "heart.text.square",
                             buttonName: "Medical Info")
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding([.top, .bottom], 10)
     }
@@ -172,5 +172,11 @@ struct ProfileMenuView_Previews: PreviewProvider {
                         showLinkAccount: .constant(false))
         .environmentObject(SessionServiceImpl())
         .preferredColorScheme(.dark)
+        
+        ProfileMenuView(showProfileMenu: .constant(true),
+                        showMedicalInfo: .constant(false),
+                        showLinkAccount: .constant(false))
+        .environmentObject(SessionServiceImpl())
+        .previewDevice("iPhone 8")
     }
 }

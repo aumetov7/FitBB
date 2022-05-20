@@ -44,6 +44,17 @@ struct RaisedButton_Previews: PreviewProvider {
         .buttonStyle(RaisedButtonStyle())
         .background(Color("background"))
         .previewLayout(.sizeThatFits)
+        
+        ZStack {
+            RaisedButton(buttonText: "Continue") {
+                print("Continue")
+            }
+        }
+        .padding()
+        .buttonStyle(RaisedButtonStyle())
+        .background(Color("Color2"))
+        .previewLayout(.sizeThatFits)
+        .preferredColorScheme(.dark)
     }
 }
 

@@ -17,41 +17,31 @@ struct ForgetPasswordView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                
                 forgetPasswordText
+                    .frame(height: geometry.size.height / 5, alignment: .top)
                 
-                Spacer()
-                
-                VStack {
-                    emailTextField
-                }
-                .frame(height: 316, alignment: .center)
-                .padding(.bottom, 25)
-                .padding(.horizontal)
-                
-                Spacer()
+                emailTextField
+                    .frame(height: geometry.size.height / 3.5)
                 
                 resetPasswordButton
-                    .padding(.horizontal)
-                    .padding(.bottom, 65)
+                    .frame(height: geometry.size.height / 5, alignment: .bottom)
             }
-            .customBackgroundColor(colorScheme: colorScheme)
+            .frame(height: geometry.size.height)
+            .padding(.horizontal)
         }
+        .customBackgroundColor(colorScheme: colorScheme)
         .ignoresSafeArea(.keyboard)
     }
     
     var forgetPasswordText: some View {
         Text("PASSWORD")
             .titleText()
-            .padding(.horizontal)
     }
     
     var emailTextField: some View {
         VStack(alignment: .leading) {
             Text("Email")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 TextField("", text: $forgetPasswordViewModel.email)
@@ -59,13 +49,11 @@ struct ForgetPasswordView: View {
                     .disableAutocorrection(true)
                     .keyboardType(.emailAddress)
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
-        
+        .padding(.horizontal)
     }
     
     var resetPasswordButton: some View {
@@ -80,11 +68,11 @@ struct ForgetPasswordView: View {
 struct ForgetPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         ForgetPasswordView(forgetPasswordViewModel: ForgetPasswordViewModelImpl(
-                            service: ForgetPasswordServiceImpl()),
+            service: ForgetPasswordServiceImpl()),
                            showForgetPasswordView: .constant(true))
         
         ForgetPasswordView(forgetPasswordViewModel: ForgetPasswordViewModelImpl(
-                            service: ForgetPasswordServiceImpl()),
+            service: ForgetPasswordServiceImpl()),
                            showForgetPasswordView: .constant(true))
         .preferredColorScheme(.dark)
     }

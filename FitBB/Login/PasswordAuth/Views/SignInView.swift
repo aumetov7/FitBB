@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GoogleSignIn
 
 struct SignInView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -27,105 +26,87 @@ struct SignInView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                
                 signInText
-                
-                Spacer()
+                    .frame(height: geometry.size.height / 5)
                 
                 VStack {
                     emailTextField
-                    
                     passwordTextField
-                    
+                }
+                .frame(height: geometry.size.height / 3.5, alignment: .bottom)
+                
+                VStack(spacing: 10) {
                     forgetPasswordButton
-                    
                     anonymousAuthButton
                 }
-                .frame(height: 316, alignment: .center)
-                .padding(.bottom, 25)
-                .padding(.horizontal)
+                .frame(height: geometry.size.height / 9, alignment: .top)
                 
-                Spacer()
+                signInButton
+                    .frame(height: geometry.size.height / 6, alignment: .bottom)
                 
-                VStack {
-                    signInButton
-                    
+                VStack(spacing: 10) {
                     connectWithText
-                        .padding(.horizontal)
-                    
                     connectWithButtons
-                    
                     signUp
                 }
-                .padding(.horizontal)
-                
+                .frame(height: geometry.size.height / 7, alignment: .bottom)
             }
-            .customBackgroundColor(colorScheme: colorScheme)
-            
+            .frame(height: geometry.size.height)
+            .padding(.horizontal)
         }
         .ignoresSafeArea(.keyboard)
+        .customBackgroundColor(colorScheme: colorScheme)
     }
     
     var signInText: some View {
         Text("SIGN IN")
             .titleText()
-            .padding(.horizontal)
     }
     
     var emailTextField: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Email")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 TextField("", text: $loginViewModel.credential.email)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
+                    .textField()
                     .keyboardType(.emailAddress)
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     var passwordTextField: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Password")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 if !showPassword {
                     SecureField("", text: $loginViewModel.credential.password)
+                        .textContentType(.password)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
                 } else {
                     TextField("", text: $loginViewModel.credential.password)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
+                        .textField()
+                        .textContentType(.password)
                 }
                 
                 Button(action: { showPassword.toggle() }) {
-                    if !showPassword {
-                        Image(systemName: "eye.slash")
-                            .foregroundColor(color)
-                    } else {
-                        Image(systemName: "eye")
-                            .foregroundColor(color)
-                    }
+                    Image(systemName: !showPassword ? "eye.slash" : "eye")
+                        .foregroundColor(color)
                 }
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     var forgetPasswordButton: some View {
@@ -136,11 +117,10 @@ struct SignInView: View {
                 Text("Forget Password?")
                     .underline()
                     .signText()
-                    .padding(.leading)
+                //                    .foregroundColor(color)
             }
         }
         .padding(.horizontal)
-        .padding(.top, 30)
     }
     
     var anonymousAuthButton: some View {
@@ -151,7 +131,7 @@ struct SignInView: View {
                 Text("Anonymous Authentification")
                     .underline()
                     .signText()
-                    .padding(.leading)
+                //                    .foregroundColor(color)
             }
             .alert(isPresented: $anonymousAuthViewModel.hasError,
                    content: {
@@ -165,7 +145,6 @@ struct SignInView: View {
             })
         }
         .padding(.horizontal)
-        .padding(.top, 2)
     }
     
     var signInButton: some View {
@@ -173,7 +152,6 @@ struct SignInView: View {
             loginViewModel.login()
         }
         .padding(.horizontal)
-        .padding(.bottom, 45)
         .alert(isPresented: $loginViewModel.hasError,
                content: {
             if case .failed(let error) = loginViewModel.state {
@@ -195,14 +173,14 @@ struct SignInView: View {
             
             Text("Or Connect with")
                 .signText()
-                .frame(width: 120)
-                .lineLimit(1)
+                .fixedSize()
             
             VStack {
                 Divider()
                     .background(color)
             }
         }
+        .padding(.horizontal)
     }
     
     var connectWithButtons: some View {
@@ -237,9 +215,10 @@ struct SignInView: View {
                 Text("Sign Up")
                     .underline()
                     .signText()
+                //                    .foregroundColor(color)
             }
         }
-        .padding(.bottom)
+        //        .padding(.bottom)
     }
 }
 
@@ -263,5 +242,15 @@ struct SignInView_Previews: PreviewProvider {
                    showSignUpView: .constant(false),
                    showForgetPasswordView: .constant(false))
         .preferredColorScheme(.dark)
+        
+        SignInView(loginViewModel: LoginViewModelImpl(
+            service: LoginServiceImpl()),
+                   googleSignInViewModel: GoogleSignInViewModelImpl(
+                    service: GoogleSignInServiceImpl()),
+                   anonymousAuthViewModel: AnonymousAuthViewModelImpl(
+                    service: AnonymousAuthServiseImpl()),
+                   showSignUpView: .constant(false),
+                   showForgetPasswordView: .constant(false))
+        .previewDevice("iPhone 8")
     }
 }

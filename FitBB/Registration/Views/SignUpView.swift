@@ -13,7 +13,7 @@ struct SignUpView: View {
     @StateObject private var regViewModel = RegistrationViewModelImpl(
         service: RegistrationServiceImpl()
     )
-
+    
     @State private var showPassword = false
     @State private var showRepeatPassword = false
     @State private var showPasswordDetails = false
@@ -35,38 +35,32 @@ struct SignUpView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                
                 signUpText
-                    .padding(.horizontal)
-                
-                Spacer()
+                    .frame(height: geometry.size.height / 5)
                 
                 VStack {
                     emailTextField
-                    
                     passwordTextField
-                    
-                    repeatPasswordView
-                    
-                    check()
+                    repeatPasswordTextField
                 }
-                .frame(height: 316, alignment: .center)
-                .padding(.bottom, 25)
-                .padding(.horizontal)
-                
-                Spacer()
+                .frame(height: geometry.size.height / 3.5, alignment: .bottom)
                 
                 VStack {
-                    signUpButton
-                        
-                    signIn
+                    check()
                 }
-                .padding(.horizontal)
+                .frame(height: geometry.size.height / 6, alignment: .top)
+                
+                signUpButton
+                    .frame(height: geometry.size.height / 9, alignment: .bottom)
+                
+                signIn
+                    .frame(height: geometry.size.height / 7, alignment: .bottom)
             }
-            .customBackgroundColor(colorScheme: colorScheme)
+            .frame(height: geometry.size.height)
+            .padding(.horizontal)
         }
         .ignoresSafeArea(.keyboard)
+        .customBackgroundColor(colorScheme: colorScheme)
     }
     
     @ViewBuilder
@@ -83,7 +77,6 @@ struct SignUpView: View {
                 .font(.footnote)
                 .fontWeight(.light)
         }
-        .padding(.trailing)
     }
     
     var signUpText: some View {
@@ -95,82 +88,69 @@ struct SignUpView: View {
         VStack(alignment: .leading) {
             Text("Email")
                 .signText()
-                .padding(.leading)
             
-            HStack {
-                TextField("", text: $regViewModel.userDetails.email)
-                    .textField()
-                    .keyboardType(.emailAddress)
-            }
-            .padding(.horizontal)
+            TextField("", text: $regViewModel.userDetails.email)
+                .textField()
+                .keyboardType(.emailAddress)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
     func showPasswordTextField(showPassword: Bool, text: Binding<String>) -> some View {
         if !showPassword {
             SecureField("", text: text)
-                .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
-                .textContentType(.password)
+                .textInputAutocapitalization(.never)
+                .textContentType(.newPassword)
         } else {
             TextField("", text: text)
                 .textField()
-                .textContentType(.password)
+                .textContentType(.newPassword)
         }
     }
     
     @ViewBuilder
     func showPasswordButton(showPassword: Bool) -> some View {
-        if !showPassword {
-            Image(systemName: "eye.slash")
-                .foregroundColor(color)
-        } else {
-            Image(systemName: "eye")
-                .foregroundColor(color)
-        }
+        Image(systemName: !showPassword ? "eye.slash" : "eye")
+            .foregroundColor(color)
     }
     
     var passwordTextField: some View {
         VStack(alignment: .leading) {
             Text("Password")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 showPasswordTextField(showPassword: showPassword, text: $regViewModel.userDetails.password)
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         showPasswordDetails.toggle()
                     }
-                }) {
+                } label: {
                     Image(systemName: "questionmark.circle")
                         .foregroundColor(color)
                 }
-                .padding(.trailing, 2)
                 
                 Button(action: { showPassword.toggle() }) {
                     showPasswordButton(showPassword: showPassword)
                 }
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
-    var repeatPasswordView: some View {
+    var repeatPasswordTextField: some View {
         VStack(alignment: .leading) {
-            Text("Repeat password")
+            Text("Repeat Password")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 showPasswordTextField(showPassword: showRepeatPassword, text: $regViewModel.userDetails.repeatPassword)
@@ -179,12 +159,11 @@ struct SignUpView: View {
                     showPasswordButton(showPassword: showRepeatPassword)
                 }
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -207,11 +186,9 @@ struct SignUpView: View {
                           checkFunction: isContainsUppercaseLetter,
                           text: uppercaseText)
             }
-            .transition(.move(edge: .bottom))
+            .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
             .foregroundColor(color)
             .opacity(0.9)
-        } else {
-            Spacer()
         }
     }
     
@@ -225,7 +202,6 @@ struct SignUpView: View {
             }
         })
         .padding(.horizontal)
-        .padding(.bottom, 45)
         .disabled(passwordValidation(text: regViewModel.userDetails.password) ? false : true)
         .foregroundColor(passwordValidation(text: regViewModel.userDetails.password) ? color : .gray)
         .alert(isPresented: $regViewModel.hasError,
@@ -252,10 +228,11 @@ struct SignUpView: View {
                 Text("Sign In")
                     .underline()
                     .signText()
+                //                    .foregroundColor(color)
             }
         }
     }
-
+    
 }
 
 struct SignUpCombineView_Previews: PreviewProvider {
@@ -264,5 +241,8 @@ struct SignUpCombineView_Previews: PreviewProvider {
         
         SignUpView(showSignUpView: .constant(false))
             .preferredColorScheme(.dark)
+        
+        SignUpView(showSignUpView: .constant(false))
+            .previewDevice("iPhone 8")
     }
 }
