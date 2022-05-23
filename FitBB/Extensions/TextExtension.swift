@@ -35,7 +35,13 @@ extension Text {
             .padding(.leading)
     }
     
-    
+    func rounedTitle() -> some View {
+        self
+            .font(.system(.largeTitle, design: .rounded))
+            .fontWeight(.black)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
+    }
 }
 
 extension TextField {

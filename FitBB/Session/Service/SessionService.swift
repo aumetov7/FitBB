@@ -19,17 +19,18 @@ protocol SessionService {
     var state: SessionState { get }
     var userDetails: SessionUserDetails? { get }
     var medicalDetails: SessionMedicalDetails? { get }
-    var loading: Bool { get }
+    var fetched: Bool { get }
     
     func getProviderId() -> [String]
     func logout()
+    func getCurrentTime() -> String
 }
 
 final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDetails?
     @Published var medicalDetails: SessionMedicalDetails?
-    @Published var loading: Bool = false
+    @Published var fetched: Bool = false
     
     private var handler: AuthStateDidChangeListenerHandle?
     
@@ -39,7 +40,6 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     
     func getProviderId() -> [String] {
         var providerIDArray: [String] = []
-        
         
         guard let providerData = Auth.auth().currentUser?.providerData else { return providerIDArray }
 
@@ -55,6 +55,17 @@ final class SessionServiceImpl: ObservableObject, SessionService {
         userDetails = nil
         medicalDetails = nil
     }
+    
+    func getCurrentTime() -> String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        switch hour {
+        case 6 ..< 12: return "Good Morning"
+        case 12 ..< 18: return "Good Afternoon"
+        case 18 ..< 24: return "Good Evening"
+        default: return "Good Night"
+        }
+    }
 }
 
 private extension SessionServiceImpl {
@@ -69,6 +80,7 @@ private extension SessionServiceImpl {
                     print("Detail UID: \(uid)")
                     self.accountInfoHandleRefresh(with: uid)
                     self.medicalInfoHandleRefresh(with: uid)
+                    self.checkFetching(with: uid)
                 }
             }
     }
@@ -100,7 +112,21 @@ private extension SessionServiceImpl {
                                                           goal: goal,
                                                           days: days)
                 }
+                
+                self.fetched = true
             }
+    }
+    
+    func checkFetching(with uid: String) {
+        Database
+            .database()
+            .reference()
+            .child("users")
+            .observe(.value) { snapshot in
+            if !snapshot.hasChild(uid) {
+                self.fetched = true
+            }
+        }
     }
     
     func medicalInfoHandleRefresh(with uid: String) {

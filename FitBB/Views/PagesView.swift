@@ -12,7 +12,8 @@ struct PagesView: View {
     
     var body: some View {
         TabView {
-            ProfileView()
+            //            ProfileView()
+            HomeView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")

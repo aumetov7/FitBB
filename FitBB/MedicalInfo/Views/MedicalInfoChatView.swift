@@ -94,7 +94,7 @@ struct MedicalInfoChatView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 30)
                                 .foregroundColor(Color("background"))
-                                .frame(height: geometry.size.height * 0.26)
+                                .frame(height: geometry.size.height / 4)
                                 .padding([.leading, .trailing])
                             
                             if !startQuestionaire {
@@ -112,7 +112,6 @@ struct MedicalInfoChatView: View {
             }
             .customBackgroundColor(colorScheme: colorScheme)
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
     
     @ViewBuilder

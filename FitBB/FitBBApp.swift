@@ -35,11 +35,15 @@ struct FitBBApp: App {
         WindowGroup {
             switch sessionService.state {
             case .loggedIn:
-                ContentView()
-                    .environmentObject(sessionService)
-                    .onAppear {
-                        utilities.overrideDisplayMode()
-                    }
+                if sessionService.fetched == false {
+                    ProgressView()
+                } else {
+                    ContentView()
+                        .environmentObject(sessionService)
+                        .onAppear {
+                            utilities.overrideDisplayMode()
+                        }
+                }
             case .loggedOut:
                 SignView()
                     .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)

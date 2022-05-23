@@ -16,7 +16,7 @@ struct ProfileMenuView: View {
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @Binding var showProfileMenu: Bool
-    @Binding var showMedicalInfo: Bool
+//    @Binding var showMedicalInfo: Bool
     @Binding var showLinkAccount: Bool
     
     var utilities = ColorSchemeUtilites()
@@ -24,8 +24,8 @@ struct ProfileMenuView: View {
     var body: some View {
         GeometryReader { geometry in
             LazyVStack(alignment: .leading) {
-                medicalInfoButton
-                divider(size: geometry.size.width * 0.1)
+//                medicalInfoButton
+//                divider(size: geometry.size.width * 0.1)
                 
                 linkAccountsButton
                 divider(size: geometry.size.width * 0.1)
@@ -64,17 +64,17 @@ struct ProfileMenuView: View {
             .foregroundColor(colorScheme == .dark ? .white : .black)
     }
     
-    var medicalInfoButton: some View {
-        Button {
-            dismiss()
-            showProfileMenu.toggle()
-            showMedicalInfo.toggle()
-        } label: {
-            menuButtonLabel(imageName: "heart.text.square",
-                            buttonName: "Medical Info")
-        }
-        .padding([.top, .bottom], 10)
-    }
+//    var medicalInfoButton: some View {
+//        Button {
+//            dismiss()
+//            showProfileMenu.toggle()
+//            showMedicalInfo.toggle()
+//        } label: {
+//            menuButtonLabel(imageName: "heart.text.square",
+//                            buttonName: "Medical Info")
+//        }
+//        .padding([.top, .bottom], 10)
+//    }
     
     var linkAccountsButton: some View {
         Button {
@@ -163,18 +163,18 @@ struct ProfileMenuView: View {
 struct ProfileMenuView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileMenuView(showProfileMenu: .constant(true),
-                        showMedicalInfo: .constant(false),
+//                        showMedicalInfo: .constant(false),
                         showLinkAccount: .constant(false))
         .environmentObject(SessionServiceImpl())
         
         ProfileMenuView(showProfileMenu: .constant(true),
-                        showMedicalInfo: .constant(false),
+//                        showMedicalInfo: .constant(false),
                         showLinkAccount: .constant(false))
         .environmentObject(SessionServiceImpl())
         .preferredColorScheme(.dark)
         
         ProfileMenuView(showProfileMenu: .constant(true),
-                        showMedicalInfo: .constant(false),
+//                        showMedicalInfo: .constant(false),
                         showLinkAccount: .constant(false))
         .environmentObject(SessionServiceImpl())
         .previewDevice("iPhone 8")

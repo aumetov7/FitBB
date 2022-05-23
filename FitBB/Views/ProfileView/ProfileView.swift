@@ -19,10 +19,8 @@ struct ProfileView: View {
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
     @State private var showProfileDetailView = false
-    @State private var showProfileMenu = false
     @State private var showMedicalInfo = false
-    @State private var showLinkAccount = false
-    @State private var showMedicalInfoChatView = false
+    //    @State private var showMedicalInfoChatView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -31,22 +29,11 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        NavigationView {
+        GeometryReader { geometry in
             VStack {
-                NavigationLink(destination: MedicalInfoCombineView(), isActive: $showMedicalInfo) {
-                    EmptyView()
-                }
-                
-                NavigationLink(destination: LinkAccountView(), isActive: $showLinkAccount) {
-                    EmptyView()
-                }
-                
-                HStack(alignment: .center) {
-                    editButton
-                    profileMenuButton
-                }
-                
-                welcomeUserText
+                //                NavigationLink(destination: MedicalInfoCombineView(), isActive: $showMedicalInfo) {
+                //                    EmptyView()
+                //                }
                 
                 ZStack(alignment: .bottomTrailing) {
                     profileImage
@@ -57,10 +44,19 @@ struct ProfileView: View {
                 
                 userDetails
                 
-                Spacer()
+                
+                
+                RaisedButton(buttonText: "Medical Info") {
+                    showMedicalInfo.toggle()
+                }
+                .padding([.horizontal, .bottom, .top])
             }
-            .customBackgroundColor(colorScheme: colorScheme)
-            .navigationBarHidden(true)
+            .padding(.horizontal)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    editButton
+                }
+            }
             .onChange(of: inputImage) { newImage in
                 loadImage()
                 profileImageService.updateProfileImage(with: newImage!)
@@ -72,16 +68,12 @@ struct ProfileView: View {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
                                   showProfileDetailView: $showProfileDetailView)
             }
-            .halfSheet(showSheet: $showProfileMenu, sheetView: {
-                ProfileMenuView(showProfileMenu: $showProfileMenu,
-                                showMedicalInfo: $showMedicalInfo,
-                                showLinkAccount: $showLinkAccount)
-                .environmentObject(sessionService)
-            }, onEnd: {
-                print("Dismiss")
+            .sheet(isPresented: $showMedicalInfo, content: {
+                MedicalInfoCombineView()
             })
-        }
         .task(checkInfo)
+        }
+        .customBackgroundColor(colorScheme: colorScheme)
     }
     
     func loadImage() {
@@ -94,40 +86,16 @@ struct ProfileView: View {
         
         if sessionService.userDetails == nil ||
             (sessionService.userDetails?.firstName == "" &&
-            sessionService.userDetails?.dateOfBirth == "" &&
-            sessionService.userDetails?.gender == "" &&
-            sessionService.userDetails?.goal == "" &&
-            sessionService.userDetails?.days == "") {
+             sessionService.userDetails?.dateOfBirth == "" &&
+             sessionService.userDetails?.gender == "" &&
+             sessionService.userDetails?.goal == "" &&
+             sessionService.userDetails?.days == "") {
             showProfileDetailView.toggle()
         }
         
-        if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
-            showMedicalInfoChatView.toggle()
-        }
-    }
-    
-    var profileMenuButton: some View {
-        Button {
-            showProfileMenu.toggle()
-            print("ShowProfileMenu: \(showProfileMenu)")
-        } label: {
-            ZStack {
-                Rectangle()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(colorScheme == .dark ? Color("Color2") : Color.white)
-                    
-                
-                Image(systemName: "line.3.horizontal")
-                    .resizedToFill(width: 15, height: 15)
-                    .font(.headline)
-                    .foregroundColor(color)
-                    .padding(5)
-            }
-        }
-        //        .buttonStyle(EmbossedButtonStyle())
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .padding(.top, 25)
-        .padding(.trailing, 20)
+        //        if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
+        //            showMedicalInfoChatView.toggle()
+        //        }
     }
     
     var editButton: some View {
@@ -145,10 +113,6 @@ struct ProfileView: View {
                     .padding([.leading, .trailing], 10)
             }
         }
-        //        .buttonStyle(EmbossedButtonStyle())
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.top, 25)
-        .padding(.leading, 20)
     }
     
     var welcomeUserText: some View {
