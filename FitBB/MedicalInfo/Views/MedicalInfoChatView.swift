@@ -60,12 +60,17 @@ struct MedicalInfoChatView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                Text("Medical Questionnaire")
+                    .titleText()
+                    .padding(.top)
+//                    .frame(height: geometry.size.height / 9, alignment: .bottom)
+                
                 VStack {
                     if showTypingText {
                         typing
                     }
                 }
-                .frame(height: geometry.size.height * 0.04)
+                .frame(height: geometry.size.height * 0.02)
                 
                 Divider()
                     .background(color)
@@ -328,5 +333,8 @@ struct MedicalInfoChatView_Previews: PreviewProvider {
         
         MedicalInfoChatView()
             .preferredColorScheme(.dark)
+        
+        MedicalInfoChatView()
+            .previewDevice("iPhone 8")
     }
 }

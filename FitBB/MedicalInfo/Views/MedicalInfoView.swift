@@ -14,28 +14,36 @@ struct MedicalInfoView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Weight: \(sessionService.medicalDetails?.weight ?? "N/A")")
-                    .makeRound()
-                Text("Height: \(sessionService.medicalDetails?.height ?? "N/A")")
-                    .makeRound()
-                Text("Blood pressure: \(sessionService.medicalDetails?.bloodPressure ?? "N/A")")
-                    .makeRound()
-                Text("Eyes: \(sessionService.medicalDetails?.eyes ?? "N/A")")
-                    .makeRound()
-                Text("Spine: \(sessionService.medicalDetails?.spine ?? "N/A")")
-                    .makeRound()
-                if sessionService.medicalDetails?.spine == "hernia" || sessionService.medicalDetails?.spine == "protrusion" {
-                    Text("Spine Part: \(spinePartArray[sessionService.medicalDetails?.spinePartSelectedIndex ?? 0])")
+            VStack {
+                Text("Medical Details")
+                    .titleText()
+                    .frame(height: geometry.size.height / 5, alignment: .top)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Weight: \(sessionService.medicalDetails?.weight ?? "N/A")")
+                        .makeRound()
+                    Text("Height: \(sessionService.medicalDetails?.height ?? "N/A")")
+                        .makeRound()
+                    Text("Blood pressure: \(sessionService.medicalDetails?.bloodPressure ?? "N/A")")
+                        .makeRound()
+                    Text("Eyes: \(sessionService.medicalDetails?.eyes ?? "N/A")")
+                        .makeRound()
+                    Text("Spine: \(sessionService.medicalDetails?.spine ?? "N/A")")
+                        .makeRound()
+                    if sessionService.medicalDetails?.spine == "hernia" || sessionService.medicalDetails?.spine == "protrusion" {
+                        Text("Spine Part: \(spinePartArray[sessionService.medicalDetails?.spinePartSelectedIndex ?? 0])")
+                            .makeRound()
+                    }
+                    Text("Heart: \(heartArray[sessionService.medicalDetails?.heartSelectedIndex ?? 0])")
+                        .makeRound()
+                    Text("Joints and Ligaments: \(jointsAndLigamentsArray[sessionService.medicalDetails?.jointsAndLigamentsSelectedIndex ?? 0])")
                         .makeRound()
                 }
-                Text("Heart: \(heartArray[sessionService.medicalDetails?.heartSelectedIndex ?? 0])")
-                    .makeRound()
-                Text("Joints and Ligaments: \(jointsAndLigamentsArray[sessionService.medicalDetails?.jointsAndLigamentsSelectedIndex ?? 0])")
-                    .makeRound()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: geometry.size.height / 1.5, alignment: .top)
+                .padding(.horizontal)
             }
-            .frame(maxWidth: .infinity,alignment: .leading)
-            .padding([.leading, .top])
+            .frame(height: geometry.size.height)
         }
         .customBackgroundColor(colorScheme: colorScheme)
     }

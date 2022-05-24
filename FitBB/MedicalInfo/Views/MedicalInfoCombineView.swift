@@ -13,10 +13,10 @@ struct MedicalInfoCombineView: View {
     var body: some View {
         if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
             MedicalInfoChatView()
-                .navigationTitle("Medical Questionnaire")
+//                .navigationTitle("Medical Questionnaire")
         } else {
             MedicalInfoView()
-                .navigationTitle("Medical Details")
+//                .navigationTitle("Medical Details")
                 .environmentObject(sessionService)
         }
     }

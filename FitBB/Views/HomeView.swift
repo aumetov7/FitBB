@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -16,12 +17,25 @@ struct HomeView: View {
     @State private var showLinkAccount = false
     @State private var showProfileView = false
     
+    
     var color: Color {
         return colorScheme == .dark ? .white : .black
     }
     
     var comma: String {
         return sessionService.userDetails?.firstName != nil ? ", " : ""
+    }
+    
+    var currentProgress: CGFloat {
+        if sessionService.userDetails == nil && sessionService.medicalDetails == nil {
+            return 0.0
+        } else if sessionService.userDetails != nil && sessionService.medicalDetails == nil {
+            return 0.5
+        } else if sessionService.userDetails == nil && sessionService.medicalDetails != nil {
+            return 0.5
+        } else {
+            return 1.0
+        }
     }
     
     var body: some View {
@@ -37,8 +51,15 @@ struct HomeView: View {
                     }
                     
                     welcomeText
+                        .padding(.top)
                 }
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        progressView(width: geometry.size.width * 0.6,
+                                     height: geometry.size.height * 0.015)
+                    }
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         menuButton
@@ -95,13 +116,54 @@ struct HomeView: View {
                         .clipShape(Circle())
                         .padding(5)
                 } placeholder: {
-                    Image(systemName: "person.circle")
-                        .resizedToFill(width: 35, height: 35)
-                        .font(.headline)
-                        .foregroundColor(color)
-                        .padding(5)
+                    if sessionService.userDetails == nil || sessionService.medicalDetails == nil {
+                        Image(systemName: "person.crop.circle.badge.exclamationmark")
+                            .resizedToFill(width: 35, height: 35)
+                            .font(.headline)
+                            .foregroundColor(color)
+                            .padding(5)
+                    } else {
+                        Image(systemName: "person.crop.circle")
+                            .resizedToFill(width: 35, height: 35)
+                            .font(.headline)
+                            .foregroundColor(color)
+                            .padding(5)
+                    }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    func progressView(width: CGFloat, height: CGFloat) -> some View {
+        if sessionService.userDetails == nil || sessionService.medicalDetails == nil {
+            VStack {
+                if sessionService.userDetails == nil && sessionService.medicalDetails == nil {
+                    Text("Complete your Profile")
+                        .signText()
+                        .fixedSize()
+                } else if sessionService.userDetails != nil && sessionService.medicalDetails == nil {
+                    Text("Complete Medical Details")
+                } else if sessionService.userDetails == nil && sessionService.medicalDetails != nil {
+                    Text("Complete your Profile Details")
+                } else {
+                    Text("Great work!")
+                }
+                
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.gray)
+                        .frame(width: width,
+                               height: height)
+                    
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.green)
+                        .frame(width: width * currentProgress,
+                               height: height)
+                }
+            }
+        } else {
+            EmptyView()
         }
     }
     

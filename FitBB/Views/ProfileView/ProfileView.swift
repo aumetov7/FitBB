@@ -13,14 +13,8 @@ struct ProfileView: View {
         service: UpdateProfileServiceImpl()
     )
     
-    @StateObject private var profileImageService = ProfileImageService()
-    
-    @State private var image: Image?
-    @State private var showImagePicker = false
-    @State private var inputImage: UIImage?
     @State private var showProfileDetailView = false
     @State private var showMedicalInfo = false
-    //    @State private var showMedicalInfoChatView = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -31,20 +25,15 @@ struct ProfileView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                //                NavigationLink(destination: MedicalInfoCombineView(), isActive: $showMedicalInfo) {
-                //                    EmptyView()
-                //                }
+                Text("Profile")
+                    .titleText()
+                    .frame(height: geometry.size.height / 5)
                 
-                ZStack(alignment: .bottomTrailing) {
-                    profileImage
-                    
-                    addImageButton
-                }
-                .padding(.bottom, 50)
+                profileImage
+                    .padding(.bottom)
                 
                 userDetails
-                
-                
+                    .frame(height: geometry.size.height / 4)
                 
                 RaisedButton(buttonText: "Medical Info") {
                     showMedicalInfo.toggle()
@@ -56,13 +45,6 @@ struct ProfileView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     editButton
                 }
-            }
-            .onChange(of: inputImage) { newImage in
-                loadImage()
-                profileImageService.updateProfileImage(with: newImage!)
-            }
-            .sheet(isPresented: $showImagePicker) {
-                ImagePicker(image: $inputImage)
             }
             .sheet(isPresented: $showProfileDetailView) {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
@@ -76,11 +58,6 @@ struct ProfileView: View {
         .customBackgroundColor(colorScheme: colorScheme)
     }
     
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
-    
     @Sendable private func checkInfo() async {
         try? await Task.sleep(nanoseconds: 1_000_000_000)
         
@@ -92,10 +69,6 @@ struct ProfileView: View {
              sessionService.userDetails?.days == "") {
             showProfileDetailView.toggle()
         }
-        
-        //        if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
-        //            showMedicalInfoChatView.toggle()
-        //        }
     }
     
     var editButton: some View {
@@ -136,26 +109,7 @@ struct ProfileView: View {
                 Circle()
                     .frame(width: 150, height: 150)
                     .foregroundColor(.gray.opacity(0.15))
-                
-                Text("""
-                    Choose profile
-                    photo
-                    """)
-                .multilineTextAlignment(.center)
             }
-        }
-        
-    }
-    
-    var addImageButton: some View {
-        Button(action: {
-            showImagePicker.toggle() // true
-        }) {
-            Image(systemName: "plus")
-                .frame(width: 30, height: 30)
-                .foregroundColor(.white)
-                .background(Color.gray)
-                .clipShape(Circle())
         }
     }
     

@@ -10,7 +10,15 @@ import SwiftUI
 struct ProfileDetailView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
+    @EnvironmentObject var sessionService: SessionServiceImpl
+    
+    @StateObject private var profileImageService = ProfileImageService()
+    
     @ObservedObject var updateProfileViewModel: UpdateProfileViewModelImpl
+    
+    @State private var image: Image?
+    @State private var showImagePicker = false
+    @State private var inputImage: UIImage?
     
     @Binding var showProfileDetailView: Bool
     
@@ -25,55 +33,100 @@ struct ProfileDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
+                profileDetailsText
+                    .frame(height: geometry.size.height / 10)
                 
-                signUpText
-                
-                Spacer()
-                
-                VStack {
-                    firtNameTextField
-                    
-                    dateOfBirthTextField
-                    
-                    segmentedPickerTextField(text: "Gender",
-                                             selection: $updateProfileViewModel.userDetails.gender,
-                                             array: genderArray)
-                    segmentedPickerTextField(text: "Goal",
-                                             selection: $updateProfileViewModel.userDetails.goal,
-                                             array: goalArray)
-                    segmentedPickerTextField(text: "Days",
-                                             selection: $updateProfileViewModel.userDetails.days,
-                                             array: daysArray)
+                ScrollView {
+                    VStack {
+                        ZStack(alignment: .bottomTrailing) {
+                            profileImage
+                            addImageButton
+                        }
+                        .padding(.bottom)
+                        
+                            firtNameTextField
+                            
+                            dateOfBirthTextField
+                            
+                            segmentedPickerTextField(text: "Gender",
+                                                     selection: $updateProfileViewModel.userDetails.gender,
+                                                     array: genderArray)
+                            
+                            segmentedPickerTextField(text: "Goal",
+                                                     selection: $updateProfileViewModel.userDetails.goal,
+                                                     array: goalArray)
+                            
+                            segmentedPickerTextField(text: "Days",
+                                                     selection: $updateProfileViewModel.userDetails.days,
+                                                     array: daysArray)
+                        
+                        updateButton
+                            .frame(height: geometry.size.height / 10, alignment: .bottom)
+                            .padding(.bottom)
+                    }
                 }
-                .frame(height: 316, alignment: .center)
-                .padding(.bottom, 25)
-                
-                Spacer()
-                
-                updateButton
-                    .padding(.horizontal)
-                    .padding(.bottom, 65)
+                .frame(height: geometry.size.height / 1.2)
             }
+            .frame(height: geometry.size.height)
             .padding(.horizontal)
-            .customBackgroundColor(colorScheme: colorScheme)
+            .onChange(of: inputImage) { newImage in
+                loadImage()
+                profileImageService.updateProfileImage(with: newImage!)
+            }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(image: $inputImage)
+            }
         }
+        .customBackgroundColor(colorScheme: colorScheme)
         .ignoresSafeArea(.keyboard)
     }
     
-    var signUpText: some View {
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
+    
+    var profileDetailsText: some View {
         Text("Profile Details")
-            .font(.largeTitle)
-            .fontWeight(.black)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
+            .titleText()
+    }
+    
+    var profileImage: some View {
+        AsyncImage(url: URL(string: sessionService.userDetails?.profileImage ?? "")) { image in
+            image
+                .resizedToFill(width: 150, height: 150)
+                .clipShape(Circle())
+        } placeholder: {
+            ZStack {
+                Circle()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.gray.opacity(0.15))
+                
+                Text("""
+                    Choose profile
+                    photo
+                    """)
+                .multilineTextAlignment(.center)
+            }
+        }
+    }
+    
+    var addImageButton: some View {
+        Button(action: {
+            showImagePicker.toggle() // true
+        }) {
+            Image(systemName: "plus")
+                .frame(width: 30, height: 30)
+                .foregroundColor(.white)
+                .background(Color.gray)
+                .clipShape(Circle())
+        }
     }
     
     var firtNameTextField: some View {
         VStack(alignment: .leading) {
             Text("First name")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 TextField("", text: $updateProfileViewModel.userDetails.firstName)
@@ -81,30 +134,27 @@ struct ProfileDetailView: View {
                     .disableAutocorrection(true)
                     .keyboardType(.namePhonePad)
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(color)
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     var dateOfBirthTextField: some View {
         VStack(alignment: .leading) {
             Text("Date of birth")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 DatePickerTextField(placeholder: "", date: $updateProfileViewModel.userDetails.dateOfBirth)
             }
             .frame(height: 25)
-            .padding(.horizontal)
             
             Divider()
                 .background(color)
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -133,18 +183,27 @@ struct ProfileDetailView: View {
             updateProfileViewModel.update()
             showProfileDetailView.toggle()
         }
+        .padding(.horizontal)
     }
 }
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(
-                            service: UpdateProfileServiceImpl()),
+            service: UpdateProfileServiceImpl()),
                           showProfileDetailView: .constant(true))
+        .environmentObject(SessionServiceImpl())
         
         ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(
-                            service: UpdateProfileServiceImpl()),
+            service: UpdateProfileServiceImpl()),
                           showProfileDetailView: .constant(true))
         .preferredColorScheme(.dark)
+        .environmentObject(SessionServiceImpl())
+        
+        ProfileDetailView(updateProfileViewModel: UpdateProfileViewModelImpl(
+            service: UpdateProfileServiceImpl()),
+                          showProfileDetailView: .constant(true))
+        .environmentObject(SessionServiceImpl())
+        .previewDevice("iPhone 8")
     }
 }

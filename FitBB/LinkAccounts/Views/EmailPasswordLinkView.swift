@@ -33,11 +33,8 @@ struct EmailPasswordLinkView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                
                 signUpText
-                
-                Spacer()
+                    .frame(height: geometry.size.height / 5)
                 
                 VStack {
                     emailTextField
@@ -45,23 +42,22 @@ struct EmailPasswordLinkView: View {
                     passwordTextField
                     
                     repeatPasswordView
-                    
-                    check()
                 }
-                .frame(height: 316, alignment: .center)
-                .padding(.bottom, 25)
-                .padding(.horizontal)
-                
-                Spacer()
+                .frame(height: geometry.size.height / 3.5, alignment: .bottom)
                 
                 VStack {
-                    signUpButton
+                    check()
                 }
-                .padding(.horizontal)
+                .frame(height: geometry.size.height / 6, alignment: .top)
+                
+                signUpButton
+                    .frame(height: geometry.size.height / 7, alignment: .bottom)
             }
-            .customBackgroundColor(colorScheme: colorScheme)
+            .frame(height: geometry.size.height)
+            .padding(.horizontal)
         }
         .ignoresSafeArea(.keyboard)
+        .customBackgroundColor(colorScheme: colorScheme)
     }
     
     @ViewBuilder
@@ -78,32 +74,28 @@ struct EmailPasswordLinkView: View {
                 .font(.footnote)
                 .fontWeight(.light)
         }
-        .padding(.trailing)
     }
     
     var signUpText: some View {
         Text("SIGN UP")
             .titleText()
-            .padding(.horizontal)
     }
     
     var emailTextField: some View {
         VStack(alignment: .leading) {
             Text("Email")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 TextField("", text: $linkAccountViewModel.userDetails.email)
                     .textField()
                     .keyboardType(.emailAddress)
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -112,61 +104,52 @@ struct EmailPasswordLinkView: View {
             SecureField("", text: text)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
-                .textContentType(.password)
+                .textContentType(.newPassword)
         } else {
             TextField("", text: text)
                 .textField()
-                .textContentType(.password)
+                .textContentType(.newPassword)
         }
     }
     
     @ViewBuilder
     func showPasswordButton(showPassword: Bool) -> some View {
-        if !showPassword {
-            Image(systemName: "eye.slash")
-                .foregroundColor(color)
-        } else {
-            Image(systemName: "eye")
-                .foregroundColor(color)
-        }
+        Image(systemName: !showPassword ? "eye.slash" : "eye")
+            .foregroundColor(color)
     }
     
     var passwordTextField: some View {
         VStack(alignment: .leading) {
             Text("Password")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 showPasswordTextField(showPassword: showPassword, text: $linkAccountViewModel.userDetails.password)
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         showPasswordDetails.toggle()
                     }
-                }) {
+                } label: {
                     Image(systemName: "questionmark.circle")
                         .foregroundColor(color)
                 }
-                .padding(.trailing, 2)
                 
                 Button(action: { showPassword.toggle() }) {
                     showPasswordButton(showPassword: showPassword)
                 }
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     var repeatPasswordView: some View {
         VStack(alignment: .leading) {
             Text("Repeat password")
                 .signText()
-                .padding(.leading)
             
             HStack {
                 showPasswordTextField(showPassword: showRepeatPassword, text: $linkAccountViewModel.userDetails.repeatPassword)
@@ -175,12 +158,11 @@ struct EmailPasswordLinkView: View {
                     showPasswordButton(showPassword: showRepeatPassword)
                 }
             }
-            .padding(.horizontal)
             
             Divider()
                 .background(colorScheme == .dark ? Color.white : Color(UIColor.lightGray))
-                .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -203,11 +185,9 @@ struct EmailPasswordLinkView: View {
                           checkFunction: isContainsUppercaseLetter,
                           text: uppercaseText)
             }
-            .transition(.move(edge: .bottom))
+            .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
             .foregroundColor(.black)
             .opacity(0.9)
-        } else {
-            Spacer()
         }
     }
     
@@ -222,9 +202,8 @@ struct EmailPasswordLinkView: View {
             }
         })
         .padding(.horizontal)
-        .padding(.bottom, 45)
         .disabled(passwordValidation(text: linkAccountViewModel.userDetails.password) ? false : true)
-        .foregroundColor(passwordValidation(text: linkAccountViewModel.userDetails.password) ? .black : .gray)
+        .foregroundColor(passwordValidation(text: linkAccountViewModel.userDetails.password) ? color : .gray)
         .alert(isPresented: $linkAccountViewModel.hasError,
                content: {
             if case .failed(let error) = linkAccountViewModel.state {

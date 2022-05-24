@@ -59,6 +59,7 @@
 		D8838636283B9B43008782EC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8838635283B9B43008782EC /* HealthKit.framework */; };
 		D8838638283BA301008782EC /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838637283BA301008782EC /* ImageLoader.swift */; };
 		D883863A283BA362008782EC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838639283BA362008782EC /* ImageCache.swift */; };
+		D883863F283CFB3E008782EC /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883863E283CFB3E008782EC /* HealthStore.swift */; };
 		D88BBFA12826713300A4B92D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA02826713300A4B92D /* ViewExtension.swift */; };
 		D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */; };
 		D8975655281169740075AD73 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975654281169740075AD73 /* ImagePicker.swift */; };
@@ -137,6 +138,7 @@
 		D8838635283B9B43008782EC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		D8838637283BA301008782EC /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		D8838639283BA362008782EC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		D883863E283CFB3E008782EC /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		D88BBFA02826713300A4B92D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfSheetView.swift; sourceTree = "<group>"; };
 		D8975654281169740075AD73 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				D8DD8C4728016F68004D3C69 /* ContentView.swift */,
 				D82E6907280808E800AFA077 /* PagesView.swift */,
 				D8796DE32810379B001567BB /* SignView.swift */,
+				D8838632283B7853008782EC /* HomeView.swift */,
 				D82E60C32802FA26008CE10A /* ExercisesView.swift */,
 				D80430E52805E5E000146B64 /* ExerciseDetailView.swift */,
 				D82E60C52802FAF1008CE10A /* FoodView.swift */,
@@ -238,7 +241,6 @@
 		D83528B4282A746000E6532C /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
-				D8838632283B7853008782EC /* HomeView.swift */,
 				D82E60B92802EF1D008CE10A /* ProfileView.swift */,
 				D87D0444282542EF0088B84F /* ProfileMenuView.swift */,
 			);
@@ -260,6 +262,14 @@
 				D8838635283B9B43008782EC /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D883863D283CFB05008782EC /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				D883863E283CFB3E008782EC /* HealthStore.swift */,
+			);
+			path = Health;
 			sourceTree = "<group>";
 		};
 		D897565828117B790075AD73 /* Extensions */ = {
@@ -605,6 +615,7 @@
 				D8A8A3BF282E44EC00F55725 /* Info.plist */,
 				D8DD8C4528016F68004D3C69 /* FitBBApp.swift */,
 				D82E60BB2802EFCC008CE10A /* Views */,
+				D883863D283CFB05008782EC /* Health */,
 				D8A8A3D2283399AD00F55725 /* Registration */,
 				D8A8A3D828339A8100F55725 /* Login */,
 				D8A8A3E128339C8900F55725 /* Session */,
@@ -754,6 +765,7 @@
 				D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */,
 				D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */,
 				D82E691A280845ED00AFA077 /* SessionService.swift in Sources */,
+				D883863F283CFB3E008782EC /* HealthStore.swift in Sources */,
 				D8A8A3C7282E6F1000F55725 /* MedicalDetails.swift in Sources */,
 				D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */,
 				D8796DDE28103096001567BB /* SignInView.swift in Sources */,
