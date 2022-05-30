@@ -37,6 +37,7 @@
 		D83528AE282800D900E6532C /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AD282800D900E6532C /* PickerField.swift */; };
 		D83528B0282A6EEA00E6532C /* MedicalInfoChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */; };
 		D83528B2282A6F7700E6532C /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528B1282A6F7700E6532C /* ContainerView.swift */; };
+		D83DB51E2844F403001E9BC1 /* BMRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DB51D2844F403001E9BC1 /* BMRModel.swift */; };
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
 		D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F64F282BB05E007CE32D /* CustomPickerView.swift */; };
 		D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */; };
@@ -60,6 +61,15 @@
 		D8838638283BA301008782EC /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838637283BA301008782EC /* ImageLoader.swift */; };
 		D883863A283BA362008782EC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838639283BA362008782EC /* ImageCache.swift */; };
 		D883863F283CFB3E008782EC /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883863E283CFB3E008782EC /* HealthStore.swift */; };
+		D8838642283D07E5008782EC /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838641283D07E5008782EC /* Step.swift */; };
+		D8838646283D0FDF008782EC /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838645283D0FDF008782EC /* StepViewModel.swift */; };
+		D883864A283E36B3008782EC /* StepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838649283E36B3008782EC /* StepService.swift */; };
+		D883864C283E3CC0008782EC /* ActiveEnergyBurnedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883864B283E3CC0008782EC /* ActiveEnergyBurnedService.swift */; };
+		D883864E283E4181008782EC /* ActiveEnergyBurnedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883864D283E4180008782EC /* ActiveEnergyBurnedViewModel.swift */; };
+		D8838650283E41E2008782EC /* ActiveEnergyBurned.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883864F283E41E2008782EC /* ActiveEnergyBurned.swift */; };
+		D8838656283F7FA7008782EC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838655283F7FA7008782EC /* DateExtension.swift */; };
+		D88386662840E7D9008782EC /* BMRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88386652840E7D9008782EC /* BMRService.swift */; };
+		D88386682840FFC9008782EC /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88386672840FFC9008782EC /* ProgressBarView.swift */; };
 		D88BBFA12826713300A4B92D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA02826713300A4B92D /* ViewExtension.swift */; };
 		D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */; };
 		D8975655281169740075AD73 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8975654281169740075AD73 /* ImagePicker.swift */; };
@@ -116,6 +126,7 @@
 		D83528AD282800D900E6532C /* PickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoChatView.swift; sourceTree = "<group>"; };
 		D83528B1282A6F7700E6532C /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		D83DB51D2844F403001E9BC1 /* BMRModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMRModel.swift; sourceTree = "<group>"; };
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D855F64F282BB05E007CE32D /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalChatMessageViews.swift; sourceTree = "<group>"; };
@@ -139,6 +150,15 @@
 		D8838637283BA301008782EC /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		D8838639283BA362008782EC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D883863E283CFB3E008782EC /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		D8838641283D07E5008782EC /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		D8838645283D0FDF008782EC /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
+		D8838649283E36B3008782EC /* StepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepService.swift; sourceTree = "<group>"; };
+		D883864B283E3CC0008782EC /* ActiveEnergyBurnedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyBurnedService.swift; sourceTree = "<group>"; };
+		D883864D283E4180008782EC /* ActiveEnergyBurnedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyBurnedViewModel.swift; sourceTree = "<group>"; };
+		D883864F283E41E2008782EC /* ActiveEnergyBurned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyBurned.swift; sourceTree = "<group>"; };
+		D8838655283F7FA7008782EC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		D88386652840E7D9008782EC /* BMRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMRService.swift; sourceTree = "<group>"; };
+		D88386672840FFC9008782EC /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D88BBFA02826713300A4B92D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D88BBFA22826721300A4B92D /* CustomHalfSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfSheetView.swift; sourceTree = "<group>"; };
 		D8975654281169740075AD73 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -234,6 +254,7 @@
 				D8796DD9280FED19001567BB /* DatePickerTextField.swift */,
 				D855F64F282BB05E007CE32D /* CustomPickerView.swift */,
 				D83528B1282A6F7700E6532C /* ContainerView.swift */,
+				D88386672840FFC9008782EC /* ProgressBarView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -267,9 +288,41 @@
 		D883863D283CFB05008782EC /* Health */ = {
 			isa = PBXGroup;
 			children = (
-				D883863E283CFB3E008782EC /* HealthStore.swift */,
+				D8838644283D08C5008782EC /* ViewModel */,
+				D8838643283D08BE008782EC /* Service */,
+				D8838640283D07D1008782EC /* Model */,
 			);
 			path = Health;
+			sourceTree = "<group>";
+		};
+		D8838640283D07D1008782EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8838641283D07E5008782EC /* Step.swift */,
+				D883864F283E41E2008782EC /* ActiveEnergyBurned.swift */,
+				D83DB51D2844F403001E9BC1 /* BMRModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8838643283D08BE008782EC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D883863E283CFB3E008782EC /* HealthStore.swift */,
+				D8838649283E36B3008782EC /* StepService.swift */,
+				D883864B283E3CC0008782EC /* ActiveEnergyBurnedService.swift */,
+				D88386652840E7D9008782EC /* BMRService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D8838644283D08C5008782EC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D8838645283D0FDF008782EC /* StepViewModel.swift */,
+				D883864D283E4180008782EC /* ActiveEnergyBurnedViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D897565828117B790075AD73 /* Extensions */ = {
@@ -282,6 +335,7 @@
 				D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */,
 				D8AAF072281D64E100D1A650 /* Constants.swift */,
 				D8A8A3F42833A2A600F55725 /* MedicalQuestionnaireText.swift */,
+				D8838655283F7FA7008782EC /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,7 +362,6 @@
 		D8A8A3D4283399C100F55725 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8A8A3C6282E6F1000F55725 /* MedicalDetails.swift */,
 				D82E68FD28070BAD00AFA077 /* RegistrationDetails.swift */,
 			);
 			path = Model;
@@ -543,6 +596,7 @@
 		D8A8A3F028339E3200F55725 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8A8A3C6282E6F1000F55725 /* MedicalDetails.swift */,
 				D8A8A3CA282E729500F55725 /* SessionMedicalDetails.swift */,
 			);
 			path = Model;
@@ -729,6 +783,7 @@
 				D80430E62805E5E000146B64 /* ExerciseDetailView.swift in Sources */,
 				D8731BD5282691B7006A60AC /* LinkAccountServise.swift in Sources */,
 				D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */,
+				D8838642283D07E5008782EC /* Step.swift in Sources */,
 				D83528AC2827FBFF00E6532C /* PickerTextField.swift in Sources */,
 				D8A8A3C9282E70D100F55725 /* MedicalInfoViewModel.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
@@ -740,6 +795,7 @@
 				D8A8A3C3282E6CAF00F55725 /* UpdateProfileService.swift in Sources */,
 				D8A8A3CD282E739C00F55725 /* MedicalInfoCombineView.swift in Sources */,
 				D883863A283BA362008782EC /* ImageCache.swift in Sources */,
+				D883864C283E3CC0008782EC /* ActiveEnergyBurnedService.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
 				D88BBFA32826721300A4B92D /* CustomHalfSheetView.swift in Sources */,
@@ -749,6 +805,8 @@
 				D82D4DDD2808525700C15946 /* LoginViewModel.swift in Sources */,
 				D8AAF071281D4AC700D1A650 /* ProfileImageService.swift in Sources */,
 				D8796DE028103531001567BB /* ForgetPasswordView.swift in Sources */,
+				D83DB51E2844F403001E9BC1 /* BMRModel.swift in Sources */,
+				D883864A283E36B3008782EC /* StepService.swift in Sources */,
 				D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */,
 				D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */,
 				D8B8F9002834FBF100ED4B9A /* EmailPasswordLinkView.swift in Sources */,
@@ -760,15 +818,18 @@
 				D8DD8C4628016F68004D3C69 /* FitBBApp.swift in Sources */,
 				D88BBFA12826713300A4B92D /* ViewExtension.swift in Sources */,
 				D8838633283B7853008782EC /* HomeView.swift in Sources */,
+				D88386662840E7D9008782EC /* BMRService.swift in Sources */,
 				D82E6908280808E800AFA077 /* PagesView.swift in Sources */,
 				D83528AE282800D900E6532C /* PickerField.swift in Sources */,
 				D8AAF06D281AE10D00D1A650 /* GoogleSignInServicec.swift in Sources */,
+				D8838656283F7FA7008782EC /* DateExtension.swift in Sources */,
 				D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */,
 				D82E691A280845ED00AFA077 /* SessionService.swift in Sources */,
 				D883863F283CFB3E008782EC /* HealthStore.swift in Sources */,
 				D8A8A3C7282E6F1000F55725 /* MedicalDetails.swift in Sources */,
 				D82E68FE28070BAD00AFA077 /* RegistrationDetails.swift in Sources */,
 				D8796DDE28103096001567BB /* SignInView.swift in Sources */,
+				D883864E283E4181008782EC /* ActiveEnergyBurnedViewModel.swift in Sources */,
 				D8796DE42810379B001567BB /* SignView.swift in Sources */,
 				D8A3D723282A78C50038A689 /* ChatBubbleShape.swift in Sources */,
 				D82E60C42802FA26008CE10A /* ExercisesView.swift in Sources */,
@@ -777,6 +838,7 @@
 				D8A8A3CB282E729500F55725 /* SessionMedicalDetails.swift in Sources */,
 				D8975655281169740075AD73 /* ImagePicker.swift in Sources */,
 				D8796DDA280FED19001567BB /* DatePickerTextField.swift in Sources */,
+				D8838646283D0FDF008782EC /* StepViewModel.swift in Sources */,
 				D82E69182808458E00AFA077 /* SessionUserDetails.swift in Sources */,
 				D8BC7B0528099FB200E56E81 /* ForgetPasswordViewModel.swift in Sources */,
 				D8B8F9052835082200ED4B9A /* AnonymousAuthViewModel.swift in Sources */,
@@ -785,6 +847,7 @@
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
 				D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */,
 				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
+				D88386682840FFC9008782EC /* ProgressBarView.swift in Sources */,
 				D830C94528184067009AFB75 /* PasswordValidationViewExtension.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
@@ -792,6 +855,7 @@
 				D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */,
 				D8B8F9032835081200ED4B9A /* AnonymousAuthService.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,
+				D8838650283E41E2008782EC /* ActiveEnergyBurned.swift in Sources */,
 				D897565A28117B8D0075AD73 /* ImageExtension.swift in Sources */,
 				D80430E22805ACBC00146B64 /* Exercise.swift in Sources */,
 			);
@@ -928,7 +992,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FitBB/Info.plist;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your health record will be used for correct workout program";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires to acces your health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app requires to acces your health data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -962,7 +1027,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FitBB/Info.plist;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your health record will be used for correct workout program";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires to acces your health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app requires to acces your health data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

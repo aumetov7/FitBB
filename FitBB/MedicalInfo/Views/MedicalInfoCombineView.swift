@@ -11,7 +11,7 @@ struct MedicalInfoCombineView: View {
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     var body: some View {
-        if sessionService.medicalDetails == nil || (sessionService.medicalDetails?.weight == "") {
+        if sessionService.medicalDetails == nil {
             MedicalInfoChatView()
 //                .navigationTitle("Medical Questionnaire")
         } else {

@@ -20,7 +20,6 @@ protocol RegistrationViewModel {
     var service: RegistrationService { get }
     var state: RegistrationState { get }
     var userDetails: RegistrationDetails { get }
-    var medicalDetails: MedicalDetails { get }
     var hasError: Bool { get }
     
     init(service: RegistrationService)
@@ -30,7 +29,6 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     @Published var state: RegistrationState = .notAvailable
     @Published var hasError: Bool = false
     @Published var userDetails: RegistrationDetails = RegistrationDetails.new
-    @Published var medicalDetails: MedicalDetails = MedicalDetails.new
     
     let service: RegistrationService
     
@@ -43,7 +41,7 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     
     func register() {
         service
-            .register(with: userDetails, with: medicalDetails)
+            .register(with: userDetails)
             .sink { [weak self] res in
                 switch res {
                 case .failure(let error):

@@ -26,11 +26,11 @@ struct ProfileView: View {
         GeometryReader { geometry in
             VStack {
                 Text("Profile")
-                    .titleText()
-                    .frame(height: geometry.size.height / 5)
+                    .roundedTitle()
+                    .padding(.top)
                 
                 profileImage
-                    .padding(.bottom)
+                    .padding([.bottom, .top])
                 
                 userDetails
                     .frame(height: geometry.size.height / 4)
@@ -41,11 +41,6 @@ struct ProfileView: View {
                 .padding([.horizontal, .bottom, .top])
             }
             .padding(.horizontal)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    editButton
-                }
-            }
             .sheet(isPresented: $showProfileDetailView) {
                 ProfileDetailView(updateProfileViewModel: updateProfileViewModel,
                                   showProfileDetailView: $showProfileDetailView)
@@ -53,9 +48,14 @@ struct ProfileView: View {
             .sheet(isPresented: $showMedicalInfo, content: {
                 MedicalInfoCombineView()
             })
-        .task(checkInfo)
+            .task(checkInfo)
         }
         .customBackgroundColor(colorScheme: colorScheme)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                editButton
+            }
+        }
     }
     
     @Sendable private func checkInfo() async {
@@ -88,17 +88,6 @@ struct ProfileView: View {
         }
     }
     
-    var welcomeUserText: some View {
-        VStack {
-            Text("Welcome")
-                .titleText()
-            
-            Text("\(sessionService.userDetails?.firstName ?? "N/A")")
-                .titleText()
-                .padding(.bottom, 100)
-        }
-    }
-    
     var profileImage: some View {
         AsyncImage(url: URL(string: sessionService.userDetails?.profileImage ?? "")) { image in
             image
@@ -109,6 +98,8 @@ struct ProfileView: View {
                 Circle()
                     .frame(width: 150, height: 150)
                     .foregroundColor(.gray.opacity(0.15))
+                
+                ProgressView()
             }
         }
     }

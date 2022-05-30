@@ -13,10 +13,18 @@ struct HomeView: View {
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
+    @StateObject private var activeEnergyBurnedVMImpl = ActiveEnergyBurnedViewModelImpl(service: ActiveEnergyBurnedServiceImpl())
+    @StateObject private var stepViewModelImpl = StepViewModelImpl(service: StepServiceImpl())
+    
     @State private var showMenu = false
     @State private var showLinkAccount = false
     @State private var showProfileView = false
     
+    private var healthStore: HealthStore?
+    
+    init() {
+        healthStore = HealthStore()
+    }
     
     var color: Color {
         return colorScheme == .dark ? .white : .black
@@ -38,6 +46,18 @@ struct HomeView: View {
         }
     }
     
+//    var bmrCurrentProgress: CGFloat {
+//        return bmrService.currentBurnedCalories(weight: sessionService.medicalDetails?.weight ?? "",
+//                                                height: sessionService.medicalDetails?.height ?? "",
+//                                                gender: sessionService.userDetails?.gender ?? "")
+//    }
+//
+//    var bmr: Int {
+//        return bmrService.calculateRequiredEnergy(weight: sessionService.medicalDetails?.weight ?? "",
+//                                                  height: sessionService.medicalDetails?.height ?? "",
+//                                                  gender: sessionService.userDetails?.gender ?? "")
+//    }
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -52,6 +72,31 @@ struct HomeView: View {
                     
                     welcomeText
                         .padding(.top)
+                    
+                    VStack(spacing: 50) {
+                        VStack {
+                            Text("Todays steps")
+                                .font(.title)
+                            
+                            Text("\(stepViewModelImpl.steps.count)")
+                        }
+                        
+                        VStack {
+                            Text("Todays burned calories")
+                                .font(.title)
+                            
+                            Text("\(activeEnergyBurnedVMImpl.activeEnergyBurned.count)")
+                        }
+                        
+                        VStack {
+                            Text("BMR")
+                                .font(.title)
+                            
+                            Text("\(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0)")
+                            
+                            ProgressBarView(currentProgress: sessionService.bmrModel?.currentBurnedCalories ?? 0, width: 300)
+                        }
+                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -78,6 +123,13 @@ struct HomeView: View {
                     print("Dismiss")
                 })
             }
+            .onAppear(perform: {
+                if let healthStore = healthStore {
+                    healthStore.requestAuthorization { success in
+                        print("HealthKit Authorization")
+                    }
+                }
+            })
             .customBackgroundColor(colorScheme: colorScheme)
         }
     }
@@ -170,10 +222,10 @@ struct HomeView: View {
     var welcomeText: some View {
         VStack {
             Text(sessionService.getCurrentTime() + comma)
-                .rounedTitle()
+                .roundedTitle()
             
             Text(sessionService.userDetails?.firstName ?? "")
-                .rounedTitle()
+                .roundedTitle()
         }
     }
 }

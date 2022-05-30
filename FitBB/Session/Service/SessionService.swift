@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
+import UIKit
 
 enum SessionState {
     case loggedIn, loggedOut
@@ -19,6 +20,7 @@ protocol SessionService {
     var state: SessionState { get }
     var userDetails: SessionUserDetails? { get }
     var medicalDetails: SessionMedicalDetails? { get }
+    var bmrModel: BMRModel? { get }
     var fetched: Bool { get }
     
     func getProviderId() -> [String]
@@ -30,9 +32,12 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDetails?
     @Published var medicalDetails: SessionMedicalDetails?
+    @Published var bmrModel: BMRModel?
     @Published var fetched: Bool = false
     
     private var handler: AuthStateDidChangeListenerHandle?
+    private var bmrService = BMRServiceImpl()
+    private var activeEnergyBurnedVM = ActiveEnergyBurnedViewModelImpl(service: ActiveEnergyBurnedServiceImpl())
     
     init() {
         setupFirebaseAuthHandler()
@@ -42,7 +47,7 @@ final class SessionServiceImpl: ObservableObject, SessionService {
         var providerIDArray: [String] = []
         
         guard let providerData = Auth.auth().currentUser?.providerData else { return providerIDArray }
-
+        
         for userInfo in providerData {
             providerIDArray.append(userInfo.providerID)
         }
@@ -65,6 +70,62 @@ final class SessionServiceImpl: ObservableObject, SessionService {
         case 18 ..< 24: return "Good Evening"
         default: return "Good Night"
         }
+    }
+    
+    func calculateRequiredEnergy() -> Int {
+        let age = self.bmrService.calculateAge()
+        let sex = self.bmrService.getSex()
+        let activityLevel = 1.375
+        
+        guard let doubleWeight = Double(self.medicalDetails?.weight ?? "") else { return 0 }
+        guard let doubleHeight = Double(self.medicalDetails?.height ?? "") else { return 0 }
+        
+        let weightFormula = 10 * doubleWeight
+        let heightFormula = 6.25 * doubleHeight
+        let ageFormula = 5 * Double(age)
+        let combinedFormula = weightFormula + heightFormula - ageFormula
+        
+        var formula: Double
+        
+        switch sex?.biologicalSex {
+        case .male:
+            formula = combinedFormula + 5
+        case .female:
+            formula = combinedFormula - 161
+        case .other:
+            formula = 0
+        default:
+            if self.userDetails?.gender == "male" {
+                formula = combinedFormula + 5
+            } else if self.userDetails?.gender == "female" {
+                formula = combinedFormula - 161
+            } else {
+                formula = 0
+            }
+        }
+        
+        let result = Int(formula * activityLevel - formula)
+        
+        print("Result cre: \(result)")
+        print("Result age: \(age)")
+        print("Result weightFormula: \(weightFormula)")
+        print("Result heightFormula: \(heightFormula)")
+        print("Result ageFormula: \(ageFormula)")
+        print("Result combinedFormula: \(combinedFormula)")
+        print("Result formula: \(formula)")
+        
+        return result
+    }
+    
+    func currentBurnedCalories() -> CGFloat {
+        let result = CGFloat(activeEnergyBurnedVM.activeEnergyBurned.count) / CGFloat(self.calculateRequiredEnergy())
+        print("Result cbc: \(result)")
+        return result
+    }
+    
+    func createBMRModel() {
+        self.bmrModel = BMRModel(calculatedRequiredEnergy: calculateRequiredEnergy(),
+                                 currentBurnedCalories: currentBurnedCalories())
     }
 }
 
@@ -123,10 +184,10 @@ private extension SessionServiceImpl {
             .reference()
             .child("users")
             .observe(.value) { snapshot in
-            if !snapshot.hasChild(uid) {
-                self.fetched = true
+                if !snapshot.hasChild(uid) {
+                    self.fetched = true
+                }
             }
-        }
     }
     
     func medicalInfoHandleRefresh(with uid: String) {
@@ -158,6 +219,8 @@ private extension SessionServiceImpl {
                                                                 spinePartSelectedIndex: spinePartSelectedIndex,
                                                                 heartSelectedIndex: heartSelectedIndex,
                                                                 jointsAndLigamentsSelectedIndex: jointsAndLigamentsSelectedIndex)
+                    
+                    self.createBMRModel()
                 }
             }
     }

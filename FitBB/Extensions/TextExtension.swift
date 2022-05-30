@@ -35,7 +35,7 @@ extension Text {
             .padding(.leading)
     }
     
-    func rounedTitle() -> some View {
+    func roundedTitle() -> some View {
         self
             .font(.system(.largeTitle, design: .rounded))
             .fontWeight(.black)

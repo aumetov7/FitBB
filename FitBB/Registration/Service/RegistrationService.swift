@@ -15,11 +15,11 @@ enum RegistrationKeys: String {
 }
 
 protocol RegistrationService {
-    func register(with accountDetails: RegistrationDetails, with medicalDetails: MedicalDetails) -> AnyPublisher<Void, Error>
+    func register(with accountDetails: RegistrationDetails) -> AnyPublisher<Void, Error>
 }
 
 final class RegistrationServiceImpl: RegistrationService {
-    func register(with accountDetails: RegistrationDetails, with medicalDetails: MedicalDetails) -> AnyPublisher<Void, Error> {
+    func register(with accountDetails: RegistrationDetails) -> AnyPublisher<Void, Error> {
         Deferred {
             Future { promise in
                 Auth
