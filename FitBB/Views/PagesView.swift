@@ -15,7 +15,7 @@ struct PagesView: View {
             //            ProfileView()
             HomeView()
                 .tabItem {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "house.fill")
                     Text("Profile")
                 }
             

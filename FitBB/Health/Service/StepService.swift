@@ -15,7 +15,7 @@ protocol StepService {
     var query: HKStatisticsCollectionQuery? { get }
 }
 
-class StepServiceImpl: HealthStore, StepService {
+final class StepServiceImpl: HealthStore, StepService {
     var query: HKStatisticsCollectionQuery?
     
     func calculateSteps(completion: @escaping (HKStatisticsCollection?) -> Void) -> AnyPublisher<Void, Error> {

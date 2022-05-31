@@ -38,6 +38,9 @@
 		D83528B0282A6EEA00E6532C /* MedicalInfoChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */; };
 		D83528B2282A6F7700E6532C /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83528B1282A6F7700E6532C /* ContainerView.swift */; };
 		D83DB51E2844F403001E9BC1 /* BMRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DB51D2844F403001E9BC1 /* BMRModel.swift */; };
+		D83DB52228462AAE001E9BC1 /* ExerciseTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DB52128462AAE001E9BC1 /* ExerciseTime.swift */; };
+		D83DB52428462B15001E9BC1 /* ExerciseTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DB52328462B15001E9BC1 /* ExerciseTimeService.swift */; };
+		D83DB52628462C81001E9BC1 /* ExerciseTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DB52528462C81001E9BC1 /* ExerciseTimeViewModel.swift */; };
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
 		D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F64F282BB05E007CE32D /* CustomPickerView.swift */; };
 		D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */; };
@@ -127,6 +130,9 @@
 		D83528AF282A6EEA00E6532C /* MedicalInfoChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoChatView.swift; sourceTree = "<group>"; };
 		D83528B1282A6F7700E6532C /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		D83DB51D2844F403001E9BC1 /* BMRModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMRModel.swift; sourceTree = "<group>"; };
+		D83DB52128462AAE001E9BC1 /* ExerciseTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTime.swift; sourceTree = "<group>"; };
+		D83DB52328462B15001E9BC1 /* ExerciseTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimeService.swift; sourceTree = "<group>"; };
+		D83DB52528462C81001E9BC1 /* ExerciseTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimeViewModel.swift; sourceTree = "<group>"; };
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D855F64F282BB05E007CE32D /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalChatMessageViews.swift; sourceTree = "<group>"; };
@@ -301,6 +307,7 @@
 				D8838641283D07E5008782EC /* Step.swift */,
 				D883864F283E41E2008782EC /* ActiveEnergyBurned.swift */,
 				D83DB51D2844F403001E9BC1 /* BMRModel.swift */,
+				D83DB52128462AAE001E9BC1 /* ExerciseTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +317,7 @@
 			children = (
 				D883863E283CFB3E008782EC /* HealthStore.swift */,
 				D8838649283E36B3008782EC /* StepService.swift */,
+				D83DB52328462B15001E9BC1 /* ExerciseTimeService.swift */,
 				D883864B283E3CC0008782EC /* ActiveEnergyBurnedService.swift */,
 				D88386652840E7D9008782EC /* BMRService.swift */,
 			);
@@ -320,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				D8838645283D0FDF008782EC /* StepViewModel.swift */,
+				D83DB52528462C81001E9BC1 /* ExerciseTimeViewModel.swift */,
 				D883864D283E4180008782EC /* ActiveEnergyBurnedViewModel.swift */,
 			);
 			path = ViewModel;
@@ -844,7 +853,10 @@
 				D8B8F9052835082200ED4B9A /* AnonymousAuthViewModel.swift in Sources */,
 				D8731BD928269543006A60AC /* LinkAccountView.swift in Sources */,
 				D8A8A3F52833A2A600F55725 /* MedicalQuestionnaireText.swift in Sources */,
+				D83DB52628462C81001E9BC1 /* ExerciseTimeViewModel.swift in Sources */,
+				D83DB52228462AAE001E9BC1 /* ExerciseTime.swift in Sources */,
 				D82D4DDB2808513B00C15946 /* LoginService.swift in Sources */,
+				D83DB52428462B15001E9BC1 /* ExerciseTimeService.swift in Sources */,
 				D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */,
 				D830C94728184092009AFB75 /* TextExtension.swift in Sources */,
 				D88386682840FFC9008782EC /* ProgressBarView.swift in Sources */,

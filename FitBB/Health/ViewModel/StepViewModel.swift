@@ -8,6 +8,7 @@
 import Foundation
 import HealthKit
 import Combine
+import UIKit
 
 enum StepState {
     case successfull
@@ -17,18 +18,20 @@ enum StepState {
 
 protocol StepViewModel {
 //    var steps: [Step] { get }
-    var steps: Step { get }
+    var steps: [Step] { get }
     var service: StepService { get }
     var state: StepState { get }
     
     init(service: StepService)
     
     func countSteps()
+    func getCurrentStepValue() -> CGFloat
+    func getCurrentStepText() -> String
 }
 
 final class StepViewModelImpl: ObservableObject, StepViewModel {
-//    @Published var steps: [Step] = [Step]()
-    @Published var steps: Step = Step.new
+    @Published var steps: [Step] = [Step]()
+//    @Published var steps: Step = Step.new
     @Published var state: StepState = .notAvailable
     
     let service: StepService
@@ -58,12 +61,28 @@ final class StepViewModelImpl: ObservableObject, StepViewModel {
             }
             .store(in: &subscription)
     }
+    
+    func getCurrentStepValue() -> CGFloat {
+        return CGFloat(self.steps.last?.count ?? 0) / 10000
+    }
+    
+    func getCurrentStepText() -> String {
+        if getCurrentStepValue() == 0 {
+            return ""
+        } else if getCurrentStepValue() > 0 && getCurrentStepValue() < 0.5 {
+            return "Warning"
+        } else if getCurrentStepValue() > 0.5 && getCurrentStepValue() < 0.75 {
+            return "On track"
+        } else {
+            return "Good job"
+        }
+    }
 }
 
 private extension StepViewModelImpl {
     func updateUIFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-//        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-        let startDate = Calendar.current.startOfDay(for: Date())
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+//        let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         
         statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
@@ -71,8 +90,10 @@ private extension StepViewModelImpl {
             let step = Step(count: Int(count ?? 0), date: statistics.startDate)
             
             DispatchQueue.main.async {
-//                self.steps.append(step)
-                self.steps = step
+                self.steps.append(step)
+//                self.steps = step
+                
+                print("Info: \(self.steps)")
             }
             
         }

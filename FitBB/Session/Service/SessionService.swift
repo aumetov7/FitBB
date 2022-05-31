@@ -26,6 +26,11 @@ protocol SessionService {
     func getProviderId() -> [String]
     func logout()
     func getCurrentTime() -> String
+    func calculateRequiredEnergy() -> Int
+    func currentBurnedCalories() -> CGFloat
+    func getCurrentCaloriesText() -> String
+    func createBMRModel()
+    func getRequiredStepsValue() -> Int
 }
 
 final class SessionServiceImpl: ObservableObject, SessionService {
@@ -118,14 +123,39 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     }
     
     func currentBurnedCalories() -> CGFloat {
-        let result = CGFloat(activeEnergyBurnedVM.activeEnergyBurned.count) / CGFloat(self.calculateRequiredEnergy())
+        let result = CGFloat(activeEnergyBurnedVM.activeEnergyBurned.last?.count ?? 0) / CGFloat(self.calculateRequiredEnergy())
         print("Result cbc: \(result)")
         return result
+    }
+    
+    func getCurrentCaloriesText() -> String {
+        guard let currentBurnedCalories = self.bmrModel?.currentBurnedCalories else { return "" }
+        
+        if currentBurnedCalories == 0 {
+            return ""
+        } else if currentBurnedCalories > 0 && currentBurnedCalories < 0.5 {
+            return "Warning"
+        } else if currentBurnedCalories > 0.5 && currentBurnedCalories < 0.75 {
+            return "On track"
+        } else {
+            return "Good job"
+        }
     }
     
     func createBMRModel() {
         self.bmrModel = BMRModel(calculatedRequiredEnergy: calculateRequiredEnergy(),
                                  currentBurnedCalories: currentBurnedCalories())
+    }
+    
+    func getRequiredStepsValue() -> Int {
+        guard let goal = self.userDetails?.goal else { return 0 }
+        if goal == "Muscle Grow" {
+            return 10000
+        } else if goal == "Burn Fat" {
+            return 12000
+        } else {
+            return 15000
+        }
     }
 }
 

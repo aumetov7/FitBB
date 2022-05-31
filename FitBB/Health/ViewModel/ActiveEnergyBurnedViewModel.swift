@@ -16,8 +16,8 @@ enum ActiveEnergyBurnedState {
 }
 
 protocol ActiveEnergyBurnedViewModel {
-//    var activeEnergyBurned: [ActiveEnergyBurned] { get }
-    var activeEnergyBurned: ActiveEnergyBurned { get }
+    var activeEnergyBurned: [ActiveEnergyBurned] { get }
+//    var activeEnergyBurned: ActiveEnergyBurned { get }
     var service: ActiveEnergyBurnedService { get }
     var state: ActiveEnergyBurnedState { get }
     
@@ -27,8 +27,8 @@ protocol ActiveEnergyBurnedViewModel {
 }
 
 final class ActiveEnergyBurnedViewModelImpl: ObservableObject, ActiveEnergyBurnedViewModel {
-//    @Published var activeEnergyBurned: [ActiveEnergyBurned] = [ActiveEnergyBurned]()
-    @Published var activeEnergyBurned: ActiveEnergyBurned = ActiveEnergyBurned.new
+    @Published var activeEnergyBurned: [ActiveEnergyBurned] = [ActiveEnergyBurned]()
+//    @Published var activeEnergyBurned: ActiveEnergyBurned = ActiveEnergyBurned.new
     @Published var state: ActiveEnergyBurnedState = .notAvailable
     
     let service: ActiveEnergyBurnedService
@@ -62,8 +62,8 @@ final class ActiveEnergyBurnedViewModelImpl: ObservableObject, ActiveEnergyBurne
 
 private extension ActiveEnergyBurnedViewModelImpl {
     func updateFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-//        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-        let startDate = Calendar.current.startOfDay(for: Date())
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+//        let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         
         statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
@@ -72,8 +72,10 @@ private extension ActiveEnergyBurnedViewModelImpl {
             
             DispatchQueue.main.async {
 //                self.activeEnergyBurned.append(energy)
-                self.activeEnergyBurned = energy
+                self.activeEnergyBurned.append(energy)
             }
+            
+            
         }
     }
 }

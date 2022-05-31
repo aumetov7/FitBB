@@ -15,7 +15,7 @@ protocol BMRService {
     func getSex() -> HKBiologicalSexObject?
 }
 
-class BMRServiceImpl: HealthStore, ObservableObject {
+final class BMRServiceImpl: HealthStore, ObservableObject {
     func getDateOfBirth() -> DateComponents? {
         do {
             let dateOfBirth = try self.healthStore?.dateOfBirthComponents()

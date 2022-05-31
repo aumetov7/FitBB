@@ -25,20 +25,33 @@ struct ProfileView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("Profile")
+                Text("My Profile")
                     .roundedTitle()
                     .padding(.top)
                 
-                profileImage
-                    .padding([.bottom, .top])
+                LazyVStack(alignment: .leading) {
+                    goalDetails(imageName: "flag.fill",
+                                color: .orange,
+                                titleText: "Goal",
+                                detailsText: "\(sessionService.userDetails?.goal ?? "N/A")")
+                    
+                    goalDetails(imageName: "figure.walk",
+                                color: .green,
+                                titleText: "Steps",
+                                detailsText: "\(sessionService.getRequiredStepsValue())")
+                    
+                    goalDetails(imageName: "bolt.fill",
+                                color: .yellow,
+                                titleText: "Calories",
+                                detailsText: "\(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0)")
+                }
+                .padding(.horizontal)
+                .frame(height: geometry.size.height * 0.7, alignment: .top)
                 
-                userDetails
-                    .frame(height: geometry.size.height / 4)
-                
-                RaisedButton(buttonText: "Medical Info") {
+                RaisedButton(buttonText: "Personal Details") {
                     showMedicalInfo.toggle()
                 }
-                .padding([.horizontal, .bottom, .top])
+                .padding(.horizontal)
             }
             .padding(.horizontal)
             .sheet(isPresented: $showProfileDetailView) {
@@ -68,6 +81,32 @@ struct ProfileView: View {
              sessionService.userDetails?.goal == "" &&
              sessionService.userDetails?.days == "") {
             showProfileDetailView.toggle()
+        }
+    }
+    
+    @ViewBuilder
+    func goalDetails(imageName: String,
+                     color: Color,
+                     titleText: String,
+                     detailsText: String) -> some View {
+        VStack {
+            HStack {
+                Image(systemName: imageName)
+                    .resizedToFill(width: 30, height: 30)
+                    .foregroundColor(color)
+                    .frame(width: 45)
+                
+                Text(titleText)
+                    .font(.title3)
+                
+                Text(detailsText)
+                    .font(.title3)
+                    
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding([.top, .bottom])
+            
+            Divider()
         }
     }
     
@@ -103,25 +142,6 @@ struct ProfileView: View {
             }
         }
     }
-    
-    var userDetails: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Birth Date: \(sessionService.userDetails?.dateOfBirth ?? "N/A")")
-                .makeRound()
-            
-            Text("Gender: \(sessionService.userDetails?.gender ?? "N/A")")
-                .makeRound()
-            
-            Text("Goal: \(sessionService.userDetails?.goal ?? "N/A")")
-                .makeRound()
-            
-            Text("Workout Days: \(sessionService.userDetails?.days ?? "N/A")")
-                .makeRound()
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
-        .padding(.leading)
-    }
 }
 
 struct WelcomeView_Previews: PreviewProvider {
@@ -132,5 +152,9 @@ struct WelcomeView_Previews: PreviewProvider {
         ProfileView()
             .environmentObject(SessionServiceImpl())
             .preferredColorScheme(.dark)
+        
+        ProfileView()
+            .environmentObject(SessionServiceImpl())
+            .previewDevice("iPhone 8")
     }
 }

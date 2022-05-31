@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ActiveEnergyBurned: Identifiable {
-    let id = UUID()
+struct ActiveEnergyBurned {
+//    let id = UUID()
     let count: Int
     let date: Date
 }
