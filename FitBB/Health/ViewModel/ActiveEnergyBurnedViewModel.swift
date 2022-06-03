@@ -62,7 +62,7 @@ final class ActiveEnergyBurnedViewModelImpl: ObservableObject, ActiveEnergyBurne
 
 private extension ActiveEnergyBurnedViewModelImpl {
     func updateFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())!
 //        let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         

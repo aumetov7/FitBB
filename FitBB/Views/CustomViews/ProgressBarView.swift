@@ -31,24 +31,23 @@ struct ProgressBarView: View {
             ZStack(alignment: .leading) {
                 HStack(spacing: 0) {
                     RoundedRectangle(cornerRadius: 0)
-                        .foregroundColor(.orange)
+                        .foregroundColor(.indigo)
                         .opacity(0.8)
-                        .frame(width: width * (2/3),
-                               height: 10)
+                        .frame(width: width * (1/2),
+                               height: 8)
                         .cornerRadius(20, corners: [.bottomLeft, .topLeft])
-                        
                     
                     RoundedRectangle(cornerRadius: 0)
-                        .foregroundColor(.yellow)
+                        .foregroundColor(.orange)
                         .opacity(0.8)
-                        .frame(width: width * (1/6),
-                               height: 10)
+                        .frame(width: width * (1/4),
+                               height: 8)
                     
                     RoundedRectangle(cornerRadius: 0)
                         .foregroundColor(.green)
                         .opacity(0.8)
-                        .frame(width: width * (1/6),
-                               height: 10)
+                        .frame(width: width * (1/4),
+                               height: 8)
                         .cornerRadius(20, corners: [.topRight, .bottomRight])
                 }
                 

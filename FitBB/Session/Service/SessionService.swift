@@ -22,6 +22,8 @@ protocol SessionService {
     var medicalDetails: SessionMedicalDetails? { get }
     var bmrModel: BMRModel? { get }
     var fetched: Bool { get }
+    var requiredStepValue: Int? { get }
+    var currentStepValue: CGFloat { get }
     
     func getProviderId() -> [String]
     func logout()
@@ -30,7 +32,11 @@ protocol SessionService {
     func currentBurnedCalories() -> CGFloat
     func getCurrentCaloriesText() -> String
     func createBMRModel()
-    func getRequiredStepsValue() -> Int
+    func getRequiredStepsValue()
+    func getCurrentStepValue() -> CGFloat
+    func getDateArray() -> [String]
+    func getStepArray() -> [CGFloat]
+//    func getStepDict() -> [String:Int]
 }
 
 final class SessionServiceImpl: ObservableObject, SessionService {
@@ -39,10 +45,13 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var medicalDetails: SessionMedicalDetails?
     @Published var bmrModel: BMRModel?
     @Published var fetched: Bool = false
+    @Published var requiredStepValue: Int?
+    @Published var currentStepValue: CGFloat = 0
     
     private var handler: AuthStateDidChangeListenerHandle?
     private var bmrService = BMRServiceImpl()
     private var activeEnergyBurnedVM = ActiveEnergyBurnedViewModelImpl(service: ActiveEnergyBurnedServiceImpl())
+    private var stepVM = StepViewModelImpl(service: StepServiceImpl())
     
     init() {
         setupFirebaseAuthHandler()
@@ -129,11 +138,9 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     }
     
     func getCurrentCaloriesText() -> String {
-        guard let currentBurnedCalories = self.bmrModel?.currentBurnedCalories else { return "" }
+        guard let currentBurnedCalories = self.bmrModel?.currentBurnedCalories else { return "Warning" }
         
-        if currentBurnedCalories == 0 {
-            return ""
-        } else if currentBurnedCalories > 0 && currentBurnedCalories < 0.5 {
+        if currentBurnedCalories >= 0 && currentBurnedCalories < 0.5 {
             return "Warning"
         } else if currentBurnedCalories > 0.5 && currentBurnedCalories < 0.75 {
             return "On track"
@@ -147,14 +154,58 @@ final class SessionServiceImpl: ObservableObject, SessionService {
                                  currentBurnedCalories: currentBurnedCalories())
     }
     
-    func getRequiredStepsValue() -> Int {
-        guard let goal = self.userDetails?.goal else { return 0 }
+    func getRequiredStepsValue() {
+        guard let goal = self.userDetails?.goal else { return }
         if goal == "Muscle Grow" {
-            return 10000
+            requiredStepValue = 10000
         } else if goal == "Burn Fat" {
-            return 12000
+            requiredStepValue = 12000
         } else {
-            return 15000
+            requiredStepValue = 15000
+        }
+    }
+    
+    func getCurrentStepValue() -> CGFloat {
+        guard let requiredStepValue = requiredStepValue else {
+            return 0
+        }
+
+        
+        return CGFloat(self.stepVM.steps.last?.count ?? 0) / CGFloat(requiredStepValue)
+    }
+    
+    func getDateArray() -> [String] {
+        var dateArray: [String] = []
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM"
+        
+        for value in self.stepVM.steps {
+            dateArray.append(dateFormatter.string(from: value.date))
+        }
+        
+        print("Array date: \(dateArray)")
+        return dateArray
+    }
+    
+    func getStepArray() -> [CGFloat] {
+        var stepArray: [CGFloat] = []
+        
+        for value in self.stepVM.steps {
+            stepArray.append(CGFloat(value.count))
+        }
+        
+        print("Array step: \(stepArray)")
+        return stepArray
+    }
+    
+    func getCurrentStepText() -> String {
+        if self.getCurrentStepValue() >= 0 && self.getCurrentStepValue() < 0.5 {
+            return "Warning"
+        } else if self.getCurrentStepValue() > 0.5 && self.getCurrentStepValue() < 0.75 {
+            return "On track"
+        } else {
+            return "Good job"
         }
     }
 }
@@ -202,6 +253,8 @@ private extension SessionServiceImpl {
                                                           gender: gender,
                                                           goal: goal,
                                                           days: days)
+                    
+                    self.getRequiredStepsValue()
                 }
                 
                 self.fetched = true

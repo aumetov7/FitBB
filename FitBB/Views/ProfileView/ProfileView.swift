@@ -15,6 +15,7 @@ struct ProfileView: View {
     
     @State private var showProfileDetailView = false
     @State private var showMedicalInfo = false
+    @State private var on = false
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
@@ -31,26 +32,29 @@ struct ProfileView: View {
                 
                 LazyVStack(alignment: .leading) {
                     goalDetails(imageName: "flag.fill",
-                                color: .orange,
+                                color: .indigo,
                                 titleText: "Goal",
                                 detailsText: "\(sessionService.userDetails?.goal ?? "N/A")")
                     
                     goalDetails(imageName: "figure.walk",
                                 color: .green,
                                 titleText: "Steps",
-                                detailsText: "\(sessionService.getRequiredStepsValue())")
+                                detailsText: "\(sessionService.requiredStepValue ?? 0)")
                     
                     goalDetails(imageName: "bolt.fill",
-                                color: .yellow,
+                                color: .orange,
                                 titleText: "Calories",
                                 detailsText: "\(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0)")
                 }
                 .padding(.horizontal)
-                .frame(height: geometry.size.height * 0.7, alignment: .top)
+                .frame(height: geometry.size.height * 0.3, alignment: .top)
+                
+//                LineGraphView()
                 
                 RaisedButton(buttonText: "Personal Details") {
                     showMedicalInfo.toggle()
                 }
+                .frame(height: geometry.size.height * 0.15, alignment: .bottom)
                 .padding(.horizontal)
             }
             .padding(.horizontal)
@@ -101,7 +105,7 @@ struct ProfileView: View {
                 
                 Text(detailsText)
                     .font(.title3)
-                    
+                
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding([.top, .bottom])

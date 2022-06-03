@@ -51,7 +51,7 @@ class HealthStore {
 
 extension HealthStore {
     func getQueryWithOptions(quantityType: HKQuantityType, options: HKStatisticsOptions) -> HKStatisticsCollectionQuery? {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())
         //        let startDate = Calendar.current.startOfDay(for: Date())
         let anchorDate = Date.mondayAt12AM()
         let daily = DateComponents(day: 1)
@@ -67,7 +67,7 @@ extension HealthStore {
     }
     
     func getQueryWithoutOptions(quantityType: HKQuantityType) -> HKStatisticsCollectionQuery? {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())
         //        let startDate = Calendar.current.startOfDay(for: Date())
         let anchorDate = Date.mondayAt12AM()
         let daily = DateComponents(day: 1)

@@ -66,9 +66,7 @@ final class ExerciseTimeViewModelImpl: ObservableObject, ExerciseTimeViewModel {
     }
     
     func getCurrentExerciseTimeText() -> String {
-        if getCurrentExerciseTimeValue() == 0 {
-            return ""
-        } else if getCurrentExerciseTimeValue() > 0 && getCurrentExerciseTimeValue() < 0.5 {
+        if getCurrentExerciseTimeValue() >= 0 && getCurrentExerciseTimeValue() < 0.5 {
             return "Warning"
         } else if getCurrentExerciseTimeValue() > 0.5 && getCurrentExerciseTimeValue() < 0.75 {
             return "On track"
@@ -80,7 +78,7 @@ final class ExerciseTimeViewModelImpl: ObservableObject, ExerciseTimeViewModel {
 
 private extension ExerciseTimeViewModelImpl {
     func updateUIFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())!
 //        let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         

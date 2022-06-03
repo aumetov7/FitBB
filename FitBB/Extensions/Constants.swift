@@ -16,6 +16,3 @@ let clientId = "589383907991-mbel8f96gkk7r1n0fbp4g5tqvfo03mbe.apps.googleusercon
 let spinePartArray = ["cervical", "thoracic", "lumbar", "sacrococcygeal"]
 let heartArray = ["don't have", "heart disease", "heart failure", "heart arrhytmia", "heart tachycardia"]
 let jointsAndLigamentsArray = ["don't have", "neck", "shoulders", "elbow/cubit", "wrist", "pelvis", "knee", "ankle"]
-
-
-

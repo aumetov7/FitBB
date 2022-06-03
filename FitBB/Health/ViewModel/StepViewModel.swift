@@ -25,8 +25,9 @@ protocol StepViewModel {
     init(service: StepService)
     
     func countSteps()
-    func getCurrentStepValue() -> CGFloat
-    func getCurrentStepText() -> String
+//    func getCurrentStepValue() -> CGFloat
+//    func getStepValueArray() -> [CGFloat]
+//    func getCurrentStepText() -> String
 }
 
 final class StepViewModelImpl: ObservableObject, StepViewModel {
@@ -62,26 +63,35 @@ final class StepViewModelImpl: ObservableObject, StepViewModel {
             .store(in: &subscription)
     }
     
-    func getCurrentStepValue() -> CGFloat {
-        return CGFloat(self.steps.last?.count ?? 0) / 10000
-    }
-    
-    func getCurrentStepText() -> String {
-        if getCurrentStepValue() == 0 {
-            return ""
-        } else if getCurrentStepValue() > 0 && getCurrentStepValue() < 0.5 {
-            return "Warning"
-        } else if getCurrentStepValue() > 0.5 && getCurrentStepValue() < 0.75 {
-            return "On track"
-        } else {
-            return "Good job"
-        }
-    }
+//    func getCurrentStepValue() -> CGFloat {
+//        return CGFloat(self.steps.last?.count ?? 0) / 10000
+//    }
+//
+//    func getStepValueArray() -> [CGFloat] {
+//        var stepValueArray: [CGFloat] = []
+//        var stepValue: CGFloat?
+//
+//        for value in self.steps {
+//            stepValue = CGFloat(value.count) / 10000
+//        }
+//
+//        return stepValueArray
+//    }
+//
+//    func getCurrentStepText() -> String {
+//        if getCurrentStepValue() >= 0 && getCurrentStepValue() < 0.5 {
+//            return "Warning"
+//        } else if getCurrentStepValue() > 0.5 && getCurrentStepValue() < 0.75 {
+//            return "On track"
+//        } else {
+//            return "Good job"
+//        }
+//    }
 }
 
 private extension StepViewModelImpl {
     func updateUIFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date())!
 //        let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         

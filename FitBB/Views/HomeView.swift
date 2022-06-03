@@ -48,11 +48,11 @@ struct HomeView: View {
     }
     
     var bmrText: String {
-        return "\(activeEnergyBurnedVM.activeEnergyBurned.last?.count ?? 0) kcal / \(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0) kcal"
+        return "\(activeEnergyBurnedVM.activeEnergyBurned.last?.count ?? 0) / \(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0) kcal"
     }
     
     var stepsText: String {
-        return "\(stepVM.steps.last?.count ?? 0) / \(sessionService.getRequiredStepsValue()) steps"
+        return "\(stepVM.steps.last?.count ?? 0) / \(sessionService.requiredStepValue ?? 0) steps"
     }
     
     var exercisesTimeText: String {
@@ -60,10 +60,10 @@ struct HomeView: View {
     }
     
     var stepTextColor: Color {
-        if stepVM.getCurrentStepValue() < 0.5 {
+        if sessionService.getCurrentStepValue() < 0.5 {
+            return .indigo
+        } else if sessionService.getCurrentStepValue() > 0.5 && sessionService.getCurrentStepValue() < 0.75 {
             return .orange
-        } else if stepVM.getCurrentStepValue() > 0.5 && stepVM.getCurrentStepValue() < 0.75 {
-            return .yellow
         } else {
             return .green
         }
@@ -71,21 +71,21 @@ struct HomeView: View {
     
     var exercisesTimeTextColor: Color {
         if exerciseTimeVM.getCurrentExerciseTimeValue() < 0.5 {
-            return .orange
+            return .indigo
         } else if exerciseTimeVM.getCurrentExerciseTimeValue() > 0.5 && exerciseTimeVM.getCurrentExerciseTimeValue() < 0.75 {
-            return .yellow
+            return .orange
         } else {
             return .green
         }
     }
     
     var bmrTextColor: Color {
-        guard let currentBurnedCalories = sessionService.bmrModel?.currentBurnedCalories else { return .orange }
+        guard let currentBurnedCalories = sessionService.bmrModel?.currentBurnedCalories else { return .indigo }
         
         if currentBurnedCalories < 0.5 {
-            return .orange
+            return .indigo
         } else if currentBurnedCalories > 0.5 && currentBurnedCalories < 0.75 {
-            return .yellow
+            return .orange
         } else {
             return .green
         }
@@ -111,10 +111,11 @@ struct HomeView: View {
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("Daily FitBB chart")
                                     .font(.title3)
-                                    .fontWeight(.light)
+                                    .fontWeight(.semibold)
                                 
                                 Button(action: {}) {
                                     Text("More details")
+                                        .font(.system(.callout))
                                         .foregroundColor(.blue)
                                 }
                             }
@@ -123,8 +124,8 @@ struct HomeView: View {
                             smartChart(titleText: "Steps",
                                        valueText: stepsText,
                                        color: stepTextColor,
-                                       currentValueText: stepVM.getCurrentStepText(),
-                                       currentProgress: stepVM.getCurrentStepValue(),
+                                       currentValueText: sessionService.getCurrentStepText(),
+                                       currentProgress: sessionService.getCurrentStepValue(),
                                        width: geometry.size.width,
                                        height: geometry.size.height)
                             
@@ -326,6 +327,7 @@ struct HomeView: View {
             Text(sessionService.userDetails?.firstName ?? "")
                 .roundedTitle()
         }
+        .padding(.horizontal)
     }
 }
 
