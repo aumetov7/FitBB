@@ -35,7 +35,7 @@ protocol SessionService {
     func getRequiredStepsValue()
     func getCurrentStepValue() -> CGFloat
     func getDateArray() -> [String]
-    func getStepArray() -> [CGFloat]
+    func getStepArray() -> [Double]
 //    func getStepDict() -> [String:Int]
 }
 
@@ -188,11 +188,11 @@ final class SessionServiceImpl: ObservableObject, SessionService {
         return dateArray
     }
     
-    func getStepArray() -> [CGFloat] {
-        var stepArray: [CGFloat] = []
+    func getStepArray() -> [Double] {
+        var stepArray: [Double] = []
         
         for value in self.stepVM.steps {
-            stepArray.append(CGFloat(value.count))
+            stepArray.append(Double(value.count))
         }
         
         print("Array step: \(stepArray)")

@@ -15,37 +15,80 @@ struct MedicalInfoView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("Medical Details")
+                Text("Personal Details")
                     .titleText()
-                    .frame(height: geometry.size.height / 5, alignment: .top)
+                    .frame(height: geometry.size.height * 0.1, alignment: .top)
+                    .padding(.horizontal)
                 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Weight: \(sessionService.medicalDetails?.weight ?? "N/A")")
-                        .makeRound()
-                    Text("Height: \(sessionService.medicalDetails?.height ?? "N/A")")
-                        .makeRound()
-                    Text("Blood pressure: \(sessionService.medicalDetails?.bloodPressure ?? "N/A")")
-                        .makeRound()
-                    Text("Eyes: \(sessionService.medicalDetails?.eyes ?? "N/A")")
-                        .makeRound()
-                    Text("Spine: \(sessionService.medicalDetails?.spine ?? "N/A")")
-                        .makeRound()
-                    if sessionService.medicalDetails?.spine == "hernia" || sessionService.medicalDetails?.spine == "protrusion" {
-                        Text("Spine Part: \(spinePartArray[sessionService.medicalDetails?.spinePartSelectedIndex ?? 0])")
-                            .makeRound()
+                profileImage
+                    .frame(height: geometry.size.height * 0.2, alignment: .top)
+                
+                LazyVStack(spacing: 10) {
+                    Group {
+                        personalDetails(text: "First Name",
+                                        value: "\(sessionService.userDetails?.firstName ?? "N/A")")
+                        personalDetails(text: "Date of birth",
+                                        value: "\(sessionService.userDetails?.dateOfBirth ?? "N/A")")
+                        personalDetails(text: "Gender",
+                                        value: "\(sessionService.userDetails?.gender ?? "N/A")")
                     }
-                    Text("Heart: \(heartArray[sessionService.medicalDetails?.heartSelectedIndex ?? 0])")
-                        .makeRound()
-                    Text("Joints and Ligaments: \(jointsAndLigamentsArray[sessionService.medicalDetails?.jointsAndLigamentsSelectedIndex ?? 0])")
-                        .makeRound()
+                    Divider()
+                        .padding(.horizontal)
+                    Group {
+                        personalDetails(text: "Weight",
+                                        value: "\(sessionService.medicalDetails?.weight ?? "N/A")")
+                        personalDetails(text: "Height",
+                                        value: "\(sessionService.medicalDetails?.height ?? "N/A")")
+                        personalDetails(text: "Blood pressure",
+                                        value: "\(sessionService.medicalDetails?.bloodPressure ?? "N/A")")
+                        personalDetails(text: "Eyes",
+                                        value: "\(sessionService.medicalDetails?.eyes ?? "N/A")")
+                        personalDetails(text: "Spine",
+                                        value: "\(sessionService.medicalDetails?.spine ?? "N/A")")
+                        if sessionService.medicalDetails?.spine == "hernia" || sessionService.medicalDetails?.spine == "protrusion" {
+                        personalDetails(text: "Spine Part",
+                                        value: "\(spinePartArray[sessionService.medicalDetails?.spinePartSelectedIndex ?? 0])")
+                        }
+                        personalDetails(text: "Heart",
+                                        value: "\(heartArray[sessionService.medicalDetails?.heartSelectedIndex ?? 0])")
+                        personalDetails(text: "Joints and ligaments",
+                                        value: "\(jointsAndLigamentsArray[sessionService.medicalDetails?.jointsAndLigamentsSelectedIndex ?? 0])")
+                    }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: geometry.size.height / 1.5, alignment: .top)
+                .frame(height: geometry.size.height * 0.6, alignment: .top)
                 .padding(.horizontal)
             }
             .frame(height: geometry.size.height)
         }
         .customBackgroundColor(colorScheme: colorScheme)
+    }
+    
+    @ViewBuilder
+    func personalDetails(text: String, value: String) -> some View {
+        HStack {
+            Text(text)
+                .makeRound()
+            Text(value)
+                .signText()
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(.horizontal)
+    }
+    
+    var profileImage: some View {
+        AsyncImage(url: URL(string: sessionService.userDetails?.profileImage ?? "")) { image in
+            image
+                .resizedToFill(width: 150, height: 150)
+                .clipShape(Circle())
+        } placeholder: {
+            ZStack {
+                Circle()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.gray.opacity(0.15))
+                
+                ProgressView()
+            }
+        }
     }
 }
 

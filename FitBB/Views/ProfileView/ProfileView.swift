@@ -34,22 +34,28 @@ struct ProfileView: View {
                     goalDetails(imageName: "flag.fill",
                                 color: .indigo,
                                 titleText: "Goal",
-                                detailsText: "\(sessionService.userDetails?.goal ?? "N/A")")
+                                detailsText: "\(sessionService.userDetails?.goal ?? "N/A")",
+                                width: geometry.size.width * 0.08,
+                                height: geometry.size.height * 0.01)
                     
                     goalDetails(imageName: "figure.walk",
                                 color: .green,
                                 titleText: "Steps",
-                                detailsText: "\(sessionService.requiredStepValue ?? 0)")
+                                detailsText: "\(sessionService.requiredStepValue ?? 0)",
+                                width: geometry.size.width * 0.08,
+                                height: geometry.size.height * 0.01)
                     
                     goalDetails(imageName: "bolt.fill",
                                 color: .orange,
                                 titleText: "Calories",
-                                detailsText: "\(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0)")
+                                detailsText: "\(sessionService.bmrModel?.calculatedRequiredEnergy ?? 0)",
+                                width: geometry.size.width * 0.08,
+                                height: geometry.size.height * 0.01)
                 }
                 .padding(.horizontal)
-                .frame(height: geometry.size.height * 0.3, alignment: .top)
+                .frame(height: geometry.size.height * 0.6, alignment: .top)
                 
-//                LineGraphView()
+                
                 
                 RaisedButton(buttonText: "Personal Details") {
                     showMedicalInfo.toggle()
@@ -92,11 +98,13 @@ struct ProfileView: View {
     func goalDetails(imageName: String,
                      color: Color,
                      titleText: String,
-                     detailsText: String) -> some View {
+                     detailsText: String,
+                     width: CGFloat,
+                     height: CGFloat) -> some View {
         VStack {
             HStack {
                 Image(systemName: imageName)
-                    .resizedToFill(width: 30, height: 30)
+                    .resizedToFill(width: width, height: height)
                     .foregroundColor(color)
                     .frame(width: 45)
                 
@@ -105,7 +113,6 @@ struct ProfileView: View {
                 
                 Text(detailsText)
                     .font(.title3)
-                
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding([.top, .bottom])
