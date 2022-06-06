@@ -21,9 +21,7 @@ struct HeaderView: View {
     var body: some View {
         VStack {
             Text(titleText)
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .padding(.top)
+                .roundedTitle(alignment: .center, padding: .top)
             
             HStack {
                 ForEach(0 ..< Exercise.exercises.count, id: \.self) { index in

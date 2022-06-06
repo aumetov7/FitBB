@@ -5,7 +5,7 @@
 //  Created by Акбар Уметов on 14/4/22.
 //
 
-import Combine
+//import Combine
 import Foundation
 import FirebaseAuth
 import Firebase
@@ -24,6 +24,7 @@ protocol SessionService {
     var fetched: Bool { get }
     var requiredStepValue: Int? { get }
     var currentStepValue: CGFloat { get }
+//    var exercises: [Exercise] { get }
     
     func getProviderId() -> [String]
     func logout()
@@ -47,6 +48,7 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var fetched: Bool = false
     @Published var requiredStepValue: Int?
     @Published var currentStepValue: CGFloat = 0
+//    @Published var exercises: [Exercise] = Exercise.exercises
     
     private var handler: AuthStateDidChangeListenerHandle?
     private var bmrService = BMRServiceImpl()
@@ -220,6 +222,7 @@ private extension SessionServiceImpl {
                 
                 if let uid = user?.uid {
                     print("Detail UID: \(uid)")
+//                    self.downloadVideo()
                     self.accountInfoHandleRefresh(with: uid)
                     self.medicalInfoHandleRefresh(with: uid)
                     self.checkFetching(with: uid)
@@ -307,4 +310,25 @@ private extension SessionServiceImpl {
                 }
             }
     }
+    
+    /*
+    func downloadVideo() {
+        let storageReference = Storage.storage().reference(forURL: firebaseStorageUrl)
+        for index in 0 ..< self.exercises.count {
+            let storageExerciseReference = storageReference.child("exercises").child(Exercise.exercises[index].videoName + ".mp4")
+            
+            storageExerciseReference.downloadURL { url, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    guard let videoURl = url?.absoluteString else { return }
+                    print("URL: \(videoURl)")
+                    DispatchQueue.main.async {
+                        self.exercises[index].videoURL = videoURl
+                    }
+                }
+            }
+        }
+    }
+    */
 }

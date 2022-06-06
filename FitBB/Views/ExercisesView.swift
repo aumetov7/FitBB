@@ -18,6 +18,7 @@ struct ExercisesView: View {
                 VStack {
                     ExerciseDetailView(selectedTab: $selectedTab, index: index)
                         .tag(index)
+                        .environmentObject(VideoUrlServiceImpl())
                 }
             }
         }

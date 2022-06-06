@@ -10,6 +10,7 @@ import Foundation
 struct Exercise {
     let exerciseName: String
     let videoName: String
+    var videoURL: String
     
     enum ExerciseEnum: String {
         case benchPress = "Bench Press" // жим лежа
@@ -22,24 +23,30 @@ struct Exercise {
 }
 
 extension Exercise {
-    static let exercises = [
+    static var exercises = [
         Exercise(
             exerciseName: ExerciseEnum.benchPress.rawValue,
-            videoName: "benchPress"),
+            videoName: "benchPress",
+            videoURL: ""),
         Exercise(
             exerciseName: ExerciseEnum.dumbellBenchPress.rawValue,
-            videoName: "dumbellBenchPress"),
+            videoName: "dumbellBenchPress",
+            videoURL: ""),
         Exercise(
             exerciseName: ExerciseEnum.butterfly.rawValue,
-            videoName: "butterfly"),
+            videoName: "butterfly",
+            videoURL: ""),
         Exercise(
             exerciseName: ExerciseEnum.barbellCurls.rawValue,
-            videoName: "barbellCurls"),
+            videoName: "barbellCurls",
+            videoURL: ""),
         Exercise(
             exerciseName: ExerciseEnum.altBicepsCurls.rawValue,
-            videoName: "altBicepsCurls"),
+            videoName: "altBicepsCurls",
+            videoURL: ""),
         Exercise(
             exerciseName: ExerciseEnum.altHammerCurls.rawValue,
-            videoName: "altHammerCurls")
+            videoName: "altHammerCurls",
+            videoURL: "")
     ]
 }

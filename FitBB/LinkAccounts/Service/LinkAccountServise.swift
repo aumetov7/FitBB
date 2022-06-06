@@ -55,6 +55,7 @@ class LinkAccountServiceImpl: LinkAccountService {
                 Auth.auth().currentUser?.link(with: credential, completion: { authResult, error in
                     if let error = error {
                         promise(.failure(error))
+                        print("Error: \(error.localizedDescription)")
                     } else {
                         promise(.success(()))
                     }

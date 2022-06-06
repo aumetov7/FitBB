@@ -27,7 +27,7 @@ struct ProfileView: View {
         GeometryReader { geometry in
             VStack {
                 Text("My Profile")
-                    .roundedTitle()
+                    .roundedTitle(alignment: .leading, padding: .leading)
                     .padding(.top)
                 
                 LazyVStack(alignment: .leading) {

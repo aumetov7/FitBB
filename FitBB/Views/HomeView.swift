@@ -322,10 +322,10 @@ struct HomeView: View {
     var welcomeText: some View {
         VStack {
             Text(sessionService.getCurrentTime() + comma)
-                .roundedTitle()
+                .roundedTitle(alignment: .leading, padding: .leading)
             
             Text(sessionService.userDetails?.firstName ?? "")
-                .roundedTitle()
+                .roundedTitle(alignment: .leading, padding: .leading)
         }
         .padding(.horizontal)
     }
@@ -343,20 +343,5 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
             .environmentObject(SessionServiceImpl())
             .previewDevice("iPhone 8")
-    }
-}
-
-struct ImageView: View {
-    @ObservedObject var imageLoader: ImageLoader
-    
-    init(withURL url: String) {
-        imageLoader = ImageLoader(urlString: url)
-    }
-    
-    var body: some View {
-        Image(uiImage: imageLoader.image ?? UIImage() )
-            .resizedToFill(width: 35, height: 35)
-            .clipShape(Circle())
-            .padding(5)
     }
 }

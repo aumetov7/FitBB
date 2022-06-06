@@ -44,6 +44,7 @@
 		D8406D22280EC6D500445272 /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8406D21280EC6D500445272 /* RaisedButton.swift */; };
 		D855F650282BB05E007CE32D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F64F282BB05E007CE32D /* CustomPickerView.swift */; };
 		D855F652282BD24B007CE32D /* MedicalChatMessageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */; };
+		D8670828284E2A56003FE1DC /* StartExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8670827284E2A56003FE1DC /* StartExerciseView.swift */; };
 		D86875A4281FF41F00A95616 /* VideoUrlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86875A3281FF41F00A95616 /* VideoUrlService.swift */; };
 		D86875A72821372D00A95616 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D86875A62821372D00A95616 /* FirebaseFirestore */; };
 		D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */; };
@@ -61,8 +62,6 @@
 		D87D0445282542EF0088B84F /* ProfileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D0444282542EF0088B84F /* ProfileMenuView.swift */; };
 		D8838633283B7853008782EC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838632283B7853008782EC /* HomeView.swift */; };
 		D8838636283B9B43008782EC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8838635283B9B43008782EC /* HealthKit.framework */; };
-		D8838638283BA301008782EC /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838637283BA301008782EC /* ImageLoader.swift */; };
-		D883863A283BA362008782EC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838639283BA362008782EC /* ImageCache.swift */; };
 		D883863F283CFB3E008782EC /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D883863E283CFB3E008782EC /* HealthStore.swift */; };
 		D8838642283D07E5008782EC /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838641283D07E5008782EC /* Step.swift */; };
 		D8838646283D0FDF008782EC /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8838645283D0FDF008782EC /* StepViewModel.swift */; };
@@ -136,6 +135,7 @@
 		D8406D21280EC6D500445272 /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		D855F64F282BB05E007CE32D /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		D855F651282BD24B007CE32D /* MedicalChatMessageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalChatMessageViews.swift; sourceTree = "<group>"; };
+		D8670827284E2A56003FE1DC /* StartExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartExerciseView.swift; sourceTree = "<group>"; };
 		D86875A3281FF41F00A95616 /* VideoUrlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUrlService.swift; sourceTree = "<group>"; };
 		D86875A828215F8A00A95616 /* GoogleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewModel.swift; sourceTree = "<group>"; };
 		D8731BD228268D8D006A60AC /* ColorSchemeUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeUtilities.swift; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 		D8838632283B7853008782EC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D8838634283B9B43008782EC /* FitBB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitBB.entitlements; sourceTree = "<group>"; };
 		D8838635283B9B43008782EC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		D8838637283BA301008782EC /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		D8838639283BA362008782EC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D883863E283CFB3E008782EC /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		D8838641283D07E5008782EC /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		D8838645283D0FDF008782EC /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +222,7 @@
 				D8838632283B7853008782EC /* HomeView.swift */,
 				D82E60C32802FA26008CE10A /* ExercisesView.swift */,
 				D80430E52805E5E000146B64 /* ExerciseDetailView.swift */,
+				D8670827284E2A56003FE1DC /* StartExerciseView.swift */,
 				D82E60C52802FAF1008CE10A /* FoodView.swift */,
 				D82E60C72802FAFF008CE10A /* HistoryView.swift */,
 				D82E60C92802FB0C008CE10A /* SuccessView.swift */,
@@ -281,6 +280,15 @@
 				D8975656281175E00075AD73 /* EmbossedButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		D8670823284E1209003FE1DC /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				D82E60BE2802F011008CE10A /* Model */,
+				D82E690B2808246C00AFA077 /* Service */,
+			);
+			path = Exercises;
 			sourceTree = "<group>";
 		};
 		D86875A52821372D00A95616 /* Frameworks */ = {
@@ -487,8 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				D82E6919280845ED00AFA077 /* SessionService.swift */,
-				D8838637283BA301008782EC /* ImageLoader.swift */,
-				D8838639283BA362008782EC /* ImageCache.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -684,9 +690,8 @@
 				D8A8A3E128339C8900F55725 /* Session */,
 				D8A8A3E828339D3200F55725 /* UpdateProfile */,
 				D8A8A3E528339CE000F55725 /* LinkAccounts */,
+				D8670823284E1209003FE1DC /* Exercises */,
 				D8A8A3EC28339DE100F55725 /* MedicalInfo */,
-				D82E60BE2802F011008CE10A /* Model */,
-				D82E690B2808246C00AFA077 /* Service */,
 				D897565828117B790075AD73 /* Extensions */,
 				D8DD8C4928016F6A004D3C69 /* Assets.xcassets */,
 				D8DD8C4B28016F6A004D3C69 /* Preview Content */,
@@ -794,6 +799,7 @@
 				D86875A928215F8A00A95616 /* GoogleSignInViewModel.swift in Sources */,
 				D8838642283D07E5008782EC /* Step.swift in Sources */,
 				D83528AC2827FBFF00E6532C /* PickerTextField.swift in Sources */,
+				D8670828284E2A56003FE1DC /* StartExerciseView.swift in Sources */,
 				D8A8A3C9282E70D100F55725 /* MedicalInfoViewModel.swift in Sources */,
 				D80430E42805DF0500146B64 /* HeaderView.swift in Sources */,
 				D8A8A3C5282E6EDB00F55725 /* MedicalInfoService.swift in Sources */,
@@ -803,7 +809,6 @@
 				D82E60CA2802FB0C008CE10A /* SuccessView.swift in Sources */,
 				D8A8A3C3282E6CAF00F55725 /* UpdateProfileService.swift in Sources */,
 				D8A8A3CD282E739C00F55725 /* MedicalInfoCombineView.swift in Sources */,
-				D883863A283BA362008782EC /* ImageCache.swift in Sources */,
 				D883864C283E3CC0008782EC /* ActiveEnergyBurnedService.swift in Sources */,
 				D82E691028082BFF00AFA077 /* RegistrationViewModel.swift in Sources */,
 				D8796DD6280FEA12001567BB /* ProfileDetailView.swift in Sources */,
@@ -863,7 +868,6 @@
 				D830C94528184067009AFB75 /* PasswordValidationViewExtension.swift in Sources */,
 				D8796DDC28102DEC001567BB /* SignUpView.swift in Sources */,
 				D830C93E2816F1C3009AFB75 /* UpdateProfileViewModel.swift in Sources */,
-				D8838638283BA301008782EC /* ImageLoader.swift in Sources */,
 				D83528A82827DF9F00E6532C /* MedicalInfoView.swift in Sources */,
 				D8B8F9032835081200ED4B9A /* AnonymousAuthService.swift in Sources */,
 				D8975657281175E00075AD73 /* EmbossedButton.swift in Sources */,

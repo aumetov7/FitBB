@@ -35,12 +35,12 @@ extension Text {
             .padding(.leading)
     }
     
-    func roundedTitle() -> some View {
+    func roundedTitle(alignment: Alignment, padding: Edge.Set) -> some View {
         self
             .font(.system(.largeTitle, design: .rounded))
             .fontWeight(.black)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
+            .frame(maxWidth: .infinity, alignment: alignment)
+            .padding(padding)
     }
 }
 
